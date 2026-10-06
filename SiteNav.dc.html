@@ -10,12 +10,12 @@
 <div style="position:relative;z-index:60">
   <nav style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:26px 32px;max-width:var(--shell,960px);width:100%;margin:0 auto">
     <div style="display:flex;align-items:center;gap:24px;flex:1"></div>
-    <a href="Portfolio Home.dc.html" aria-label="Jojo, home" style="width:42px;height:42px;display:grid;place-items:center;flex-shrink:0" style-hover="opacity:1">
+    <a href="/" aria-label="Jojo, home" style="width:42px;height:42px;display:grid;place-items:center;flex-shrink:0" style-hover="opacity:1">
       <img src="{{ logoSrc }}" alt="Jojo logo" style="width:100%;height:100%;object-fit:contain;transition:transform .7s cubic-bezier(.34,1.2,.4,1)" style-hover="transform:rotate(360deg)">
     </a>
     <div style="display:flex;align-items:center;justify-content:flex-end;gap:18px;flex:1">
       <a href="{{ workHref }}" onClick="{{ goWork }}" style="font-size:15px;font-weight:500;color:var(--accent)">Work</a>
-      <a href="About.dc.html" style="font-size:15px;font-weight:500;color:var(--accent)">About</a>
+      <a href="about" style="font-size:15px;font-weight:500;color:var(--accent)">About</a>
       <button onClick="{{ toggleTheme }}" aria-label="Toggle dark mode" title="Toggle dark mode" style="width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--cream);color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0;font-size:13px;line-height:1;transition:transform .25s ease,border-color .25s ease" style-hover="transform:rotate(-24deg) scale(1.06);border-color:var(--accent)">{{ themeGlyph }}</button>
     </div>
   </nav>
@@ -39,7 +39,8 @@ class Component extends DCLogic {
       const href = a.getAttribute('href') || '';
       if (!href || href.startsWith('#') || href.startsWith('mailto:') || a.target === '_blank') return;
       if (/^https?:/i.test(href)) return;
-      if (href.indexOf('.dc.html') === -1 && href.indexOf('.html') === -1) return;
+      if (a.hasAttribute('download')) return;
+      if (/\.(?!html?$)[a-z0-9]+$/i.test(href.split(/[?#]/)[0])) return;
       e.preventDefault();
       this.showVeil();
       setTimeout(() => { window.location.href = href; }, 340);
@@ -92,7 +93,7 @@ class Component extends DCLogic {
 
   renderVals() {
     return {
-      workHref: document.getElementById('work') || /Portfolio%20Home|Portfolio Home/.test(decodeURIComponent(location.pathname)) ? '#work' : 'Portfolio Home.dc.html#work',
+      workHref: document.getElementById('work') || location.pathname === '/' ? '#work' : '/#work',
       goWork: (e) => {
         const el = document.getElementById('work');
         if (!el) return;
