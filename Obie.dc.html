@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Obie | Jojo Yee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,300..700;1,300..700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16151a;--ink-soft:#4a4852;--paper:#ffffff;--cream:#f7f0e4;--line:#e8e5df;--accent:#5a3ff0;--accent-2:#8f6bff;--accent-deep:#2f1f8f;--tag-bg:#efeafd;--tag-line:#ded4fb;--mark:#e3d9ff;--shell:1100px;--serif:'Petrona',Georgia,serif;--serif-alt:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+body[data-theme="dark"]{--ink:#f1eff5;--ink-soft:#a8a4b6;--paper:#0f0e13;--cream:#1a1822;--line:#2b2836;--accent:#ab99ff;--accent-2:#8f6bff;--accent-deep:#d2c6ff;--tag-bg:#221d3a;--tag-line:#332a56;--mark:#3a2f6b;}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease;}
+img{max-width:100%;display:block;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{opacity:.72;}
+h1,h2,h3,h4,p{text-wrap:pretty;}
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);}
+[data-reveal].in{opacity:1;transform:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
+[data-section]>p,[data-section]>h2,[data-section]>h3{max-width:820px;margin-left:auto!important;margin-right:auto!important;}
+p,figcaption,strong{text-wrap:pretty;}
+/* block rhythm */
+[data-section]>figure,[data-section]>div{margin-bottom:44px!important;}
+[data-section]>figure:last-child,[data-section]>div:last-child{margin-bottom:0!important;}
+h1,h2,h3{text-wrap:balance;}
+a:hover [data-next-arrow]{transform:translateX(6px);}
+a:hover [data-prev-arrow]{transform:translateX(-6px);}
+@media (max-width:1229px){#secnav{display:none!important;}}
+[data-section]{position:relative;border-top:none!important;}
+[data-section] + [data-section]::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:820px;border-top:1px solid var(--line);}
+[style*="var(--serif-alt)"]{font-variation-settings:"WONK" 0,"SOFT" 0;font-optical-sizing:auto;}
+</style>
+</helmet>
+
+<nav id="secnav" style="opacity:0;pointer-events:none;position:fixed;top:50%;left:26px;transform:translateY(-50%);z-index:700;display:flex;flex-direction:column;gap:9px;align-items:flex-start">
+  <a href="#overview" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Overview</a>
+  <a href="#background" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Background</a>
+  <a href="#research" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Research</a>
+  <a href="#architecture" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Prototyping</a>
+  <a href="#content" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Personalization</a>
+  <a href="#results" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Results</a>
+</nav>
+
+<dc-import name="SiteNav" hint-size="100%,96px"></dc-import>
+
+<div style="max-width:1100px;margin:0 auto;padding:20px 32px 8px">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">UX Research</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Prototyping</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Content Strategy</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Analytics &amp; Testing</span>
+  </div>
+  <h1 style="font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,42px);line-height:1.25;margin:0 0 26px">Launching the future of accessible fertility care</h1>
+</div>
+
+<div style="max-width:1100px;margin:0 auto 64px;padding:0 32px">
+  <figure style="margin:0">
+    <img src="assets/obie-hero.png" alt="Obie app screens: daily cycle overview and pregnancy testing tracker" style="width:100%">
+  </figure>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 32px 48px">
+  <div style="display:flex;gap:40px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);max-width:820px;margin:0 auto">
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Role</span><strong style="font-weight:500;font-size:14px">Product Strategist, UX Designer, and Content Strategist</strong></div>
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Timeframe</span><strong style="font-weight:500;font-size:14px">2018 – 2021</strong></div>
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Client / Partner</span><strong style="font-weight:500;font-size:14px">babyMed</strong></div>
+  </div>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 32px 40px">
+
+  <section id="overview" data-section style="padding:0 0 48px">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Overview</h2>
+    <p style="font-family:var(--serif);font-size:22px;line-height:1.55;font-weight:600;margin:0 0 20px"><span style="background:linear-gradient(transparent 62%,var(--mark) 0)">Fertility care centers on reactive treatment, leaving a gap in proactive, preventative support</span> for people starting to think about their fertility. With Obie, our mission was to make reproductive health more accessible: an OB/GYN in your pocket, delivering insights tailored to your own fertility journey.</p>
+    <p style="font-size:16px;margin:0">I worked across product strategy, UX design, and content strategy: defining the audience, shaping the product and content logic that powers personalization, and helping launch an MVP that turned the existing readership into an active user base.</p>
+    <figure data-reveal style="width:60%;max-width:820px;margin:44px auto 8px">
+      <img src="assets/obie-positioning.png" alt="Brand repositioning: from reactive to proactive, cycle tracking to holistic coaching, for women to for you and your partner, pink and flowery to science made human" style="width:100%">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The repositioning that shaped the brand: from a reactive, women-only tracking tool to a proactive, holistic experience for couples.</figcaption>
+    </figure>
+  </section>
+
+  <section id="background" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Background</h2>
+    <div style="display:grid;gap:18px;margin-top:8px;max-width:820px;margin-left:auto;margin-right:auto">
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">A growing fertility crisis.</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">U.S. birth rates had dropped 16% even as more people wanted children. Research pointed to three gaps: fertility education, preventative care, and affordable alternatives to costly treatments like IVF, which averaged $50,000 per patient.</p>
+      </div>
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">The medical system treats infertility rather than preventing it.</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">Innovation in the category, like IVF, focuses on curing infertility after the fact rather than helping people proactively optimize their fertility.</p>
+      </div>
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">A large organic audience already existed.</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">A world-renowned OB/GYN's blog reached 10M readers a year, proof people wanted trustworthy fertility content, but babyMed lacked the brand recognition and user loyalty to turn that reach into something more.</p>
+      </div>
+    </div>
+    <figure data-reveal style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin:32px auto 4px;max-width:820px">
+      <img src="assets/obie-babymed.png" alt="babyMed.com, the original OB/GYN blog Obie was built from" style="width:260px;flex-shrink:0">
+      <figcaption style="font-size:12px;line-height:1.5;color:var(--ink-soft);flex:1;min-width:200px">Dr. Amos Grünebaum built babyMed to provide accurate, accessible fertility guidance outside office visits. By 2018, it reached 1 in 3 pregnant women in the U.S. through organic search alone.</figcaption>
+    </figure>
+  </section>
+
+  <section id="research" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Market and user research</h2>
+    <p style="font-size:16px;margin:0 0 16px">I mapped the fertility landscape, from fertility solutions to tracking apps and at-home testing devices, across two axes: fertility-specific to holistic reproductive care, and standalone products to fully integrated ecosystems. Most players fell into one narrow lane, but few offered a seamless, connected ecosystem for holistic reproductive health.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/obie-quadrant.png" alt="Competitive quadrant mapping fertility-specific vs reproductive-holistic, and manual vs connected ecosystem, with the white space Obie aimed to own" style="width:100%">
+    </figure>
+    <p style="font-size:16px;margin:0 0 16px">To understand the emotional and practical realities of fertility, we conducted in-depth interviews with 15 participants: 11 women and 4 men, ages 30 to 40, at different stages of trying to conceive. I helped build the discussion guide from desk research and input from Dr. Amos Grünebaum, the OB-GYN behind babyMed. The conversations surfaced confusion, anxiety, and hope, and revealed common phases where people needed support, not just while trying to conceive.</p>
+
+    <div data-carousel style="position:relative;margin:28px auto 0;max-width:820px">
+      <div style="overflow:hidden;border-radius:4px">
+        <div data-track style="display:flex;transition:transform .45s cubic-bezier(.22,1,.36,1)">
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/obie-baby-journey.png" alt="Overarching baby journey timeline from individual desire to have children through conception to birth" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The overarching journey: from first considering parenthood through conception and birth.</figcaption>
+          </figure>
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/obie-ttc-journey-crop.png" alt="Individual user journey through fertility treatment, including IVF, injections, and egg retrieval" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">A closer look at one path within it: the emotional and logistical reality of fertility treatment.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <button data-prev aria-label="Previous image" style="position:absolute;top:40%;left:-16px;transform:translateY(-50%);background:var(--cream);border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0">‹</button>
+      <button data-next aria-label="Next image" style="position:absolute;top:40%;right:-16px;transform:translateY(-50%);background:var(--cream);border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0">›</button>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:14px">
+        <button data-dot aria-label="Show slide 1" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--accent);cursor:pointer;padding:0"></button>
+        <button data-dot aria-label="Show slide 2" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="architecture" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Mapping the content architecture</h2>
+    <p style="font-size:16px;margin:0 0 16px">Before landing on the final UI, I sketched out the app's information architecture on a whiteboard, mapping how a personalized "For You" feed, a saved library, and article detail views would connect, and where personalization (recommended articles, tailored search, saved collections) would surface throughout.</p>
+    <figure data-reveal style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin:28px auto 4px;max-width:820px">
+      <img src="assets/obie-whiteboard.jpg" alt="Whiteboard sketch mapping Obie's content landing page, library, and article detail flows" style="width:33%;flex-shrink:0">
+      <figcaption style="font-size:12px;line-height:1.5;color:var(--ink-soft);flex:1;min-width:160px;max-width:260px">Early information-architecture sketch: content landing page, library, and article detail flows.</figcaption>
+    </figure>
+    <p style="font-size:16px;margin:0 0 16px">The team and I worked through rounds of wireframing, and designed an interactive prototype with our prioritized capabilities.</p>
+    <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:28px auto 0;max-width:820px">
+      <figure style="margin:0">
+        <img src="assets/obie-final-screens.png" alt="Final Obie app screens: suggested products, cycle calendar, and did-you-know content" style="width:100%">
+      </figure>
+      <figure style="margin:0">
+        <img src="assets/obie-screen-inventory.png" alt="Full inventory of Obie app screens across search, saved, inbox, scan, chat, menu, shop, log, and Obie Body" style="width:100%">
+      </figure>
+    </div>
+    <p style="font-size:16px;margin:28px 0 16px">That process carried through to the final UI, and to the full inventory of screens across every part of the app.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/obie-wireframes.png" alt="Wireframe flows for the Obie dashboard and profile and settings screens" style="width:100%">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Mid-fidelity wireframes for the dashboard and profile &amp; settings flows.</figcaption>
+    </figure>
+    <p style="font-size:16px;margin:28px 0 16px">Once in TestFlight, I ran structured rounds of QA and design refinement, flagging inconsistencies and tightening the details before launch.</p>
+    <figure data-reveal style="margin:8px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/obie-redlines.png" alt="Annotated QA feedback on the cycle tracking screens, numbered notes on alignment, color, and copy consistency" style="width:100%">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">QA and refinement notes on the cycle-tracking screens ahead of launch.</figcaption>
+    </figure>
+  </section>
+
+  <section id="content" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Content strategy and personalization</h2>
+    <p style="font-size:16px;margin:0 0 16px">To understand the emotional, financial, and behavioral dimensions of each journey, I mapped core user journeys, from the overarching path to parenthood down to the specific path through fertility treatment, then aligned content topics and features to support them. This helped highlight the gaps in existing babyMed content and inform article creation for our writers.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/obie-content-moments.png" alt="Content topic map spanning cycle tracking, actively trying to conceive, conception, and birth" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Content and topic mapping across the full cycle-tracking-to-birth timeline.</figcaption>
+    </figure>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:28px auto 0;max-width:820px">
+      <div data-reveal style="border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .35s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-3px) rotate(-.5deg)">
+        <span style="font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:600">Article</span>
+        <h4 style="font-family:var(--serif);font-weight:500;font-size:15px;margin:6px 0">Are you ready for pregnancy and parenthood?</h4>
+        <p style="font-size:12.5px;color:var(--ink-soft);margin:0">3 big life questions to ask yourself before trying to get pregnant.</p>
+      </div>
+      <div data-reveal style="border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .35s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-3px) rotate(-.5deg)">
+        <span style="font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:600">Article</span>
+        <h4 style="font-family:var(--serif);font-weight:500;font-size:15px;margin:6px 0">3 things to know about getting off the birth control pill</h4>
+        <p style="font-size:12.5px;color:var(--ink-soft);margin:0">Here's what you need to know if you want to stop taking your birth control pill.</p>
+      </div>
+      <div data-reveal style="border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:transform .35s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-3px) rotate(.5deg)">
+        <span style="font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:600">Article</span>
+        <h4 style="font-family:var(--serif);font-weight:500;font-size:15px;margin:6px 0">Things to consider when trying to get pregnant after a miscarriage</h4>
+        <p style="font-size:12.5px;color:var(--ink-soft);margin:0">Why statistics are on your side for a future pregnancy.</p>
+      </div>
+    </div>
+    <p style="font-size:16px;margin:0 0 16px">We built a system that used behavioral and health data to recommend the right content, at the right moment, for each user, mapping every branch of a person's situation to the content and products that fit their needs.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/obie-personalization-logic-white.png?v=2" alt="Content personalization logic map, branching from trying-to-conceive status through age, weight, and cycle factors to recommended content and product moments" style="width:100%">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:24px 4px 0">The personalization logic: from a person's situation to the content and product moments that matter most to them.</figcaption>
+    </figure>
+    <div data-reveal style="border-radius:16px;background:var(--cream);padding:28px;margin:24px auto 0;max-width:820px">
+      <p style="margin:0 0 14px;font-size:13px;color:var(--ink-soft)">Sample data points feeding the recommendation engine:</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--ink-soft)">Trying to conceive</span>
+        <span style="font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--ink-soft)">Age 35–39</span>
+        <span style="font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--ink-soft)">Low BMI</span>
+        <span style="font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--ink-soft)">Irregular period</span>
+        <span style="font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--ink-soft)">Has a partner</span>
+        <span style="font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--ink-soft)">Prior miscarriage</span>
+        <span style="font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--ink-soft)">Fatigue</span>
+        <span style="font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--ink-soft)">Moderate stress</span>
+        <span style="font-size:12px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--ink-soft)">Low cervix position</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="results" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Results</h2>
+    <p style="font-size:16px;margin:0 0 16px"><strong style="font-weight:600">Obie's MVP captured 400+ behavioral data points across 300T+ unique combinations,</strong> powering a content engine that improved its recommendations with each interaction, and grew a user base organically off the existing 10M-reader audience.</p>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin:10px auto 0;max-width:820px">
+      <div style="display:grid;grid-template-columns:repeat(3,200px);gap:24px 28px;justify-content:center">
+        <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">50%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">App Store conversion rate</span></div>
+        <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">10K</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">users</span></div>
+        <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">20%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">DAU/MAU</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,170px);gap:24px 28px;justify-content:center">
+        <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">18.6%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">open rate on <em>The Periodical</em>, the Obie newsletter</span></div>
+        <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">359%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">increased conversion using merchandising content</span></div>
+      </div>
+    </div>
+    <p style="margin:32px 0 0;font-size:16px;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:8px">🏆 Jay Chiat Silver Award for Healthcare Strategy, 2021</p>
+    <figure data-reveal style="margin:32px auto 4px;max-width:900px">
+      <img src="assets/obie-final-prototype.png" alt="Final Obie app screens: basal body temperature log, add your partner, daily dashboard with cycle overview, priority selection, and tracking setup" style="width:100%">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The shipped experience: holistic tracking and personalized daily guidance for your reproductive health.</figcaption>
+    </figure>
+  </section>
+
+</div>
+
+<div style="max-width:1100px;margin:40px auto 0;padding:40px 32px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+  <a href="Pharma.dc.html" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;color:inherit" style-hover="opacity:1">
+    <span style="font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Previous project</span>
+    <span style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:8px"><span data-prev-arrow style="display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)">←</span> Global Pharma</span>
+  </a>
+  <a href="Albertsons.dc.html" style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;color:inherit;text-align:right" style-hover="opacity:1">
+    <span style="font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Next project</span>
+    <span style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:8px">Albertsons <span data-next-arrow style="display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)">→</span></span>
+  </a>
+</div>
+
+<dc-import name="SiteFooter" hint-size="100%,110px"></dc-import>
+
+<sc-if value="{{ lightboxSrc }}">
+  <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;background:rgba(12,10,16,.93);display:grid;place-items:center;padding:40px;z-index:950">
+    <img src="{{ lightboxImgSrc }}" alt="" style="max-width:90vw;max-height:85vh;border-radius:4px;cursor:zoom-out">
+    <button aria-label="Close" style="position:absolute;top:24px;right:32px;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer">×</button>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lightboxSrc: null };
+
+  componentDidMount() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    const scan = () => document.querySelectorAll('[data-reveal]:not(.in)').forEach((el) => io.observe(el));
+    scan();
+    setTimeout(scan, 900);
+
+    this.setupCarousels();
+    this.setupProgress();
+
+    this.onKey = (e) => { if (e.key === 'Escape') this.setState({ lightboxSrc: null }); };
+    document.addEventListener('keydown', this.onKey);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  setupCarousels() {
+    document.querySelectorAll('[data-carousel]').forEach((car) => {
+      if (car.dataset.wired) return;
+      car.dataset.wired = '1';
+      const track = car.querySelector('[data-track]');
+      const dots = car.querySelectorAll('[data-dot]');
+      const count = track.children.length;
+      let i = 0;
+      const update = () => {
+        track.style.transform = 'translateX(-' + i * 100 + '%)';
+        dots.forEach((d, n) => { d.style.background = n === i ? 'var(--accent)' : 'var(--line)'; });
+      };
+      car.querySelector('[data-prev]').addEventListener('click', () => { i = (i - 1 + count) % count; update(); });
+      car.querySelector('[data-next]').addEventListener('click', () => { i = (i + 1) % count; update(); });
+      dots.forEach((d, n) => d.addEventListener('click', () => { i = n; update(); }));
+      update();
+    });
+  }
+
+  setupProgress() {
+    const sn = document.getElementById('secnav');
+    if (sn) {
+      sn.style.transition = 'opacity .3s ease';
+      let risky = [];
+      const measure = () => {
+        const nr = sn.getBoundingClientRect().right + 16;
+        risky = Array.from(document.querySelectorAll('img, iframe, video, h1, h2, h3, p, li, figcaption, [data-carousel], [data-reveal]'))
+          .filter((el) => !sn.contains(el) && el.getBoundingClientRect().left < nr && el.offsetWidth > 0);
+      };
+      const check = () => {
+        const r = sn.getBoundingClientRect();
+        const first = document.querySelector('[data-section]');
+        const past = !first || first.getBoundingClientRect().top < window.innerHeight * 0.5;
+        const hit = !past || risky.some((el) => { const b = el.getBoundingClientRect(); return b.bottom > r.top - 8 && b.top < r.bottom + 8; });
+        sn.style.opacity = hit ? '0' : '1';
+        sn.style.pointerEvents = hit ? 'none' : 'auto';
+      };
+      let raf = 0;
+      const onS = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; check(); }); };
+      const onR = () => { measure(); check(); };
+      measure(); check();
+      setTimeout(onR, 600);
+      window.addEventListener('scroll', onS, { passive: true });
+      window.addEventListener('resize', onR);
+    }
+    const bar = { style: {} };
+    const links = Array.from(document.querySelectorAll('[data-secnav]'));
+    const sections = Array.from(document.querySelectorAll('[data-section]'));
+    this.onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      if (bar) bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+      let active = 0;
+      sections.forEach((s, n) => { if (s.getBoundingClientRect().top < h.clientHeight * 0.35) active = n; });
+      links.forEach((l, n) => {
+        const on = n === active;
+        l.style.opacity = on ? '1' : '.45';
+        l.style.color = on ? 'var(--accent)' : 'var(--ink-soft)';
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  renderVals() {
+    return {
+      lightboxSrc: this.state.lightboxSrc,
+      lightboxImgSrc: this.state.lightboxSrc || 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+      enlarge: (e) => this.setState({ lightboxSrc: e.currentTarget.src }),
+      closeLightbox: () => this.setState({ lightboxSrc: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Albertsons | Jojo Yee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,300..700;1,300..700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16151a;--ink-soft:#4a4852;--paper:#ffffff;--cream:#f7f0e4;--line:#e8e5df;--accent:#5a3ff0;--accent-2:#8f6bff;--accent-deep:#2f1f8f;--tag-bg:#efeafd;--tag-line:#ded4fb;--tier:#2f1f8f;--mark:#e3d9ff;--shell:1100px;--serif:'Petrona',Georgia,serif;--serif-alt:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+body[data-theme="dark"]{--ink:#f1eff5;--ink-soft:#a8a4b6;--paper:#0f0e13;--cream:#1a1822;--line:#2b2836;--accent:#ab99ff;--accent-2:#8f6bff;--accent-deep:#d2c6ff;--tag-bg:#221d3a;--tag-line:#332a56;--tier:#2a1f66;--mark:#3a2f6b;}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease;}
+img{max-width:100%;display:block;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{opacity:.72;}
+h1,h2,h3,h4,p{text-wrap:pretty;}
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);}
+[data-reveal].in{opacity:1;transform:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
+[data-section]>p,[data-section]>h2,[data-section]>h3{max-width:820px;margin-left:auto!important;margin-right:auto!important;}
+p,figcaption,strong{text-wrap:pretty;}
+/* block rhythm */
+[data-section]>figure,[data-section]>div{margin-bottom:44px!important;}
+[data-section]>figure:last-child,[data-section]>div:last-child{margin-bottom:0!important;}
+h1,h2,h3{text-wrap:balance;}
+a:hover [data-next-arrow]{transform:translateX(6px);}
+a:hover [data-prev-arrow]{transform:translateX(-6px);}
+@media (max-width:1229px){#secnav{display:none!important;}}
+[data-section]{position:relative;border-top:none!important;}
+[data-section] + [data-section]::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:820px;border-top:1px solid var(--line);}
+[style*="var(--serif-alt)"]{font-variation-settings:"WONK" 0,"SOFT" 0;font-optical-sizing:auto;}
+</style>
+</helmet>
+
+<nav id="secnav" style="opacity:0;pointer-events:none;position:fixed;top:50%;left:26px;transform:translateY(-50%);z-index:700;display:flex;flex-direction:column;gap:9px;align-items:flex-start">
+  <a href="#overview" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Overview</a>
+  <a href="#cai" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Challenge</a>
+  <a href="#currentstate" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Current state</a>
+  <a href="#ecosystem" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Ecosystem</a>
+  <a href="#journeys" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Journeys</a>
+  <a href="#prototypes" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Prototyping</a>
+  <a href="#results" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Results</a>
+</nav>
+
+<dc-import name="SiteNav" hint-size="100%,96px"></dc-import>
+
+<div style="max-width:1100px;margin:0 auto;padding:20px 32px 8px">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Membership Strategy</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Ecosystem Mapping</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Opportunity Definition</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Concept Prototyping</span>
+  </div>
+  <h1 style="font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,42px);line-height:1.25;margin:0 0 26px">Evolving transactional rewards to experiential loyalty</h1>
+</div>
+
+<div style="max-width:1100px;margin:0 auto 64px;padding:0 32px">
+  <figure style="margin:0">
+    <img src="assets/aci-hero.png" alt="Albertsons for U app onboarding screens: welcome, account sign up, and personalized preferences" style="width:100%">
+  </figure>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 32px 48px">
+  <div style="display:flex;gap:40px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);max-width:820px;margin:0 auto">
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Role</span><strong style="font-weight:500;font-size:14px">Product Strategist, Product Manager, and UX Designer</strong></div>
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Timeframe</span><strong style="font-weight:500;font-size:14px">2023 · 6 months</strong></div>
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Client</span><strong style="font-weight:500;font-size:14px">Albertsons Companies (ACI)</strong></div>
+  </div>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 32px 40px">
+
+  <section id="overview" data-section style="padding:0 0 48px">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Overview</h2>
+    <p style="font-family:var(--serif);font-size:22px;line-height:1.55;font-weight:600;margin:0 0 20px"><span style="background:linear-gradient(transparent 62%,var(--mark) 0)">Albertsons shoppers didn't see the value in their loyalty program:</span> a free rewards tier, a paid subscription, and an ecommerce platform all existed, but disconnected from each other.</p>
+    <p style="font-size:16px;margin:0">I led product strategy, with hands-on UX design support, to unify these fragmented loyalty products into one cohesive membership experience. That meant mapping new user journeys and identifying exactly where to convert shoppers from free to Premium relationships.</p>
+  </section>
+
+  <section id="cai" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Challenge → Approach → Impact</h2>
+    <div style="display:grid;gap:18px;margin-top:8px;max-width:820px;margin-left:auto;margin-right:auto">
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">Challenge</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">Shoppers misunderstood Albertsons' loyalty offerings. Low awareness of the benefits and unclear value kept engagement low across both the free and paid tiers.</p>
+      </div>
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">Approach</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">I built a membership positioning and program strategy that brought the existing loyalty products into one experience, and found the moments to convert shoppers from free to Premium.</p>
+      </div>
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">Impact</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">The membership vision now connects digital and in-store shopping, backed by a personalized engagement strategy that reaches shoppers beyond checkout.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="currentstate" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Current state</h2>
+    <p style="font-size:16px;margin:0 0 16px"><strong style="font-weight:600">Albertsons for U is the free membership millions of shoppers already belong to, and almost nothing in the experience tells them so.</strong> I audited sign-up, onboarding, the app, and the wider brand system. Four problems showed up everywhere.</p>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 28px;margin:28px auto 0;max-width:820px;align-items:stretch">
+      <div data-reveal style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--cream);border-radius:14px;padding:20px;display:flex;align-items:center;justify-content:center;height:230px;overflow:hidden">
+          <img src="assets/aci-cs-onboarding.png" alt="App onboarding screens highlighting one-app shopping, the wallet, and digital coupons" style="max-width:100%;max-height:190px;width:auto;height:auto;display:block;object-fit:contain">
+        </div>
+        <h3 style="font-family:var(--serif);font-weight:500;font-size:16px;margin:0;color:var(--ink)">Benefits are never tied back to B4U</h3>
+        <p style="font-size:13px;color:var(--ink-soft);margin:0;flex:1;text-wrap:pretty">Onboarding sells deals, the wallet, and coupons, but never names the membership delivering them.</p>
+      </div>
+      <div data-reveal style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--cream);border-radius:14px;padding:20px;display:flex;align-items:center;justify-content:center;height:230px;overflow:hidden">
+          <img src="assets/aci-cs-dashboard.png" alt="Rewards dashboard showing zero savings and zero points" style="max-width:100%;max-height:190px;width:auto;height:auto;display:block;object-fit:contain">
+        </div>
+        <h3 style="font-family:var(--serif);font-weight:500;font-size:16px;margin:0;color:var(--ink)">The program is invisible at sign-up</h3>
+        <p style="font-size:13px;color:var(--ink-soft);margin:0;flex:1;text-wrap:pretty">No program name, no benefits, no recognition moment. New members land on an empty rewards dashboard with nothing to do next.</p>
+      </div>
+      <div data-reveal style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--cream);border-radius:14px;padding:20px;display:flex;align-items:center;justify-content:center;height:230px;overflow:hidden">
+          <img src="assets/aci-cs-twoprograms.png" alt="B4U benefits panel and FreshPass benefits panel shown separately" style="max-width:100%;max-height:190px;width:auto;height:auto;display:block;object-fit:contain">
+        </div>
+        <h3 style="font-family:var(--serif);font-weight:500;font-size:16px;margin:0;color:var(--ink)">Two loyalty programs, run in parallel</h3>
+        <p style="font-size:13px;color:var(--ink-soft);margin:0;flex:1;text-wrap:pretty">B4U and FreshPass are accessed, experienced, and communicated separately, with no path between free and paid.</p>
+      </div>
+      <div data-reveal style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--cream);border-radius:14px;padding:20px;display:flex;align-items:center;justify-content:center;height:230px;overflow:hidden">
+          <img src="assets/aci-cs-brandsoup.png" alt="Collage of Albertsons loyalty brands: Albertsons for U, FreshPass, Deals, One Touch Fuel, Sincerely Health, DriveUp and Go, Flavor Adventure, and Spring Perks" style="max-width:100%;max-height:190px;width:auto;height:auto;display:block;object-fit:contain">
+        </div>
+        <h3 style="font-family:var(--serif);font-weight:500;font-size:16px;margin:0;color:var(--ink)">Disconnected membership elements</h3>
+        <p style="font-size:13px;color:var(--ink-soft);margin:0;flex:1;text-wrap:pretty">Every perk carries its own name, logo, and voice, which is what pushed the work toward a single naming framework.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ecosystem" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Membership ecosystem</h2>
+    <p style="font-size:16px;margin:0">I mapped the full membership ecosystem and defined the role and growth opportunity for each touchpoint, from checkout to app to in-store.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/aci-ecosystem.png" alt="Membership ecosystem map showing the app as the central hub connecting store, website, customer service, CRM, and partnerships across B4U and FreshPass membership tiers" style="width:100%">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The app as the connective hub between paid social, store, website, customer service, and CRM, powering both the free (B4U) and Premium (FreshPass) tiers.</figcaption>
+    </figure>
+  </section>
+
+  <section id="journeys" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">User journeys and opportunity</h2>
+    <p style="font-size:16px;margin:0">I designed journeys that bring shoppers deeper into the Albertsons ecosystem and convert free members into paid ones.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/aci-order-journey-map.png" alt="Online ordering journey map across awareness, consideration, decision, onboarding, and retention stages, with pain points and opportunities identified at each touchpoint" style="width:100%">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Mapping pain points and opportunities across the full online ordering journey, from first search to post-purchase.</figcaption>
+    </figure>
+
+    <p style="font-size:16px;margin:0">Next, I mapped two critical paths: how a non-member becomes a free loyalty member, and how a free member converts to Premium.</p>
+
+    <div data-carousel style="position:relative;margin:28px auto 0;max-width:820px">
+      <div style="overflow:hidden;border-radius:4px">
+        <div data-track style="display:flex;transition:transform .45s cubic-bezier(.22,1,.36,1)">
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/aci-nonmember-to-b4u-journey.png" alt="Non-member to lifetime B4U member journey: communicate value, low barrier to sign-up, recognize the new member, welcome communication, celebrate loyal members" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Non-member to lifetime B4U member: from communicating membership value to celebrating loyal, highly engaged members.</figcaption>
+          </figure>
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/aci-b4u-to-premium-journey.png" alt="B4U member to Premium member journey: engaging members through CRM, prompting a Premium trial, serving relevant deals, signage at checkout, and welcome messaging" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">B4U member to Premium member: using CRM, rewards, and in-app moments to drive the upgrade.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <button data-prev aria-label="Previous image" style="position:absolute;top:40%;left:-16px;transform:translateY(-50%);background:var(--cream);border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0">‹</button>
+      <button data-next aria-label="Next image" style="position:absolute;top:40%;right:-16px;transform:translateY(-50%);background:var(--cream);border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0">›</button>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:14px">
+        <button data-dot aria-label="Show slide 1" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--accent);cursor:pointer;padding:0"></button>
+        <button data-dot aria-label="Show slide 2" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="prototypes" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Bringing it to life</h2>
+    <p style="font-size:16px;margin:0">I built concept prototypes to show marketing, product, and technology stakeholders how their teams could collaborate to bring the membership foundations to life, from onboarding and personalized recommendations to checkout moments that nudge free members toward Premium.</p>
+    <div style="position:relative;margin:28px auto 0;max-width:820px">
+      <div data-phonestrip ref="{{ phoneStrip }}" style="display:flex;gap:24px;overflow-x:auto;padding:4px 0 14px;scrollbar-width:none">
+        <figure style="margin:0;flex:0 0 calc((100% - 48px) / 3)"><img src="assets/aci-phone-home-1.png" alt="Home screen with personalized member deals and buy it again" style="width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(20,10,60,.14))"></figure>
+        <figure style="margin:0;flex:0 0 calc((100% - 48px) / 3)"><img src="assets/aci-phone-home-2.png" alt="Shop screen with recipes selected for you and FreshPass-only unlocks" style="width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(20,10,60,.14))"></figure>
+        <figure style="margin:0;flex:0 0 calc((100% - 48px) / 3)"><img src="assets/aci-phone-rewards-1.png" alt="Membership overview with savings this month and member roundup" style="width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(20,10,60,.14))"></figure>
+        <figure style="margin:0;flex:0 0 calc((100% - 48px) / 3)"><img src="assets/aci-phone-rewards-2.png" alt="Rewards catalog with points balance and Premium-only rewards" style="width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(20,10,60,.14))"></figure>
+        <figure style="margin:0;flex:0 0 calc((100% - 48px) / 3)"><img src="assets/aci-phone-cart-1.png" alt="Cart with a reward applied" style="width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(20,10,60,.14))"></figure>
+        <figure style="margin:0;flex:0 0 calc((100% - 48px) / 3)"><img src="assets/aci-phone-cart-2.png" alt="Checkout with a round-up donation prompt" style="width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(20,10,60,.14))"></figure>
+        <figure style="margin:0;flex:0 0 calc((100% - 48px) / 3)"><img src="assets/aci-phone-cart-3.png" alt="Post-purchase Premium upgrade offer" style="width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(20,10,60,.14))"></figure>
+        <figure style="margin:0;flex:0 0 calc((100% - 48px) / 3)"><img src="assets/aci-phone-email-1.png" alt="Email reminding members their rewards points are expiring" style="width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(20,10,60,.14))"></figure>
+        <figure style="margin:0;flex:0 0 calc((100% - 48px) / 3)"><img src="assets/aci-phone-email-2.png" alt="Email prompting an upgrade to Premium membership" style="width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(20,10,60,.14))"></figure>
+      </div>
+      <button onClick="{{ phonesPrev }}" aria-label="Previous screens" style="position:absolute;top:44%;left:-16px;transform:translateY(-50%);background:var(--cream);border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0">‹</button>
+      <button onClick="{{ phonesNext }}" aria-label="More screens" style="position:absolute;top:44%;right:-16px;transform:translateY(-50%);background:var(--cream);border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0">›</button>
+    </div>
+  </section>
+
+  <section id="results" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Results</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,200px);gap:24px 28px;justify-content:center;max-width:820px;margin-left:auto;margin-right:auto">
+      <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">+4pp</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">increase in NPS</span></div>
+      <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">67%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">consumer value perception of loyalty</span></div>
+    </div>
+    <p style="font-size:16px;margin:0">I also delivered a roadmap of near-term and longer-term growth opportunities for ACI's team to execute as they rolled the strategy out.</p>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:28px auto 0;max-width:820px">
+      <div data-reveal style="border:1px solid var(--line);border-radius:12px;padding:18px 20px">
+        <h4 style="font-family:var(--serif);font-weight:500;font-size:15px;margin:0 0 6px;color:var(--accent-deep)">One membership, not many programs</h4>
+        <p style="font-size:12.5px;margin:0;color:var(--ink-soft);text-wrap:pretty">Separately branded rewards, games, and convenience perks now sit under a single program.</p>
+      </div>
+      <div data-reveal style="border:1px solid var(--line);border-radius:12px;padding:18px 20px">
+        <h4 style="font-family:var(--serif);font-weight:500;font-size:15px;margin:0 0 6px;color:var(--accent-deep)">A path from shopper to lifetime member</h4>
+        <p style="font-size:12.5px;margin:0;color:var(--ink-soft);text-wrap:pretty">I identified where to convert non-members to free members, free to paid, and paid to lifetime.</p>
+      </div>
+      <div data-reveal style="border:1px solid var(--line);border-radius:12px;padding:18px 20px">
+        <h4 style="font-family:var(--serif);font-weight:500;font-size:15px;margin:0 0 6px;color:var(--accent-deep)">New features across digital and store</h4>
+        <p style="font-size:12.5px;margin:0;color:var(--ink-soft);text-wrap:pretty">I designed member services that carry the same value from the app into the aisle.</p>
+      </div>
+      <div data-reveal style="border:1px solid var(--line);border-radius:12px;padding:18px 20px">
+        <h4 style="font-family:var(--serif);font-weight:500;font-size:15px;margin:0 0 6px;color:var(--accent-deep)">A new internal definition of loyalty</h4>
+        <p style="font-size:12.5px;margin:0;color:var(--ink-soft);text-wrap:pretty">ACI's thinking shifted from checkout discounts to ongoing engagement and personalization.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div style="max-width:1100px;margin:40px auto 0;padding:40px 32px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+  <a href="Obie.dc.html" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;color:inherit" style-hover="opacity:1">
+    <span style="font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Previous project</span>
+    <span style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:8px"><span data-prev-arrow style="display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)">←</span> Obie Health</span>
+  </a>
+  <a href="Ally.dc.html" style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;color:inherit;text-align:right" style-hover="opacity:1">
+    <span style="font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Next project</span>
+    <span style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:8px">Ally Bank <span data-next-arrow style="display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)">→</span></span>
+  </a>
+</div>
+
+<dc-import name="SiteFooter" hint-size="100%,110px"></dc-import>
+
+<sc-if value="{{ lightboxSrc }}">
+  <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;background:rgba(12,10,16,.93);display:grid;place-items:center;padding:40px;z-index:950">
+    <img src="{{ lightboxImgSrc }}" alt="" style="max-width:90vw;max-height:85vh;border-radius:4px;cursor:zoom-out">
+    <button aria-label="Close" style="position:absolute;top:24px;right:32px;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer">×</button>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lightboxSrc: null };
+
+  phoneStrip = React.createRef();
+
+  componentDidMount() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    const scan = () => document.querySelectorAll('[data-reveal]:not(.in)').forEach((el) => io.observe(el));
+    scan();
+    setTimeout(scan, 900);
+
+    this.setupCarousels();
+    this.setupProgress();
+
+    this.onKey = (e) => { if (e.key === 'Escape') this.setState({ lightboxSrc: null }); };
+    document.addEventListener('keydown', this.onKey);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  setupCarousels() {
+    document.querySelectorAll('[data-carousel]').forEach((car) => {
+      if (car.dataset.wired) return;
+      car.dataset.wired = '1';
+      const track = car.querySelector('[data-track]');
+      const dots = car.querySelectorAll('[data-dot]');
+      const count = track.children.length;
+      let i = 0;
+      const update = () => {
+        track.style.transform = 'translateX(-' + i * 100 + '%)';
+        dots.forEach((d, n) => { d.style.background = n === i ? 'var(--accent)' : 'var(--line)'; });
+      };
+      car.querySelector('[data-prev]').addEventListener('click', () => { i = (i - 1 + count) % count; update(); });
+      car.querySelector('[data-next]').addEventListener('click', () => { i = (i + 1) % count; update(); });
+      dots.forEach((d, n) => d.addEventListener('click', () => { i = n; update(); }));
+      update();
+    });
+  }
+
+  setupProgress() {
+    const sn = document.getElementById('secnav');
+    if (sn) {
+      sn.style.transition = 'opacity .3s ease';
+      let risky = [];
+      const measure = () => {
+        const nr = sn.getBoundingClientRect().right + 16;
+        risky = Array.from(document.querySelectorAll('img, iframe, video, h1, h2, h3, p, li, figcaption, [data-carousel], [data-reveal]'))
+          .filter((el) => !sn.contains(el) && el.getBoundingClientRect().left < nr && el.offsetWidth > 0);
+      };
+      const check = () => {
+        const r = sn.getBoundingClientRect();
+        const first = document.querySelector('[data-section]');
+        const past = !first || first.getBoundingClientRect().top < window.innerHeight * 0.5;
+        const hit = !past || risky.some((el) => { const b = el.getBoundingClientRect(); return b.bottom > r.top - 8 && b.top < r.bottom + 8; });
+        sn.style.opacity = hit ? '0' : '1';
+        sn.style.pointerEvents = hit ? 'none' : 'auto';
+      };
+      let raf = 0;
+      const onS = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; check(); }); };
+      const onR = () => { measure(); check(); };
+      measure(); check();
+      setTimeout(onR, 600);
+      window.addEventListener('scroll', onS, { passive: true });
+      window.addEventListener('resize', onR);
+    }
+    const bar = { style: {} };
+    const links = Array.from(document.querySelectorAll('[data-secnav]'));
+    const sections = Array.from(document.querySelectorAll('[data-section]'));
+    this.onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      if (bar) bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+      let active = 0;
+      sections.forEach((s, n) => { if (s.getBoundingClientRect().top < h.clientHeight * 0.35) active = n; });
+      links.forEach((l, n) => {
+        const on = n === active;
+        l.style.opacity = on ? '1' : '.45';
+        l.style.color = on ? 'var(--accent)' : 'var(--ink-soft)';
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  scrollPhones(dir) {
+    const el = this.phoneStrip && this.phoneStrip.current;
+    if (!el) return;
+    const figs = Array.from(el.querySelectorAll('figure'));
+    if (!figs.length) return;
+    const er = el.getBoundingClientRect();
+    const max = el.scrollWidth - el.clientWidth;
+    const stops = figs.filter((f, i) => i % 3 === 0)
+      .map((f) => Math.min(max, Math.max(0, el.scrollLeft + (f.getBoundingClientRect().left - er.left))));
+    const cur = el.scrollLeft;
+    let idx = 0;
+    stops.forEach((s, n) => { if (s <= cur + 12) idx = n; });
+    const to = stops[Math.min(stops.length - 1, Math.max(0, idx + dir))];
+    const from = cur, dist = to - from, t0 = performance.now(), dur = 420;
+    if (this.phoneRaf) cancelAnimationFrame(this.phoneRaf);
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      el.scrollLeft = from + dist * e;
+      if (p < 1) this.phoneRaf = requestAnimationFrame(tick);
+    };
+    this.phoneRaf = requestAnimationFrame(tick);
+  }
+
+  renderVals() {
+    return {
+      phoneStrip: this.phoneStrip,
+      phonesPrev: () => this.scrollPhones(-1),
+      phonesNext: () => this.scrollPhones(1),
+      lightboxSrc: this.state.lightboxSrc,
+      lightboxImgSrc: this.state.lightboxSrc || 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+      enlarge: (e) => this.setState({ lightboxSrc: e.currentTarget.src }),
+      closeLightbox: () => this.setState({ lightboxSrc: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

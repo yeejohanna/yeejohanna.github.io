@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Ally | Jojo Yee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,300..700;1,300..700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16151a;--ink-soft:#4a4852;--paper:#ffffff;--cream:#f7f0e4;--line:#e8e5df;--accent:#5a3ff0;--accent-2:#8f6bff;--accent-deep:#2f1f8f;--tag-bg:#efeafd;--tag-line:#ded4fb;--tier:#2f1f8f;--mark:#e3d9ff;--shell:1100px;--serif:'Petrona',Georgia,serif;--serif-alt:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+body[data-theme="dark"]{--ink:#f1eff5;--ink-soft:#a8a4b6;--paper:#0f0e13;--cream:#1a1822;--line:#2b2836;--accent:#ab99ff;--accent-2:#8f6bff;--accent-deep:#d2c6ff;--tag-bg:#221d3a;--tag-line:#332a56;--tier:#2a1f66;--mark:#3a2f6b;}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease;}
+img{max-width:100%;display:block;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{opacity:.72;}
+h1,h2,h3,h4,p{text-wrap:pretty;}
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);}
+[data-reveal].in{opacity:1;transform:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
+[data-section]>p,[data-section]>h2,[data-section]>h3{max-width:820px;margin-left:auto!important;margin-right:auto!important;}
+p,figcaption,strong{text-wrap:pretty;}
+/* block rhythm */
+[data-section]>figure,[data-section]>div{margin-bottom:44px!important;}
+[data-section]>figure:last-child,[data-section]>div:last-child{margin-bottom:0!important;}
+h1,h2,h3{text-wrap:balance;}
+a:hover [data-next-arrow]{transform:translateX(6px);}
+a:hover [data-prev-arrow]{transform:translateX(-6px);}
+@media (max-width:1229px){#secnav{display:none!important;}}
+[data-section]{position:relative;border-top:none!important;}
+[data-section] + [data-section]::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:820px;border-top:1px solid var(--line);}
+[style*="var(--serif-alt)"]{font-variation-settings:"WONK" 0,"SOFT" 0;font-optical-sizing:auto;}
+</style>
+</helmet>
+
+<nav id="secnav" style="opacity:0;pointer-events:none;position:fixed;top:50%;left:26px;transform:translateY(-50%);z-index:700;display:flex;flex-direction:column;gap:9px;align-items:flex-start">
+  <a href="#overview" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Overview</a>
+  <a href="#foundations" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Background</a>
+  <a href="#foundation" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Foundation</a>
+  <a href="#data" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Behavioral data</a>
+  <a href="#journeys" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Journeys</a>
+  <a href="#hub" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Content hub</a>
+  <a href="#results" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Results</a>
+</nav>
+
+<dc-import name="SiteNav" hint-size="100%,96px"></dc-import>
+
+<div style="max-width:1100px;margin:0 auto;padding:20px 32px 8px">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Content Strategy</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Journey Mapping</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Personalization</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Operating Model</span>
+  </div>
+  <h1 style="font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,42px);line-height:1.25;margin:0 0 26px">Content innovation as a business accelerator</h1>
+</div>
+
+<div style="max-width:1100px;margin:0 auto 64px;padding:0 32px">
+  <figure style="margin:0">
+    <img src="assets/ally-hero.png" alt="Content hub screens across mobile: article views, interactive tools, personalized recommendations, and savings prompts" style="width:100%">
+  </figure>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 32px 48px">
+  <div style="display:flex;gap:40px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);max-width:820px;margin:0 auto">
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Role</span><strong style="font-weight:500;font-size:14px">Product and Content Strategist</strong></div>
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Timeframe</span><strong style="font-weight:500;font-size:14px">2019 – 2023</strong></div>
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Client</span><strong style="font-weight:500;font-size:14px">Ally Bank</strong></div>
+  </div>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 32px 40px">
+
+  <section id="overview" data-section style="padding:0 0 48px">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Overview</h2>
+    <p style="font-family:var(--serif);font-size:22px;line-height:1.55;font-weight:600;margin:0 0 20px"><span style="background:linear-gradient(transparent 62%,var(--mark) 0)">By 2018 a high interest rate wasn't a differentiator anymore.</span> Fintech startups were rising, big tech was moving in, and legacy banks were shoring up their positions. Ally needed to offer consumers value beyond the product itself.</p>
+    <p style="font-size:16px;margin:0 0 16px">We treated content as that expansion opportunity: shifting Ally's enterprise content strategy from an SEO traffic driver to a strategic platform that builds trust and pathways to product.</p>
+    <p style="font-size:16px;margin:0">Across four years I worked on the vision, the audience journeys, the personalization approach, and the operating model behind it, then helped launch a new content hub, connected to the core banking app, designed to deliver a journey-led, personalized experience.</p>
+  </section>
+
+  <section id="foundations" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Background</h2>
+    <div style="display:grid;gap:18px;margin-top:8px;max-width:820px;margin-left:auto;margin-right:auto">
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">A saturated category.</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">Rate was the whole conversation, and every bank could match a rate. Ally needed a reason to be useful to consumers between transactions.</p>
+      </div>
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">A wealth of first-party data, barely used for experience.</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">Spending and saving behaviors sat in the business, while content decisions were still being made off search volume.</p>
+      </div>
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">An SEO-led content site and a strong consumer brand.</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">The raw materials were already there: an existing hub, an audience, and a brand people trusted. What was missing was a strategy, an owner, and a system.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="foundation" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Building the foundation</h2>
+    <p style="font-size:16px;margin:0 0 16px">The first year of work wasn't the hub. It was the foundation underneath it: enterprise-wide vision setting, a definition of what content <em style="font-style:italic">is</em> at Ally, editorial positioning, governance and process, KPI alignment, and an operating and organizational structure that put content ownership inside the business.</p>
+
+    <p style="font-size:16px;margin:0 0 16px">Content also needed its own name and voice, distinct from the bank brand and not a marketing channel. We created <strong style="font-weight:600">Conversationally</strong>, the editorial brand, along with a toolkit that keeps every new piece consistent no matter who writes it.</p>
+    <div data-reveal style="background:var(--cream);border-radius:16px;padding:32px;text-align:center;margin:28px auto 0;max-width:820px">
+      <span style="display:block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);font-weight:600;margin-bottom:12px">Editorial mission</span>
+      <p style="font-family:var(--serif);font-size:24px;font-weight:500;color:var(--accent-deep);margin:0 0 14px">Make sense of today's digital financial world</p>
+      <p style="font-size:14px;color:var(--ink-soft);max-width:480px;margin:0 auto">A personalized content experience that delivers ultimate value for members and guests, and drives incremental revenue for Ally.</p>
+    </div>
+
+    <div data-carousel style="position:relative;margin:0 auto;max-width:820px">
+      <div style="overflow:hidden;border-radius:4px">
+        <div data-track style="display:flex;transition:transform .45s cubic-bezier(.22,1,.36,1)">
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/ally-growth-plan-2x.png" alt="Multi-year enterprise content growth plan organized into crawl, walk, and run phases across platform, data, operations, and organization" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The multi-year plan: crawl, walk, run across platform, data, operations, and org.</figcaption>
+          </figure>
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/ally-org-model-2x.png" alt="Proposed centralized content organization, with all content creators and content SMEs consolidated under a Head of Content" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The case for a centralized org: content creators and SMEs consolidated under a Head of Content.</figcaption>
+          </figure>
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/ally-core-themes-2x.png" alt="Core editorial themes: finances, culture, wellbeing, and technology, arranged around the editorial positioning" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Conversationally's four core themes to write against.</figcaption>
+          </figure>
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/ally-editorial-guidelines-2x.png" alt="General article guidelines covering imagery, headline, subhead, body, and contributor treatment" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The toolkit: article guidelines for anyone creating content.</figcaption>
+          </figure>
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/ally-content-calendar-2x.png" alt="Editorial planning grid mapping content across journeys, quarters, and channels" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The planning artifact that came out of it: content mapped across journeys, quarters, and channels.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <button data-prev aria-label="Previous image" style="position:absolute;top:40%;left:-16px;transform:translateY(-50%);background:var(--cream);border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0">‹</button>
+      <button data-next aria-label="Next image" style="position:absolute;top:40%;right:-16px;transform:translateY(-50%);background:var(--cream);border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0">›</button>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:14px">
+        <button data-dot aria-label="Show slide 1" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--accent);cursor:pointer;padding:0"></button>
+        <button data-dot aria-label="Show slide 2" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0"></button>
+        <button data-dot aria-label="Show slide 3" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0"></button>
+        <button data-dot aria-label="Show slide 4" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0"></button>
+        <button data-dot aria-label="Show slide 5" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="data" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">A behavioral data-led approach</h2>
+    <p style="font-size:16px;margin:0 0 16px">Instead of starting from search volume, we started from what Ally already knew. I worked with proprietary spending and saving data, including what customers name their savings buckets, alongside search trends, to find the life moments people were actually planning for.</p>
+    <figure data-reveal style="margin:28px auto 4px;max-width:820px">
+      <div style="display:flex;gap:20px;align-items:flex-start">
+        <figure style="margin:0;flex:1.288 1 0;min-width:0">
+          <img src="assets/ally-data-buckets-crop.png" alt="Chart of the top savings bucket nicknames used by millennial customers, ranked by number of buckets" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in;border-radius:6px;border:1px solid var(--line);box-shadow:0 2px 10px rgba(22,21,26,.06)">
+        </figure>
+        <figure style="margin:0;flex:2.621 1 0;min-width:0">
+          <img src="assets/ally-life-stages-crop.png" alt="Life stage analysis comparing affluent millennials, mass middle, and mass affluent across weddings, moving, having children, and other milestones" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in;border-radius:6px;border:1px solid var(--line);box-shadow:0 2px 10px rgba(22,21,26,.06)">
+        </figure>
+      </div>
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0;text-wrap:pretty">Left: the most-used savings bucket nicknames among millennial customers, a direct read on what people are saving toward. Right: life-stage indexing across audience segments, used to prioritize which journeys to build first.</figcaption>
+      <div aria-hidden="true" style="display:flex;justify-content:center;margin-top:28px;color:var(--accent)"><svg width="18" height="40" viewBox="0 0 18 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v35M2 30l7 7 7-7"></path></svg></div>
+    </figure>
+    <p style="font-size:16px;margin:0 0 16px;text-align:center">That analysis gave us five consumer journeys to build against:</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px;margin:0 auto">
+      <span style="font-size:13px;background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:7px 14px;color:var(--ink)">Travel</span>
+      <span style="font-size:13px;background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:7px 14px;color:var(--ink)">Buying a home</span>
+      <span style="font-size:13px;background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:7px 14px;color:var(--ink)">Getting married</span>
+      <span style="font-size:13px;background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:7px 14px;color:var(--ink)">Starting a family</span>
+      <span style="font-size:13px;background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:7px 14px;color:var(--ink)">Debt</span>
+    </div>
+  </section>
+
+  <section id="journeys" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">From journey to content brief</h2>
+    <p style="font-size:16px;margin:0 0 16px">Each journey got broken into detailed stages so we could understand what someone needs at each step, then reach them with content that meets that need. Buying a home, for example, runs from "considering it" through financing, house hunting, financial decisions, and closing.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/ally-journey-stages-2x.png" alt="Buying a home journey broken into stages: considering, financing and budgeting, house hunting, financial decisions, ownership and post-buying, with needs at each stage" style="width:100%">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The buying-a-home journey, staged out with the needs and questions at each step.</figcaption>
+    </figure>
+    <p style="font-size:16px;margin:0 0 16px">From the stages we built a content funnel that ties editorial to merchandising to product, then turned the funnel into specific topics we could brief creators on. Mapping content back to relevant Ally products also let us recommend next best actions on every article, so there were no dead ends.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/ally-content-funnel-2x.png" alt="Content funnel map connecting search terms and journey stages through editorial and merchandising content to relevant Ally products" style="width:100%">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Journey stage → search behavior → editorial → merchandising → product.</figcaption>
+    </figure>
+    <figure data-reveal style="margin:28px auto 4px;max-width:820px">
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px">
+      <figure style="margin:0"><img src="assets/ally-article-1-2x.png" alt="Article card: Lowering your mortgage cost and avoiding fees" style="width:100%"></figure>
+      <figure style="margin:0"><img src="assets/ally-article-2-2x.png" alt="Article card: Where to start when buying your first home" style="width:100%"></figure>
+      <figure style="margin:0"><img src="assets/ally-article-3-2x.png" alt="Article card: How do mortgage interest rates affect affordability" style="width:100%"></figure>
+      <figure style="margin:0"><img src="assets/ally-article-4-2x.png" alt="Article card: How much house can you really afford" style="width:100%"></figure>
+    </div>
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Topics briefed out of one journey subset: the home-buying funnel.</figcaption>
+    </figure>
+
+    <p style="font-size:16px;margin:0 0 16px">Strung together, the strategy paths a single person from a social post to an open account and back into personalized content.</p>
+    <div data-reveal style="border-radius:16px;background:var(--cream);padding:28px 32px;margin:28px auto 0;max-width:820px">
+      <div style="display:grid;gap:10px">
+        <div style="display:flex;gap:14px;align-items:flex-start"><span style="font-family:var(--serif-alt);font-size:15px;color:var(--accent);flex-shrink:0;width:22px">1</span><p style="margin:0;font-size:14px;color:var(--ink)">Engages with a content piece on social</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><span style="font-family:var(--serif-alt);font-size:15px;color:var(--accent);flex-shrink:0;width:22px">2</span><p style="margin:0;font-size:14px;color:var(--ink)">Lands on the dynamic content hub</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><span style="font-family:var(--serif-alt);font-size:15px;color:var(--accent);flex-shrink:0;width:22px">3</span><p style="margin:0;font-size:14px;color:var(--ink)">Pathed to the next relevant article, signs up for the weekly newsletter</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><span style="font-family:var(--serif-alt);font-size:15px;color:var(--accent);flex-shrink:0;width:22px">4</span><p style="margin:0;font-size:14px;color:var(--ink)">Engages with weekly newsletter content</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><span style="font-family:var(--serif-alt);font-size:15px;color:var(--accent);flex-shrink:0;width:22px">5</span><p style="margin:0;font-size:14px;color:var(--ink)">Gets product messaging based on what they engaged with</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><span style="font-family:var(--serif-alt);font-size:15px;color:var(--accent);flex-shrink:0;width:22px">6</span><p style="margin:0;font-size:14px;color:var(--ink)">Downloads the app and opens a savings account</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><span style="font-family:var(--serif-alt);font-size:15px;color:var(--accent);flex-shrink:0;width:22px">7</span><p style="margin:0;font-size:14px;color:var(--ink)">Receives relevant editorial content in-app</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><span style="font-family:var(--serif-alt);font-size:15px;color:var(--accent);flex-shrink:0;width:22px">8</span><p style="margin:0;font-size:14px;color:var(--ink)">Creates a college savings bucket</p></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><span style="font-family:var(--serif-alt);font-size:15px;color:var(--accent);flex-shrink:0;width:22px">9</span><p style="margin:0;font-size:14px;color:var(--ink)">Gets targeted content on buckets and financial wellbeing for students, in app and email</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hub" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Launching the content hub</h2>
+    <p style="font-size:16px;margin:0 0 16px">I helped lead Ally's tech, UX, and marketing stakeholders through building and launching the new hub: an intelligent, modular system that serves the right content at the right time across Ally's ecosystem, and creates new points for data exchange: the more someone engages with content and content features, the more relevant the experience gets.</p>
+    <div data-carousel style="position:relative;margin:0 auto;max-width:820px">
+      <div style="overflow:hidden;border-radius:4px">
+        <div data-track style="display:flex;transition:transform .45s cubic-bezier(.22,1,.36,1)">
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/ally-hub-screens-2x.png" alt="Content hub modules shown on desktop and mobile: personalized recommendations, savings tools, and editorial features" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Modular content components, assembled per reader rather than per page.</figcaption>
+          </figure>
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/ally-hub-collage-2x.png" alt="Content hub screens across mobile: article views, interactive tools, personalized recommendations, and savings prompts" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The hub across mobile: articles, interactive tools, and content-driven prompts.</figcaption>
+          </figure>
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/ally-hub-modules-2x.png" alt="Interactive content features including a savings calculator, guided prompts, and personalized editorial recommendations" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Content features that collect input and return something useful, each one a data-exchange point.</figcaption>
+          </figure>
+          <figure style="flex:0 0 100%;margin:0">
+            <img src="assets/ally-tagging-2x.png" alt="Tagging organization: base metadata, personalization data, longevity, and content engagement mapped to content type, subject matter, and personalization" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+            <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The tagging model that makes modularity possible: every piece tagged for type, subject, and personalization.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <button data-prev aria-label="Previous image" style="position:absolute;top:40%;left:-16px;transform:translateY(-50%);background:var(--cream);border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0">‹</button>
+      <button data-next aria-label="Next image" style="position:absolute;top:40%;right:-16px;transform:translateY(-50%);background:var(--cream);border:1px solid var(--line);color:var(--ink);width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0">›</button>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:14px">
+        <button data-dot aria-label="Show slide 1" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--accent);cursor:pointer;padding:0"></button>
+        <button data-dot aria-label="Show slide 2" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0"></button>
+        <button data-dot aria-label="Show slide 3" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0"></button>
+        <button data-dot aria-label="Show slide 4" style="width:7px;height:7px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0"></button>
+      </div>
+    </div>
+    <p style="font-size:16px;margin:0 0 16px">Launching also meant dealing with everything already published. Alongside the build we developed a migration strategy so Ally could repurpose its existing archive instead of starting from zero, with criteria for what was worth keeping and a prioritized set of content needed for launch.</p>
+    <figure data-reveal style="margin:28px auto 4px;max-width:820px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+      <figure style="margin:0">
+        <img src="assets/ally-migration-process-2x.png" alt="Content migration process across four phases: assess existing content, prioritize content needs, develop tagging and taxonomy approach, and edit, update, and repurpose content" style="width:100%">
+      </figure>
+      <figure style="margin:0">
+        <img src="assets/ally-mve-content-2x.png" alt="Content needed for MVE launch, broken into home page, category pages, topic pages, and article pages with specified ratios of editorial, merchandising, and product content" style="width:100%">
+      </figure>
+    </div>
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Migration in four phases, and the prioritized content set required to launch.</figcaption>
+    </figure>
+  </section>
+
+  <section id="results" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Results</h2>
+    <p style="font-size:16px;margin:0 0 16px"><strong style="font-weight:600">The journey-led approach outperformed the previous hub.</strong> Compared with the previous hub, the new experience cut bounce and lifted applications and conversion. In Ally's authenticated space, content outperformed product messaging on its own.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,220px));gap:24px 28px;justify-content:center;margin:10px auto 0;max-width:820px">
+      <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">+67%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">banking product conversion</span></div>
+      <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">+50%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">account application completes</span></div>
+      <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">−36%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">bounce rate</span></div>
+      <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">+26%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">YOY total sessions</span></div>
+      <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">+202%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">engagement from existing customers after editorial content</span></div>
+      <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">+450%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">overall site engagement after interacting with hub content</span></div>
+    </div>
+    <p style="font-size:13px;color:var(--ink-soft);margin:0;text-align:center">Measured against the previous hub's 2021 data, and against product messaging alone.</p>
+
+    <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream);margin:28px auto 0;max-width:820px">
+      <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">Content became a permanent function at Ally.</strong>
+      <p style="margin:0;font-size:14px;color:var(--ink-soft)">The work created a distinct role for content at Ally. We led their quarterly content planning sessions, replacing ad hoc requests with a planning cycle that briefed every piece against the journey strategy. We also built the organization strategy, wrote the role descriptions, and guided the recruiting process, which led to Ally standing up its own content team and formally hiring a Content Director. By 2023 they had taken the work in house.</p>
+    </div>
+    <p style="margin:0;font-size:16px;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:8px">🏆 Best Content-Driven Website and Best Use of Interactive Content, Content Marketing Awards, 2024</p>
+  </section>
+
+</div>
+
+<div style="max-width:1100px;margin:40px auto 0;padding:40px 32px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+  <a href="Albertsons.dc.html" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;color:inherit" style-hover="opacity:1">
+    <span style="font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Previous project</span>
+    <span style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:8px"><span data-prev-arrow style="display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)">←</span> Albertsons</span>
+  </a>
+  <a href="Pharma.dc.html" style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;color:inherit;text-align:right" style-hover="opacity:1">
+    <span style="font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Next project</span>
+    <span style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:8px">Global Pharma <span data-next-arrow style="display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)">→</span></span>
+  </a>
+</div>
+
+<dc-import name="SiteFooter" hint-size="100%,110px"></dc-import>
+
+<sc-if value="{{ lightboxSrc }}">
+  <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;background:rgba(12,10,16,.93);display:grid;place-items:center;padding:40px;z-index:950">
+    <img src="{{ lightboxImgSrc }}" alt="" style="max-width:90vw;max-height:85vh;border-radius:4px;cursor:zoom-out">
+    <button aria-label="Close" style="position:absolute;top:24px;right:32px;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer">×</button>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lightboxSrc: null };
+
+  componentDidMount() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    const scan = () => document.querySelectorAll('[data-reveal]:not(.in)').forEach((el) => io.observe(el));
+    scan();
+    setTimeout(scan, 900);
+
+    this.setupCarousels();
+    this.setupProgress();
+
+    this.onKey = (e) => { if (e.key === 'Escape') this.setState({ lightboxSrc: null }); };
+    document.addEventListener('keydown', this.onKey);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  setupCarousels() {
+    document.querySelectorAll('[data-carousel]').forEach((car) => {
+      if (car.dataset.wired) return;
+      car.dataset.wired = '1';
+      const track = car.querySelector('[data-track]');
+      const dots = car.querySelectorAll('[data-dot]');
+      const count = track.children.length;
+      let i = 0;
+      const update = () => {
+        track.style.transform = 'translateX(-' + i * 100 + '%)';
+        dots.forEach((d, n) => { d.style.background = n === i ? 'var(--accent)' : 'var(--line)'; });
+      };
+      car.querySelector('[data-prev]').addEventListener('click', () => { i = (i - 1 + count) % count; update(); });
+      car.querySelector('[data-next]').addEventListener('click', () => { i = (i + 1) % count; update(); });
+      dots.forEach((d, n) => d.addEventListener('click', () => { i = n; update(); }));
+      update();
+    });
+  }
+
+  setupProgress() {
+    const sn = document.getElementById('secnav');
+    if (sn) {
+      sn.style.transition = 'opacity .3s ease';
+      let risky = [];
+      const measure = () => {
+        const nr = sn.getBoundingClientRect().right + 16;
+        risky = Array.from(document.querySelectorAll('img, iframe, video, h1, h2, h3, p, li, figcaption, [data-carousel], [data-reveal]'))
+          .filter((el) => !sn.contains(el) && el.getBoundingClientRect().left < nr && el.offsetWidth > 0);
+      };
+      const check = () => {
+        const r = sn.getBoundingClientRect();
+        const first = document.querySelector('[data-section]');
+        const past = !first || first.getBoundingClientRect().top < window.innerHeight * 0.5;
+        const hit = !past || risky.some((el) => { const b = el.getBoundingClientRect(); return b.bottom > r.top - 8 && b.top < r.bottom + 8; });
+        sn.style.opacity = hit ? '0' : '1';
+        sn.style.pointerEvents = hit ? 'none' : 'auto';
+      };
+      let raf = 0;
+      const onS = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; check(); }); };
+      const onR = () => { measure(); check(); };
+      measure(); check();
+      setTimeout(onR, 600);
+      window.addEventListener('scroll', onS, { passive: true });
+      window.addEventListener('resize', onR);
+    }
+    const bar = { style: {} };
+    const links = Array.from(document.querySelectorAll('[data-secnav]'));
+    const sections = Array.from(document.querySelectorAll('[data-section]'));
+    this.onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      if (bar) bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+      let active = 0;
+      sections.forEach((s, n) => { if (s.getBoundingClientRect().top < h.clientHeight * 0.35) active = n; });
+      links.forEach((l, n) => {
+        const on = n === active;
+        l.style.opacity = on ? '1' : '.45';
+        l.style.color = on ? 'var(--accent)' : 'var(--ink-soft)';
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  renderVals() {
+    return {
+      lightboxSrc: this.state.lightboxSrc,
+      lightboxImgSrc: this.state.lightboxSrc || 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+      enlarge: (e) => this.setState({ lightboxSrc: e.currentTarget.src }),
+      closeLightbox: () => this.setState({ lightboxSrc: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

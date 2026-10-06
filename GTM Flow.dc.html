@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</helmet>
+<div style="width:1760px;font-family:Inter,sans-serif;color:#020434;-webkit-font-smoothing:antialiased">
+  <div style="position:relative;min-height:62px;margin-bottom:14px">
+    <div style="{{ ribbonTodayStyle }}">
+      <span style="padding-right:14px;border-right:1px solid rgba(138,90,18,.3);font-size:12.5px;font-weight:800;white-space:nowrap;align-self:center;flex-shrink:0">Where today strains</span>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:18px;row-gap:4px;flex:1;min-width:0"><span>▸ Built manually each time, starting over from scratch</span><span>▸ Per brand or indication, never portfolio-wide</span><span>▸ Learnings never flow back, history is lost</span><span>▸ Takes 3 to 4 months to build, data is old by execution</span><span>▸ Mid-cycle questions require rebuilding the process</span><span>▸ Plan and execution are disconnected</span></div>
+    </div>
+    <div style="{{ ribbonEngineStyle }}">
+      <span style="padding-right:14px;border-right:1px solid rgba(12,122,46,.3);font-size:12.5px;font-weight:800;white-space:nowrap;align-self:center;flex-shrink:0">What the engine gains</span>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:18px;row-gap:4px;flex:1;min-width:0"><span>▸ Setup done once, then reruns on signal</span><span>▸ Answers in a day, not a quarter</span><span>▸ Execution flows back into the standing inputs</span></div>
+    </div>
+  </div>
+  <div style="{{ gridStyle }}">
+    <div style="{{ setupColStyle }}"></div>
+    <div style="{{ outputGroupStyle }}"></div>
+    <div style="{{ outputGroupStyleToday }}"></div>
+    <sc-for list="{{ headerCells }}" as="h" hint-placeholder-count="10">
+      <div style="{{ h.style }}"><span>{{ h.label }}</span></div>
+    </sc-for>
+    <sc-for list="{{ rowLabels }}" as="r" hint-placeholder-count="8">
+      <div style="{{ r.style }}">
+        <span style="{{ r.labelStyle }}">{{ r.label }}</span>
+        <span style="font-size:9.5px;color:rgba(2,4,52,.5);margin-top:2px">{{ r.sub }}</span>
+        <span style="{{ r.badgeStyle }}">{{ r.badge }}</span>
+      </div>
+    </sc-for>
+    <sc-for list="{{ boxes }}" as="b" hint-placeholder-count="40">
+      <div style="{{ b.wrapStyle }}">
+        <i style="{{ b.dotStyle }}"></i>
+        <i style="{{ b.dotStyle2 }}"></i>
+        <i style="{{ b.dotStyle3 }}"></i>
+        <span>{{ b.title }}</span>
+      </div>
+    </sc-for>
+    <svg style="{{ svgStyle }}">
+      <defs>
+        <marker id="gtmArrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><polyline points="2,1.5 7.5,5 2,8.5" fill="none" stroke="#8891AD" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></marker>
+        <marker id="gtmArrowAmber" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><polyline points="2,1.5 7.5,5 2,8.5" fill="none" stroke="#B26E00" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></polyline></marker>
+        <marker id="gtmArrowGreen" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><polyline points="2,1.5 7.5,5 2,8.5" fill="none" stroke="#0C7A2E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></polyline></marker>
+      </defs>
+      <sc-for list="{{ rowDividers }}" as="rd" hint-placeholder-count="8">
+        <line x1="0" y1="{{ rd.y }}" x2="{{ totalW }}" y2="{{ rd.y }}" stroke="rgba(2,4,52,.08)" stroke-width="1"></line>
+      </sc-for>
+      <sc-for list="{{ arrowPaths }}" as="a" hint-placeholder-count="24">
+        <path d="{{ a.d }}" stroke="#8891AD" stroke-width="1.25" fill="none" marker-end="{{ a.markerEnd }}" marker-start="{{ a.markerStart }}" style="{{ a.style }}"></path>
+      </sc-for>
+      <sc-for list="{{ loopPaths }}" as="lp" hint-placeholder-count="2">
+        <path d="{{ lp.d }}" stroke="{{ lp.color }}" stroke-width="1.6" fill="none" stroke-dasharray="{{ lp.dash }}" marker-end="{{ lp.markerEnd }}"></path>
+      </sc-for>
+    </svg>
+    <div style="{{ loopChipStyle }}">
+      <span style="font-size:16px;font-weight:800;line-height:1">{{ loopChipMark }}</span>
+      <span style="display:flex;flex-direction:column;gap:2px">
+        <span style="font-size:12.5px;font-weight:800;letter-spacing:.01em">{{ loopChipTitle }}</span>
+        <span style="font-size:10px;font-weight:600;opacity:.85;line-height:1.35">{{ loopChipSub }}</span>
+      </span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1760,&quot;height&quot;:1100},&quot;view&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;today&quot;,&quot;engine&quot;],&quot;default&quot;:&quot;today&quot;,&quot;tsType&quot;:&quot;'today'|'engine'&quot;}}">
+const EASE = 'cubic-bezier(.4,0,.2,1)';
+const GAP = 10;
+const SWIM = {"lead":{"label":"Leadership Team","sub":"framing & input","color":"#4B3B94","fill":"#ECE8FB","border":"#7A63C9","states":["today","engine"]},"gov":{"label":"Governance & Owners","sub":"sets the rule","color":"#33415C","fill":"#E8EAF0","border":"#7688A8","states":["engine"],"isNew":true},"orch":{"label":"Orchestration Engine","sub":"non-personal promotion","color":"#8A4B00","fill":"#FBEDDC","border":"#C9862F","states":[],"isNew":true},"engine":{"label":"The Engine","sub":"does the build","color":"#B23A2E","fill":"#FCE9E5","border":"#D96E58","states":["engine"],"isNew":true},"lib":{"label":"Librarian Agent","sub":"captures & retrieves","color":"#5B3FA8","fill":"#EFE8FC","border":"#9273D6","states":["engine"],"isNew":true},"analytics":{"label":"Brand Squad and Key Stakeholders","sub":"data & judgement","color":"#0E7A72","fill":"#E4F6F3","border":"#3FAA9F","states":["today","engine"]},"ffd":{"label":"Field Force Design","sub":"reviews & judges","color":"#A3204F","fill":"#FBE8EE","border":"#D9578A","states":["today","engine"]},"partner":{"label":"Partner / Vendor","sub":"external support","subEngine":"supports & maintains","color":"#6B4A2E","fill":"#EFE6DA","border":"#A9805A","states":["today","engine"],"support":true},"it":{"label":"IT","sub":"data infrastructure","subEngine":"runs & maintains the engine","color":"#5B6B23","fill":"#EEF3E1","border":"#8FA34E","states":["today","engine"],"support":true},"field":{"label":"Sales Ops","sub":"validation","color":"#1B6E8C","fill":"#E4F2F6","border":"#4AA0BC","states":["today","engine"]}};
+const ROW_ORDER = ["lead","gov","orch","engine","lib","analytics","ffd","partner","it","field"];
+const COLUMNS = [{"key":"label","todayW":160,"engineW":160},{"key":"setup","todayW":0,"engineW":176,"label":"Foundation & Configuration"},{"key":"kickoff","todayW":160,"engineW":160,"label":"Kickoff & Governance"},{"key":"ch1","todayW":160,"engineW":160,"label":"1 · Database Development"},{"key":"ch2","todayW":176,"engineW":176,"label":"2 · Valuation & Universe Definition"},{"key":"ch3","todayW":160,"engineW":160,"label":"3 · Sizing & Structure"},{"key":"ch4","todayW":168,"engineW":168,"label":"4 · Initial Territory Design"},{"key":"ch5","todayW":160,"engineW":160,"label":"5 · Alignment Refinement"},{"key":"ch6","todayW":160,"engineW":160,"label":"6 · Placement / Roster"},{"key":"output","todayW":176,"engineW":176,"todayLabel":"Output","engineLabel":"Output & Loop"}];
+const BOXES = [{"id":"t1","row":"lead","col":"kickoff","state":"today","title":"Request to Assess a New Size, Structure, or GTM Component","p":1},
+{"id":"t2b","row":"analytics","col":"kickoff","state":"today","title":"Provide Input to Kickoff","p":1},
+{"id":"tp2","row":"ffd","col":"kickoff","state":"today","title":"Kickoff & Frame the Ask","engineOpp":1,"p":1},
+{"id":"tp3","row":"partner","col":"ch1","state":"today","title":"Consolidate Data for Each Brand","engineOpp":1,"p":1},
+{"id":"tp4","row":"partner","col":"ch2","state":"today","title":"Apply Definitions to Universe Calculations","engineOpp":1},
+{"id":"tp6","row":"partner","col":"ch5","state":"today","title":"Territory Mapping and Alignment","engineOpp":1},
+{"id":"tp5","row":"partner","col":"ch4","state":"today","title":"Create Base Case Alignment","engineOpp":1,"p":1},
+{"id":"t2","row":"ffd","col":"ch1","state":"today","title":"Support Data Consolidation","engineOpp":1,"p":1},
+{"id":"t3c","row":"analytics","col":"ch2","state":"today","title":"Define Eligible Customer Universe"},
+{"id":"t3","row":"analytics","col":"ch1","state":"today","title":"Consolidate & Assess Sources"},
+{"id":"t3b","row":"it","col":"ch1","state":"today","title":"Technical Data Ingestion & Schema","p":1},
+{"id":"t4","row":"ffd","col":"ch2","state":"today","title":"Support Customer Universe Definition","engineOpp":1,"p":1},
+{"id":"t4c","row":"analytics","col":"ch3","state":"today","title":"Review Sizing and Roles"},
+{"id":"t4d","row":"lead","col":"ch3","state":"today","title":"Final Approval of Sizing & Structure"},
+{"id":"t5","row":"ffd","col":"ch3","state":"today","title":"Propose Size and Roles By Area","engineOpp":1,"p":1},
+{"id":"t5b","row":"field","col":"ch3","state":"today","title":"Requests a New Role","engineOpp":1,"p":1},
+{"id":"t6","row":"partner","col":"ch3","state":"today","title":"Triangulate Methods and Size Manually","engineOpp":1},
+{"id":"t7b","row":"analytics","col":"ch4","state":"today","title":"Review Base Case Alignments"},
+{"id":"t7","row":"ffd","col":"ch4","state":"today","title":"Inform Base Case Alignment","engineOpp":1,"p":1},
+{"id":"t11","row":"ffd","col":"ch6","state":"today","title":"Assemble the Roster Manually"},
+{"id":"t11c","row":"partner","col":"ch6","state":"today","title":"Support Roster Creation"},
+{"id":"t11d","row":"it","col":"ch6","state":"today","title":"Incorporate Roster in Data Warehouse"},
+{"id":"t11b","row":"field","col":"ch6","state":"today","title":"Review Roster and Work to Refine Placement"},
+{"id":"t9","row":"ffd","col":"ch5","state":"today","title":"Work Every Territory Manually","engineOpp":1,"p":1},
+{"id":"t9b","row":"analytics","col":"ch5","state":"today","title":"Refine Territory"},
+{"id":"t10b","row":"it","col":"ch5","state":"today","title":"Upload ZIP to Territory"},
+{"id":"t10","row":"field","col":"ch5","state":"today","title":"Validate Targets in the Field","p":1},
+{"id":"t13","row":"ffd","col":"output","state":"today","title":"Reconstruct the Process for Every New Ask","engineOpp":1,"p":1},
+{"id":"t15","row":"field","col":"output","state":"today","title":"Plan & Execution, Divorced","engineOpp":1,"p":1},
+{"id":"e1","row":"lead","col":"setup","state":"engine","title":"Name Owners, Standards, & Cadence"},
+{"id":"e2b","row":"lead","col":"ch3","state":"engine","title":"Approve Final Sizing & Structure","p":1},
+{"id":"e3","row":"lead","col":"output","state":"engine","title":"Evaluate Options Instead of Asking Questions","p":1},
+{"id":"e4","row":"gov","col":"setup","state":"engine","title":"Establish GTM Ontology","p":1},
+{"id":"e5","row":"gov","col":"kickoff","state":"engine","title":"Set Thresholds & Optimization Cadence","p":1},
+{"id":"e6","row":"gov","col":"output","state":"engine","title":"One Configurable Method Across Brands","p":1},
+{"id":"e7","row":"ffd","col":"setup","state":"engine","title":"Guide the Methodology","p":1},
+{"id":"e8","row":"ffd","col":"kickoff","state":"engine","title":"Lead with Recommendations and Evidence","p":1},
+{"id":"e9","row":"ffd","col":"ch2","state":"engine","title":"Review & Surface Rationale","p":1},
+{"id":"e10","row":"ffd","col":"ch3","state":"engine","title":"Keep the Trade-off Call","p":1},
+{"id":"e10b","row":"ffd","col":"ch4","state":"engine","title":"Select Base Alignment for Refinement"},
+{"id":"e11","row":"ffd","col":"ch5","state":"engine","title":"Keep Refinement Judgement"},
+{"id":"e12","row":"ffd","col":"output","state":"engine","title":"Proactively Serve Recos"},
+{"id":"e44","row":"analytics","col":"ch2","state":"engine","title":"Access & Reimbursement Feed Prioritization","p":1},
+{"id":"e13b","row":"analytics","col":"kickoff","state":"engine","title":"Guide with Brand Strategy","p":1},
+{"id":"e13","row":"analytics","col":"setup","state":"engine","title":"Align on Standards Once","p":1},
+{"id":"e16","row":"analytics","col":"output","state":"engine","title":"Continuous Optimization","p":1},
+{"id":"e17","row":"it","col":"setup","state":"engine","title":"Stand Up the Core Engine & Governed Inputs","p":1},
+{"id":"e18","row":"engine","col":"kickoff","state":"engine","title":"Signals Surface on Arrival","p":1},
+{"id":"e19","row":"engine","col":"ch1","state":"engine","title":"Standing, Governed Inputs Across Brands","p":1},
+{"id":"e20","row":"engine","col":"ch2","state":"engine","title":"Automatic Recalculation by Brand Configuration","p":1},
+{"id":"e21","row":"engine","col":"ch3","state":"engine","title":"Recommend Portfolio Trade-offs","p":1},
+{"id":"e22","row":"engine","col":"ch4","state":"engine","title":"Base Alignment Options for Portfolio Optimization","p":1},
+{"id":"e23","row":"engine","col":"ch5","state":"engine","title":"Compare Multiple Scenarios at Once","p":1},
+{"id":"e25","row":"engine","col":"output","state":"engine","title":"Execution Feedback Loop","p":1},
+{"id":"e45","row":"field","col":"kickoff","state":"engine","title":"Align on National vs Local Goals","p":1},
+{"id":"e26b","row":"field","col":"ch5","state":"engine","title":"Validate Targets in the Field"},
+{"id":"e26","row":"field","col":"ch2","state":"engine","title":"Validate Against Standing View"},
+{"id":"e27","row":"field","col":"output","state":"engine","title":"Field Knowledge Captured","p":1},
+{"id":"e28","row":"partner","col":"setup","state":"engine","title":"Encode the Methodology"},
+{"id":"e29","row":"field","col":"setup","state":"engine","title":"Incorporate Existing Institutional Knowledge","p":1},
+{"id":"e43","row":"engine","col":"setup","state":"engine","title":"Semantic Layer: Deterministic Math & Provenance","p":1},
+{"id":"e40","row":"lib","col":"setup","state":"engine","title":"Set Up Data Storage and Tagging Process","p":1},
+{"id":"e41","row":"lib","col":"output","state":"engine","title":"Decisions & Rationale Written to the Ontology","p":1},
+{"id":"e30","row":"engine","col":"ch6","state":"engine","title":"Roster Composed From the Standing Alignment"},
+{"id":"e31","row":"ffd","col":"ch6","state":"engine","title":"Reviews the Roster Instead of Building It"},
+{"id":"e32","row":"it","col":"ch6","state":"engine","title":"Roster Lands in the Warehouse on Publication"},
+{"id":"e33","row":"field","col":"ch6","state":"engine","title":"Confirms Placement Against the Standing View","p":1},
+{"id":"e34","row":"partner","col":"ch6","state":"engine","title":"Technical Support on the Roster Build"},
+{"id":"e36","row":"it","col":"ch2","state":"engine","title":"Maintains Feeds, Grain & Refresh Cadence","p":1},
+{"id":"e37","row":"partner","col":"ch3","state":"engine","title":"Specialist Support on Method Encoding"},
+{"id":"e38","row":"partner","col":"ch5","state":"engine","title":"Software Support for Targeted Refinement"},
+{"id":"e2c","row":"it","col":"ch1","state":"engine","title":"Catalogue New Governed Inputs and Maintain Database"},
+{"id":"l60d","row":"lib","col":"ch5","state":"engine","title":"Record a decision status for every recommendation","p":1},
+{"id":"l41d","row":"lib","col":"ch3","state":"engine","title":"Retrieve prior decisions, rationale, and outcomes"},
+{"id":"l54d","row":"lib","col":"ch4","state":"engine","title":"Retrieve prior decisions, rationale, and outcomes","p":1}];
+const TODAY_ARROWS = [["lead","kickoff","ffd","kickoff",false,false,false,false],["analytics","ch1","ffd","ch1",false,false,false,false],["it","ch1","partner","ch1",true,false,false,false],["analytics","ch2","ffd","ch2",false,false,false,false],["ffd","ch1","partner","ch1",false,false,false,false],["ffd","ch2","partner","ch2",false,false,false,false],["ffd","ch4","partner","ch4",true,false,false,false],["ffd","ch3","analytics","ch3",false,false,false,false],["analytics","ch3","lead","ch3",false,false,false,false],["ffd","ch4","analytics","ch4",false,false,false,false],["field","ch3","ffd","ch3",false,false,false,false],["ffd","ch5","field","ch5",false,false,false,false],["ffd","ch5","partner","ch5",true,false,false,false],["analytics","ch5","ffd","ch5",true,false,false,false],["field","ch5","field","output"],["ffd","kickoff","partner","ch1"],["partner","ch1","partner","ch2"],["partner","ch2","partner","ch3"],["partner","ch3","partner","ch4"],["partner","ch4","partner","ch5"],["partner","ch5","partner","ch6"],["partner","ch6","field","ch6",false,false,false,false],["ffd","ch6","partner","ch6",true,false,false,false],["ffd","ch3","partner","ch3",true,false,false,false]];
+const ENGINE_ARROWS = [["field","kickoff","ffd","kickoff"],["it","ch1","engine","ch1"],["engine","kickoff","engine","ch1",false,false,false,true],["engine","ch1","engine","ch2",false,false,false,true],["engine","ch2","engine","ch3",false,false,false,true],["engine","ch3","engine","ch4",false,false,false,true],["engine","ch4","engine","ch5",false,false,false,true],["engine","ch5","engine","ch6",false,false,false,true],["engine","ch6","engine","output",false,false,false,true],["engine","ch6","ffd","ch6"],["engine","ch6","it","ch6"],["ffd","ch6","field","ch6"],["partner","ch6","it","ch6",true],["engine","setup","engine","kickoff",false,false,false,true],["it","ch2","engine","ch2"],["partner","ch3","engine","ch3",true],["partner","ch5","engine","ch5",true],["gov","kickoff","engine","kickoff"],["ffd","kickoff","analytics","kickoff"],["analytics","kickoff","gov","kickoff"],["gov","setup","analytics","setup"],["engine","ch2","ffd","ch2"],["engine","ch3","ffd","ch3"],["engine","ch4","ffd","ch4"],["engine","ch5","ffd","ch5"],["field","ch2","ffd","ch2"],["field","ch5","ffd","ch5"],["analytics","ch2","ffd","ch2"],["engine","ch2","analytics","ch2",true],["ffd","ch3","lead","ch3"]];
+
+class Component extends DCLogic {
+  state = { view: 'today' };
+  renderVals() {
+    const stateKey = this.props.view === 'engine' ? 'engine' : 'today';
+    const isToday = stateKey === 'today';
+    const LANE = 76;
+    const colWidths = COLUMNS.map(c => isToday ? c.todayW : c.engineW);
+    const rowSlots = [{ key: '__header', height: 44 }];
+    ROW_ORDER.forEach(k => rowSlots.push({ key: k, height: SWIM[k].states.indexOf(stateKey) !== -1 ? LANE : 0 }));
+    rowSlots.push({ key: '__loop', height: 62 });
+    const rowHeights = rowSlots.map(r => r.height);
+    const colX = [0]; for (let i = 0; i < colWidths.length; i++) colX.push(colX[i] + colWidths[i] + GAP);
+    const rowY = [0]; for (let i = 0; i < rowHeights.length; i++) rowY.push(rowY[i] + rowHeights[i] + (rowHeights[i] > 0 ? GAP : 0));
+    const colIndex = {}; COLUMNS.forEach((c, i) => colIndex[c.key] = i);
+    const rowIndex = {}; rowSlots.forEach((r, i) => { if (r.key !== '__header') rowIndex[r.key] = i + 1; });
+    const trackSizes = []; for (let i = 0; i < rowHeights.length; i++) trackSizes.push(rowY[i + 1] - rowY[i]);
+    const gridStyle = {
+      display: 'grid', position: 'relative',
+      gridTemplateColumns: colWidths.map(w => w + 'px').join(' '),
+      gridTemplateRows: trackSizes.map(h => h + 'px').join(' '),
+      columnGap: GAP + 'px', rowGap: 0,
+      transition: 'grid-template-columns 600ms ' + EASE + ', grid-template-rows 600ms ' + EASE
+    };
+    const headerCells = COLUMNS.map((col, i) => {
+      const w = colWidths[i];
+      const label = col.key === 'label' ? '' : (isToday ? (col.todayLabel || col.label || '') : (col.engineLabel || col.label || ''));
+      return {
+        style: { gridColumn: i + 1, gridRow: 1, color: '#020434', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', textAlign: 'center', padding: w > 0 ? '0 10px 10px 4px' : 0, fontSize: 12, fontWeight: 700, lineHeight: 1.25, overflow: 'visible', position: 'relative', zIndex: 1, opacity: w > 0 ? 1 : 0, transition: 'opacity 400ms ' + EASE },
+        label
+      };
+    });
+    const visibleSlotIdx = []; rowSlots.forEach((r, i) => { if (r.height > 0) visibleSlotIdx.push(i); });
+    const rowDividers = []; for (let j = 0; j < visibleSlotIdx.length - 1; j++) rowDividers.push({ y: rowY[visibleSlotIdx[j + 1]] - GAP / 2 });
+    const rowLabels = ROW_ORDER.map(k => {
+      const s = SWIM[k]; const visible = s.states.indexOf(stateKey) !== -1;
+      const showBadge = s.isNew || (s.support && !isToday);
+      return {
+        style: { gridColumn: 1, gridRow: rowIndex[k], display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '4px 10px', borderLeft: '3px solid ' + s.color, overflow: 'hidden', opacity: visible ? 1 : 0, marginTop: GAP / 2, marginBottom: GAP / 2, transition: 'opacity 400ms ' + EASE },
+        labelStyle: { fontWeight: 700, fontSize: 12.5, color: s.color },
+        label: s.label, sub: (!isToday && s.subEngine) ? s.subEngine : s.sub,
+        badge: s.isNew ? 'NEW' : (showBadge ? 'SUPPORTING' : ''),
+        badgeStyle: { display: showBadge ? 'inline-block' : 'none', marginTop: 4, width: 'fit-content', fontSize: 9, fontWeight: 800, letterSpacing: '.06em', color: '#fff', background: s.isNew ? '#E60F65' : '#5C6580', borderRadius: 3, padding: '1px 5px' }
+      };
+    });
+    const boxRects = {}; const BOX_H = 52;
+    BOXES.forEach(b => {
+      const cellX = colX[colIndex[b.col]], cellY = rowY[rowIndex[b.row] - 1];
+      const cellW = colWidths[colIndex[b.col]], cellH = rowHeights[rowIndex[b.row] - 1];
+      if (b.col === 'setup') { boxRects[b.id] = { x: cellX, y: cellY, w: cellW, h: cellH }; return; }
+      const h = Math.min(BOX_H, cellH); const insetX = b.col === 'output' ? 8 : 4;
+      boxRects[b.id] = { x: cellX + insetX, y: cellY + (cellH - h) / 2, w: Math.max(0, cellW - insetX * 2), h };
+    });
+    const boxes = BOXES.map(b => {
+      const visible = b.state === stateKey;
+      const swim = SWIM[b.row];
+      const isAgentLane = b.row === 'engine' || b.row === 'orch' || b.row === 'lib';
+      const isHumanCall = b.state !== 'today' && !isAgentLane && b.col !== 'output';
+      const isSetup = b.col === 'setup';
+      const delay = rowIndex[b.row] * 55;
+      const dotBase = { position: 'absolute', width: 7, height: 7, borderRadius: 100, border: '1.5px solid #fff' };
+      const dotPos = isSetup ? { top: 6, left: '50%', transform: 'translateX(-50%)' } : { top: 5, right: 5 };
+      const painPos = isSetup ? { top: 6, left: '50%', transform: 'translateX(' + (isHumanCall ? '5px' : '-50%') + ')' } : { top: 5, right: (isHumanCall || b.engineOpp) ? 16 : 5 };
+      return {
+        wrapStyle: {
+          gridColumn: colIndex[b.col] + 1, gridRow: rowIndex[b.row], alignSelf: 'center',
+          margin: b.col === 'output' ? '0 8px' : '0 4px', position: 'relative', background: swim.fill, color: swim.color,
+          borderRadius: isSetup ? 0 : 6, clipPath: isSetup ? 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' : 'none',
+          padding: isSetup ? '22px 26px' : '8px 10px',
+          border: ((b.state === 'today' && b.col === 'output') ? '1.5px dashed ' : '1.5px solid ') + swim.border,
+          fontSize: 11, fontWeight: 600, lineHeight: 1.2, minHeight: 44, display: 'flex', alignItems: 'center',
+          justifyContent: isSetup ? 'center' : 'flex-start', textAlign: isSetup ? 'center' : 'left',
+          boxShadow: '0 1px 2px rgba(2,4,52,.08)',
+          opacity: visible ? 1 : 0, transform: visible ? 'none' : 'scale(.9)',
+          transition: 'opacity 480ms ' + EASE + ', transform 480ms ' + EASE, transitionDelay: (visible ? delay : 0) + 'ms',
+          pointerEvents: 'none', zIndex: 2
+        },
+        dotStyle: Object.assign({}, dotBase, dotPos, { background: '#E60F65', display: isHumanCall ? 'block' : 'none' }),
+        dotStyle2: Object.assign({}, dotBase, dotPos, { background: '#3282FA', display: b.engineOpp ? 'block' : 'none' }),
+        dotStyle3: Object.assign({}, dotBase, painPos, { background: '#7A3FBF', display: b.p ? 'block' : 'none' }),
+        title: b.title
+      };
+    });
+    const activeArrows = isToday ? TODAY_ARROWS : ENGINE_ARROWS;
+    const arrowPaths = activeArrows.map(([fr, fc, tr, tc, bidir, dashed, elbow, showArrow]) => {
+      const arrowOn = showArrow !== undefined ? showArrow : isToday;
+      const fb = BOXES.filter(b => b.row === fr && b.col === fc && b.state === stateKey)[0];
+      const tb = BOXES.filter(b => b.row === tr && b.col === tc && b.state === stateKey)[0];
+      const fallbackRect = (r, c) => { const cellH = rowHeights[rowIndex[r] - 1]; return { x: colX[colIndex[c]], y: rowY[rowIndex[r] - 1] + cellH / 2, w: colWidths[colIndex[c]], h: 0 }; };
+      const from = (fb && boxRects[fb.id]) || fallbackRect(fr, fc);
+      const to = (tb && boxRects[tb.id]) || fallbackRect(tr, tc);
+      const fromCx = from.x + from.w / 2, fromCy = from.y + from.h / 2, toCx = to.x + to.w / 2, toCy = to.y + to.h / 2;
+      const dx = toCx - fromCx, dy = toCy - fromCy;
+      const clip = (rect, cx, cy, ddx, ddy) => {
+        if (ddx === 0 && ddy === 0) return { x: cx, y: cy };
+        const sx = ddx !== 0 ? (rect.w / 2) / Math.abs(ddx) : Infinity, sy = ddy !== 0 ? (rect.h / 2) / Math.abs(ddy) : Infinity;
+        const s = Math.min(sx, sy); return { x: cx + ddx * s, y: cy + ddy * s };
+      };
+      const a = clip(from, fromCx, fromCy, dx, dy), z = clip(to, toCx, toCy, -dx, -dy);
+      const len = Math.hypot(z.x - a.x, z.y - a.y) || 1, ux = (z.x - a.x) / len, uy = (z.y - a.y) / len;
+      const pb = Math.min(6, len * 0.15);
+      let d;
+      if (bidir) { const sh = Math.min(2.5, len * 0.15); d = 'M ' + (a.x + ux * sh) + ' ' + (a.y + uy * sh) + ' L ' + (z.x - ux * sh) + ' ' + (z.y - uy * sh); }
+      else d = 'M ' + a.x + ' ' + a.y + ' L ' + (z.x - ux * pb) + ' ' + (z.y - uy * pb);
+      if (elbow) d = 'M ' + (from.x + from.w) + ' ' + fromCy + ' H ' + toCx + ' V ' + (to.y + to.h + 4);
+      return { d, markerStart: (bidir && arrowOn) ? 'url(#gtmArrow)' : 'none', markerEnd: arrowOn ? 'url(#gtmArrow)' : 'none', style: { strokeDasharray: dashed ? '5 4' : 'none' } };
+    });
+    const totalW = colX[colX.length - 1] - GAP, totalH = rowY[rowY.length - 1] - GAP;
+    const setupColStyle = { position: 'absolute', left: colX[colIndex.setup] - GAP / 2, top: 0, width: colWidths[colIndex.setup] + GAP, background: '#F7F7F8', borderRadius: 6, zIndex: 0, height: totalH - (62 + GAP), opacity: isToday ? 0 : 1, transition: 'opacity 400ms ' + EASE + ', width 600ms ' + EASE + ', height 600ms ' + EASE };
+    const svgStyle = { position: 'absolute', left: 0, top: 0, width: totalW, height: totalH, pointerEvents: 'none', overflow: 'visible', zIndex: 1 };
+    const bandY = rowY[rowSlots.length - 1] + 26;
+    const outI = colIndex.output, outCx = colX[outI] + colWidths[outI] / 2;
+    const ch5L = colX[colIndex.kickoff] - GAP / 2, ch5R = colX[colIndex.ch5] + colWidths[colIndex.ch5] + GAP / 2;
+    const leftX = colX[1] - GAP / 2 - 4;
+    let startY = bandY - 60;
+    BOXES.forEach(b => { if (b.col === 'output' && b.state === stateKey && boxRects[b.id]) startY = Math.max(startY, boxRects[b.id].y + boxRects[b.id].h + (isToday ? 14 : 16)); });
+    const topY = totalH - (62 + GAP);
+    const chipW = isToday ? (ch5R - ch5L) * 0.6 : (ch5R - ch5L), chipCx = (ch5L + ch5R) / 2, R = 12;
+    const gapR = chipCx + chipW / 2 + 10, gapL = chipCx - chipW / 2 - 10;
+    const loopColor = isToday ? '#B26E00' : '#0C7A2E', loopDash = isToday ? '7 5' : 'none';
+    const mid = (outCx - R + gapR) / 2;
+    const loopPaths = [
+      { d: 'M ' + outCx + ' ' + startY + ' V ' + (bandY - R) + ' Q ' + outCx + ' ' + bandY + ' ' + (outCx - R) + ' ' + bandY + ' H ' + gapR, color: loopColor, dash: loopDash, markerEnd: isToday ? 'url(#gtmArrowAmber)' : 'none' },
+      isToday ? { d: 'M ' + (mid - 5) + ' ' + (bandY - 5) + ' L ' + (mid + 5) + ' ' + (bandY + 5), color: loopColor, dash: 'none', markerEnd: 'none' } : null,
+      isToday ? { d: 'M ' + (mid + 5) + ' ' + (bandY - 5) + ' L ' + (mid - 5) + ' ' + (bandY + 5), color: loopColor, dash: 'none', markerEnd: 'none' } : null,
+      isToday ? { d: 'M ' + gapL + ' ' + bandY + ' H ' + (gapL - 50), color: loopColor, dash: loopDash, markerEnd: 'url(#gtmArrowAmber)' } : null,
+      !isToday ? { d: 'M ' + gapL + ' ' + bandY + ' H ' + (leftX + R) + ' Q ' + leftX + ' ' + bandY + ' ' + leftX + ' ' + (bandY - R) + ' V ' + topY, color: loopColor, dash: loopDash, markerEnd: 'url(#gtmArrowGreen)' } : null
+    ].filter(Boolean);
+    const groupBox = (ids, color, dashed, pad) => {
+      const rects = ids.map(id => boxRects[id]).filter(Boolean);
+      if (!rects.length) return { display: 'none' };
+      const minX = Math.min.apply(null, rects.map(r => r.x)) - 6, maxX = Math.max.apply(null, rects.map(r => r.x + r.w)) + 6;
+      const minY = Math.min.apply(null, rects.map(r => r.y)) - 14, maxY = Math.max.apply(null, rects.map(r => r.y + r.h)) + pad;
+      return { position: 'absolute', left: minX, top: minY, width: maxX - minX, height: maxY - minY, border: '1.5px ' + (dashed ? 'dashed ' : 'solid ') + color, borderRadius: 10, pointerEvents: 'none', zIndex: 1 };
+    };
+    const outIds = BOXES.filter(b => b.col === 'output' && b.state === stateKey).map(b => b.id);
+    const tri = (show, delay) => ({ position: 'absolute', left: 0, right: 0, top: 0, opacity: show ? 1 : 0, transform: show ? 'none' : 'translateY(6px)', transition: 'opacity 380ms ' + EASE + ', transform 380ms ' + EASE, transitionDelay: (show ? delay : 0) + 'ms' });
+    const ribbonBase = { display: 'flex', boxSizing: 'border-box', alignItems: 'center', gap: 18, borderRadius: 6, padding: '9px 18px', fontSize: 11.5, fontWeight: 600 };
+    return {
+      gridStyle, headerCells, rowLabels, boxes, arrowPaths, rowDividers, setupColStyle, totalW, svgStyle, loopPaths,
+      outputGroupStyle: isToday ? { display: 'none' } : groupBox(outIds, '#0C7A2E', false, 16),
+      outputGroupStyleToday: isToday ? groupBox(outIds, '#B26E00', true, 14) : { display: 'none' },
+      loopChipMark: isToday ? '\u2715' : '\u21BA',
+      loopChipTitle: isToday ? 'No formalized feedback loop' : 'Everything flows back',
+      loopChipSub: isToday ? '' : 'Outputs, field knowledge and real execution return to the standing inputs.',
+      loopChipStyle: { position: 'absolute', left: chipCx - chipW / 2, top: bandY - 26, width: chipW, minHeight: 52, display: 'flex', alignItems: 'center', gap: 12, padding: '0 16px', borderRadius: 6, background: isToday ? '#FFF4E0' : '#E9F7ED', color: isToday ? '#8A5A12' : '#0C7A2E', border: isToday ? '1.5px dashed #FFA202' : '1.5px solid #11A13C', boxShadow: '0 1px 2px rgba(2,4,52,.08)', zIndex: 3, boxSizing: 'border-box' },
+      ribbonTodayStyle: Object.assign({}, ribbonBase, { background: '#FBDFA6', color: '#8A5A12' }, tri(isToday, 60)),
+      ribbonEngineStyle: Object.assign({}, ribbonBase, { background: '#CDEBD6', color: '#0C7A2E' }, tri(!isToday, 60))
+    };
+  }
+}
+</script>
+</body>
+</html>

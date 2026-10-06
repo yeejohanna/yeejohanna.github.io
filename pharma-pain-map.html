@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Ignite | Pain Point Mapping (Overview)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #F4F1EA; }
+</style>
+<style>
+    :root{
+      --navy: #10163A;
+      --navy-soft: #2A3268;
+      --ink: #1B2033;
+      --paper: #FFFFFF;
+      --pain-bg: #FBE7EE;
+      --pain-border: #F0AFC6;
+      --pain-label: #C21A5B;
+      --pain-text: #5A2038;
+      --sol-bg: #E7F5EF;
+      --sol-border: #9BD9BE;
+      --sol-label: #0B7A56;
+      --sol-text: #0F3B2C;
+      --open-bg: #FFF3DD;
+      --open-border: #E9C77B;
+      --open-label: #9A6B0C;
+      --open-text: #5C4318;
+      --a: #3B5BDB;
+      --b: #9B5DE5;
+      --c: #0F9E8E;
+      --d: #E08A1E;
+      --e: #52606D;
+      --g: #0EA5C7;
+      --h: #9C5B3C;
+      --line-idle: 0.28;
+      --line-active: 0.95;
+      --line-dim: 0.06;
+    }
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;}
+    body{
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      text-rendering: optimizeLegibility;
+    }
+
+    .ignite-root .page{
+      max-width: 100%;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 10px 40px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .ignite-root header.top{
+      max-width: 960px;
+      margin-bottom: 6px;
+      flex: 0 0 auto;
+    }
+    .ignite-root header.top .eyebrow{
+      font-family:'Manrope', sans-serif;
+      font-weight:700;
+      font-size: 11px;
+      color: var(--navy-soft);
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+    }
+    .ignite-root header.top h1{
+      font-family:'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: clamp(19px, 2.1vw, 25px);
+      line-height: 1.15;
+      color: var(--navy);
+      margin: 0 0 4px;
+    }
+    .ignite-root header.top p{
+      font-size: 12.5px;
+      line-height: 1.4;
+      color: #4A5170;
+      margin: 0;
+    }
+    .ignite-root .tabs{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex: 0 0 auto;
+      position: relative;
+      z-index: 950;
+    }
+    .ignite-root .tab-btn{
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 12.5px;
+      color: var(--navy-soft);
+      background: #EEF0F5;
+      border: 1.5px solid transparent;
+      border-radius: 20px;
+      padding: 7px 14px;
+      cursor: pointer;
+      transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+    }
+    .ignite-root .tab-btn:hover{ background: #E2E6EF; }
+    .ignite-root .tab-btn:focus-visible{ outline: 2px solid var(--navy-soft); outline-offset: 2px; }
+    .ignite-root .tab-btn.active{
+      background: var(--navy);
+      color: #fff;
+    }
+    .ignite-root .scale-wrapper{
+      flex: 1 1 auto;
+      min-height: 0;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .ignite-root .section-head{
+      font-family:'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin-bottom: 0.55rem;
+      flex: 0 0 auto;
+    }
+    .ignite-root .section-head.current{ color: var(--navy); }
+    .ignite-root .section-head.engine{
+      color: var(--sol-label);
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      align-self: flex-start;
+      background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.92) 45%, rgba(255,255,255,0) 85%);
+      padding: 10px 40px 10px 10px;
+      margin: -10px -10px -10px -10px;
+    }
+    .ignite-root svg.lines.lines-on-top{ z-index: 5; }
+    .ignite-root .section-head .sub{
+      display:inline;
+      font-family:'Inter',sans-serif;
+      font-weight: 500;
+      font-size: 0.7em;
+      color: #7A8099;
+      margin-left: 8px;
+    }
+    .ignite-root .board{
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .ignite-root svg.lines{
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 0;
+    }
+    .ignite-root svg.lines path{
+      fill: none;
+      stroke-width: 2.2;
+      transition: opacity 160ms ease, stroke-width 160ms ease;
+    }
+    .ignite-root svg.lines path.active{ stroke-width: 3.2; }
+    .ignite-root .stations-row{
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 0.86fr repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+      flex: 0 0 auto;
+    }
+    .ignite-root .stations-row.single-mode{
+      grid-template-columns: 1fr;
+    }
+    .ignite-root .stations-row.single-mode .station-col.foundation{
+      border-right: none;
+      padding-right: 0;
+    }
+    .ignite-root .stations-row.single-mode .station-col{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .ignite-root .stations-row.single-mode .station-col > .station-label{
+      flex: 1 1 100%;
+    }
+    .ignite-root .stations-row.single-mode .station-col > .pain-card{
+      flex: 1 1 240px;
+      margin-bottom: 0;
+    }
+    .ignite-root .stations-row.single-mode .mini-grid{
+      flex: 1 1 100%;
+      column-count: unset;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .ignite-root .stations-row.single-mode .mini-grid .pain-card{
+      flex: 1 1 240px;
+      margin-bottom: 0;
+    }
+    .ignite-root .board.station-mode .solution-card h3{ font-size: 1em; }
+    .ignite-root .board.station-mode .solution-card p{ font-size: 0.85em; }
+    .ignite-root .board.station-mode .solution-card .count{ font-size: 0.72em; }
+    .ignite-root .board.station-mode .solution-card .agents{ font-size: 0.72em; }
+    .ignite-root .board:not(.station-mode) .section-head{ font-size: 1.5rem; }
+    .ignite-root .board:not(.station-mode) .section-head .sub{ font-size: 0.6em; }
+    .ignite-root .board:not(.station-mode) .station-label{ font-size: 0.69rem; }
+    .ignite-root .station-col{ min-width: 0; }
+    .ignite-root .station-col.foundation{
+      padding-right: 0.7em;
+      border-right: 1px dashed #D6DAE6;
+    }
+    .ignite-root .station-label{
+      font-family:'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--navy-soft);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #E2E5EF;
+    }
+    .ignite-root .station-label .foundation-note{
+      display: block;
+      font-family:'Inter', sans-serif;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 0.85em;
+      color: #9AA1B4;
+      margin-top: 0.2em;
+    }
+    .ignite-root .mini-grid{
+      column-count: 2;
+      column-gap: 10px;
+    }
+    .ignite-root .mini-grid.cols-3{
+      column-count: 3;
+    }
+    .ignite-root .mini-grid .pain-card{
+      break-inside: avoid;
+    }
+    .ignite-root .engine-spacer{ flex: 0 0 auto; height: 1.3em; }
+    .ignite-root .engine-row{
+      position: relative;
+      z-index: 1;
+      flex: 1 1 auto;
+      min-height: 6em;
+    }
+    .ignite-root .foundation-tier{
+      position: relative;
+      z-index: 1;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      margin-top: 0.2em;
+    }
+    .ignite-root .foundation-band{
+      width: 100% !important;
+      max-width: none !important;
+      text-align: center;
+    }
+    .ignite-root .foundation-band h3{ font-size: 1.3em; }
+    .ignite-root .foundation-band p{ font-size: 1em; }
+    .ignite-root .foundation-band .count{ font-size: 0.85em; }
+    .ignite-root .foundation-band .agents{ font-size: 0.85em; }
+    .ignite-root .pain-card, .ignite-root .solution-card{
+      border-radius: 0.55em;
+      padding: 0.68em 0.8em;
+      margin-bottom: 0.58em;
+      cursor: pointer;
+      transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+      outline: none;
+    }
+    .ignite-root .pain-card:last-child{ margin-bottom: 0; }
+    .ignite-root .pain-card{
+      background: var(--pain-bg);
+      border: 1.5px solid var(--pain-border);
+    }
+    .ignite-root .pain-card .label{
+      font-family:'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.68em;
+      letter-spacing: 0.03em;
+      color: var(--pain-label);
+      margin-bottom: 0.3em;
+    }
+    .ignite-root .pain-card h3{
+      margin: 0 0 0.3em;
+      font-family:'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.95em;
+      line-height: 1.22;
+      color: #3A1330;
+    }
+    .ignite-root .pain-card p{
+      margin: 0 0 0.5em;
+      font-size: 0.84em;
+      line-height: 1.4;
+      color: var(--pain-text);
+    }
+    .ignite-root .tag{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35em;
+      font-family:'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.7em;
+      padding: 0.28em 0.55em 0.28em 0.4em;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.65);
+      margin: 0 0.3em 0.3em 0;
+    }
+    .ignite-root .tag .dot{
+      width: 0.5em; height: 0.5em;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ignite-root .solution-card{
+      background: var(--sol-bg);
+      border: 1.5px solid var(--sol-border);
+      width: 25em;
+      padding: 0.9em 1.05em;
+    }
+    .ignite-root .solution-card .label{
+      font-family:'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.68em;
+      letter-spacing: 0.03em;
+      color: var(--sol-label);
+      margin-bottom: 0.35em;
+    }
+    .ignite-root .solution-card h3{
+      margin: 0 0 0.4em;
+      font-family:'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 1.25em;
+      line-height: 1.2;
+      color: var(--sol-text);
+    }
+    .ignite-root .solution-card p{
+      margin: 0 0 0.5em;
+      font-size: 0.98em;
+      line-height: 1.45;
+      color: #274A3D;
+    }
+    .ignite-root .solution-card .count{
+      font-size: 0.85em;
+      font-weight: 600;
+      color: #3E7F68;
+    }
+    .ignite-root .solution-card .agents{
+      font-size: 0.85em;
+      font-weight: 600;
+      color: #6B8F80;
+      margin-top: 0.15em;
+    }
+    .ignite-root .solution-card .open-note{
+      margin-top: 0.5em;
+      padding: 0.5em 0.6em;
+      background: var(--open-bg);
+      border: 1px dashed var(--open-border);
+      border-radius: 0.4em;
+    }
+    .ignite-root .solution-card .open-note .open-label{
+      display:block;
+      font-family:'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.6em;
+      letter-spacing: 0.03em;
+      color: var(--open-label);
+      margin-bottom: 0.25em;
+    }
+    .ignite-root .solution-card .open-note p{
+      margin: 0;
+      font-size: 0.66em;
+      line-height: 1.38;
+      color: var(--open-text);
+    }
+    .ignite-root .pain-card:hover, .ignite-root .pain-card:focus-visible,
+    .ignite-root .solution-card:hover, .ignite-root .solution-card:focus-visible{
+      box-shadow: 0 6px 18px rgba(16,22,58,0.10);
+    }
+    .ignite-root .pain-card.active, .ignite-root .solution-card.active{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(16,22,58,0.14);
+    }
+    .ignite-root .pain-card.dimmed, .ignite-root .solution-card.dimmed{
+      opacity: 0.4;
+    }
+    .ignite-root .engine-row.diagram-mode .solution-card{
+      position: absolute;
+      top: 0;
+    }
+    .ignite-root .engine-row:not(.diagram-mode){
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .ignite-root .engine-row:not(.diagram-mode) .solution-card{ width: 100%; max-width: 320px; }
+    .ignite-root .intro-overlay{
+      position: fixed;
+      inset: 0;
+      z-index: 900;
+      cursor: pointer;
+      background: transparent;
+    }
+    .ignite-root .intro-caption{
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 960;
+      background: rgba(16,22,58,0.88);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      padding: 24px 20px;
+      border-radius: 14px;
+      width: min(280px, calc(100% - 48px));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 180px;
+      box-shadow: 0 12px 32px rgba(16,22,58,0.3), 0 0 32px 6px rgba(82,140,255,0.35);
+    }
+    .ignite-root .intro-caption-actions{ flex-direction: column; align-items: flex-start; gap: 12px; }
+    .ignite-root .intro-caption-text{ font-size: 15px; }
+    .ignite-root .intro-caption-nav{ display: flex; justify-content: space-between; margin: 14px 0; }
+    .ignite-root .intro-nav-btn{
+      position: relative;
+      z-index: 902;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .ignite-root .intro-nav-btn:hover{ background: rgba(255,255,255,0.28); }
+    .ignite-root .intro-nav-btn:disabled{ opacity: 0.3; cursor: default; }
+    .ignite-root .intro-dim{
+      opacity: 0.25;
+      transition: opacity 300ms ease;
+    }
+    .ignite-root .intro-caption-text{
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .ignite-root .intro-caption-actions{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .ignite-root .intro-hint{
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.6);
+    }
+    .ignite-root .intro-restart-btn{
+      position: relative;
+      z-index: 902;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .ignite-root .intro-restart-btn:hover{ background: rgba(255,255,255,0.22); }
+    .ignite-root .spotlight-overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(16,22,58,0.6);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+    .ignite-root .spotlight-overlay.open{
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .ignite-root .spotlight-panel{
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      background: #fff;
+      border-radius: 14px;
+      width: calc(100% - 64px);
+      max-width: 96vw;
+      max-height: 94vh;
+      overflow-y: auto;
+      padding: 48px 32px 32px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.32);
+      font-size: 18px;
+      transform: translate(-50%,-50%);
+      transition: width 340ms cubic-bezier(.4,0,.2,1), left 340ms cubic-bezier(.4,0,.2,1), top 340ms cubic-bezier(.4,0,.2,1);
+    }
+    .ignite-root .spotlight-close{
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: #EEF0F5;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--navy);
+    }
+    .ignite-root .spotlight-close:hover{ background: #E2E6EF; }
+    .ignite-root #spotlightContent{ position: relative; }
+    .ignite-root .spotlight-lines{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 0;
+    }
+    .ignite-root .spotlight-lines path{
+      fill: none;
+      stroke-width: 2.4;
+    }
+    .ignite-root .spotlight-station-tag{
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.55em;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--navy-soft);
+      background: #EEF0F5;
+      padding: 0.25em 0.6em;
+      border-radius: 20px;
+      margin-bottom: 0.5em;
+    }
+    .ignite-root .spotlight-pain-grid{
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 26px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      transition: transform 260ms cubic-bezier(.4,0,.2,1), opacity 260ms cubic-bezier(.4,0,.2,1);
+    }
+    .ignite-root .spotlight-pain-grid.leaving{
+      transform: translateY(-16px);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .ignite-root .spotlight-pain-grid .pain-card{
+      flex: 0 0 230px;
+      width: 230px;
+    }
+    .ignite-root .spotlight-solution-wrap{ position: relative; z-index: 1; margin: 0 0 14px 0; }
+    .ignite-root .spotlight-solution-wrap:last-child{ margin-bottom: 0; }
+    .ignite-root .spotlight-solution-wrap .solution-card{ width: 100%; }
+    .ignite-root .spotlight-solution-row{
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .ignite-root .spotlight-solution-row .spotlight-solution-wrap{
+      flex: 1 1 240px;
+      min-width: 240px;
+      margin: 0;
+    }
+    .ignite-root .spotlight-panel .pain-card{ cursor: default; }
+    .ignite-root .spotlight-panel .pain-card:hover,
+    .ignite-root .spotlight-panel .solution-card:hover{ box-shadow: none; }
+    .ignite-root .spotlight-solution-wrap .solution-card{ cursor: pointer; }
+    .ignite-root .spotlight-solution-wrap .solution-card:hover{
+      box-shadow: 0 6px 18px rgba(16,22,58,0.12);
+    }
+    .ignite-root .spotlight-back{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: var(--navy-soft);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.62em;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 18px;
+    }
+    .ignite-root .spotlight-back:hover{ color: var(--navy); text-decoration: underline; }
+    .ignite-root .spotlight-detail{
+      opacity: 0;
+      transform: translateY(16px);
+      transition: transform 260ms cubic-bezier(.4,0,.2,1), opacity 260ms cubic-bezier(.4,0,.2,1);
+    }
+    .ignite-root .spotlight-detail.open{ opacity: 1; transform: translateY(0); }
+    .ignite-root .spotlight-detail-title{
+      margin: 0 0 4px;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 1em;
+      color: var(--navy);
+    }
+    .ignite-root .spotlight-detail-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .ignite-root .spotlight-detail-section{
+      border: 1.5px dashed #D3D8E4;
+      border-radius: 10px;
+      padding: 16px 18px;
+      min-height: 130px;
+    }
+    .ignite-root .spotlight-detail-section h4{
+      margin: 0 0 8px;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.82em;
+      color: var(--navy);
+    }
+    .ignite-root .spotlight-detail-section .placeholder{
+      font-size: 0.72em;
+      color: #9AA1B4;
+      font-style: italic;
+    }
+    .ignite-root .spotlight-detail-section .detail-list{
+      margin: 0;
+      padding-left: 1.1em;
+      font-size: 0.7em;
+      line-height: 1.5;
+      color: #3A4256;
+    }
+    .ignite-root .spotlight-detail-section .detail-list li{ margin-bottom: 0.5em; }
+    .ignite-root .spotlight-detail-section .detail-list li:last-child{ margin-bottom: 0; }
+    .ignite-root .spotlight-detail-section .detail-list strong{ color: var(--navy); font-weight: 700; }
+    @media (max-width: 980px){
+      .ignite-root .page{ height: auto; }
+      .ignite-root .stations-row{ display: block; }
+      .ignite-root .station-col{ margin-bottom: 20px; }
+      .ignite-root .station-col.foundation{ border-right: none; padding-right: 0; border-bottom: 1px dashed #D6DAE6; padding-bottom: 14px; }
+      .ignite-root .station-col:last-child{ margin-bottom: 0; }
+      .ignite-root .mini-grid, .ignite-root .mini-grid.cols-3{ column-count: 1; }
+      .ignite-root .engine-spacer{ height: 20px; }
+      .ignite-root svg.lines{ display:none; }
+    }
+</style>
+<style>
+  /* Overview-only embed: hide the Intro / per-station tabs, this view is fixed to Overview */
+  .ignite-root #tabs { display: none !important; }
+</style>
+</head>
+<body>
+<div class="ignite-root">
+<div class="page">
+
+  <header class="top">
+    <div class="eyebrow">Project Ignite · GTM Engine Design</div>
+
+  </header>
+
+  <div class="tabs" id="tabs" role="tablist">
+    <button class="tab-btn" role="tab" aria-selected="false" data-target="intro" tabindex="0">Intro</button>
+    <button class="tab-btn active" role="tab" aria-selected="true" data-target="overview" tabindex="0">Overview</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-target="00" tabindex="0">00 · Overarching Data &amp; Process</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-target="01" tabindex="0">01 · Patient Opportunity</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-target="02" tabindex="0">02 · Who Treats Them</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-target="03" tabindex="0">03 · Priority &amp; Access</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-target="04" tabindex="0">04 · Roles &amp; Sizing</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-target="05" tabindex="0">05 · Field Structure</button>
+  </div>
+
+  <div class="scale-wrapper" id="scaleWrapper">
+    <div class="board" id="board">
+      <svg class="lines" id="lines"></svg>
+
+      <div class="section-head current">Current Model Pain Points<span class="sub">Overarching data &amp; process + five stations, 23 stated pain points</span></div>
+
+      <div class="stations-row">
+
+        <div class="station-col foundation" data-station="00">
+          <div class="station-label">00 · Overarching Data &amp; Process<span class="foundation-note">impacts all five stations</span></div>
+          <div class="mini-grid">
+            <div class="pain-card" id="p0a" data-solution="E,H" tabindex="0">
+              <h3>No shared definitions across brands</h3>
+              <p>Pull the same data two different ways and you get two different answers. There's no shared list of data or business rules to settle which one is right. Five naming systems run side by side and don't mean the same thing.</p>
+              <span class="tag"><span class="dot" style="background:var(--e)"></span>Data Foundation</span>
+              <span class="tag"><span class="dot" style="background:var(--h)"></span>Governed Thresholds</span>
+            </div>
+
+            <div class="pain-card" id="p0b" data-solution="E,H" tabindex="0">
+              <h3>Each brand's data is walled off</h3>
+              <p>Dashboards and data access are built per brand. There's no way to see across brands, which is exactly what portfolio decisions need.</p>
+              <span class="tag"><span class="dot" style="background:var(--e)"></span>Data Foundation</span>
+              <span class="tag"><span class="dot" style="background:var(--h)"></span>Governed Thresholds</span>
+            </div>
+
+            <div class="pain-card" id="p21" data-solution="G,H" tabindex="0">
+              <h3>Changes are made in the context of a brand/indication, not the portfolio</h3>
+              <p>A brand can push through a change without knowing the cost to other brands or to comp and IC. What looks fine for one brand can cost three others their reps.</p>
+              <span class="tag"><span class="dot" style="background:var(--g)"></span>Scenario Simulation</span>
+              <span class="tag"><span class="dot" style="background:var(--h)"></span>Governed Thresholds</span>
+            </div>
+
+            <div class="pain-card" id="p22" data-solution="A,H" tabindex="0">
+              <h3>No line between what can proceed and what needs approval</h3>
+              <p>There's no tiered process for change. Every change gets the same manual negotiation, with no agreed threshold for what needs approval.</p>
+              <span class="tag"><span class="dot" style="background:var(--a)"></span>Versioned Record</span>
+              <span class="tag"><span class="dot" style="background:var(--h)"></span>Governed Thresholds</span>
+            </div>
+
+            <div class="pain-card" id="p23" data-solution="A,E" tabindex="0">
+              <h3>Work saved all over, no way to find it</h3>
+              <p>Work is saved all over the place with no structure, and time gets wasted searching for documentation and answers. When a framework changed last quarter, only 55% of the target list was retained (47% for PCP), and nothing recorded what changed or why.</p>
+              <span class="tag"><span class="dot" style="background:var(--a)"></span>Versioned Record</span>
+              <span class="tag"><span class="dot" style="background:var(--e)"></span>Data Foundation</span>
+            </div>
+
+            <div class="pain-card" id="p3" data-solution="E,H" tabindex="0">
+              <h3>Source data may come in manually and inconsistently</h3>
+              <p>A data feed can arrive once a month as a manual file, already several days old, with no fixed schedule to plan around. For example: PA data.</p>
+              <span class="tag"><span class="dot" style="background:var(--e)"></span>Data Foundation</span>
+              <span class="tag"><span class="dot" style="background:var(--h)"></span>Governed Thresholds</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="station-col" data-station="01">
+          <div class="station-label">01 · Patient Opportunity</div>
+
+          <div class="pain-card" id="p1" data-solution="A,E,G" tabindex="0">
+            <h3>The market definition isn't versioned</h3>
+            <p>When the market definition changes, nobody can tell if a different result is an expected change or a mistake.</p>
+            <span class="tag"><span class="dot" style="background:var(--a)"></span>Versioned Record</span>
+            <span class="tag"><span class="dot" style="background:var(--e)"></span>Data Foundation</span>
+            <span class="tag"><span class="dot" style="background:var(--g)"></span>Scenario Simulation</span>
+          </div>
+
+          <div class="pain-card" id="p2" data-solution="B,E,H" tabindex="0">
+            <h3>Data gaps are getting patched, but not recorded</h3>
+            <p>Patient data is incomplete by design. Field reps fill the gaps with knowledge that never gets written down.</p>
+            <span class="tag"><span class="dot" style="background:var(--b)"></span>Knowledge Captured</span>
+            <span class="tag"><span class="dot" style="background:var(--e)"></span>Data Foundation</span>
+            <span class="tag"><span class="dot" style="background:var(--h)"></span>Governed Thresholds</span>
+          </div>
+        </div>
+
+        <div class="station-col" data-station="02">
+          <div class="station-label">02 · Who Treats Them</div>
+
+          <div class="pain-card" id="p4" data-solution="A" tabindex="0">
+            <h3>Affiliation history isn't tracked</h3>
+            <p>HCP records don't track changes over time. It's unclear if a doctor has more than one main affiliation, which changes how territories get rolled up.</p>
+            <span class="tag"><span class="dot" style="background:var(--a)"></span>Versioned Record</span>
+          </div>
+
+          <div class="pain-card" id="p13" data-solution="B" tabindex="0">
+            <h3>A quarter of calls happen off the list</h3>
+            <p>Reps call on doctors well beyond their assigned list. About a quarter of all calls fall outside the formal target list, and none of that feeds back into the system.</p>
+            <span class="tag"><span class="dot" style="background:var(--b)"></span>Knowledge Captured</span>
+          </div>
+        </div>
+
+        <div class="station-col" data-station="03">
+          <div class="station-label">03 · Priority &amp; Access</div>
+          <div class="mini-grid">
+            <div class="pain-card" id="p5" data-solution="A" tabindex="0">
+              <h3>Process consistency is person-dependent</h3>
+              <p>A framework change can shake up the target list, and nobody records what changed or why.</p>
+              <span class="tag"><span class="dot" style="background:var(--a)"></span>Versioned Record</span>
+            </div>
+
+            <div class="pain-card" id="p14" data-solution="A" tabindex="0">
+              <h3>Brand segmentation is invisible above the brand</h3>
+              <p>Brands run their own segmentation and map it into the shared framework, but the field force design team can't see what's actually happening underneath.</p>
+              <span class="tag"><span class="dot" style="background:var(--a)"></span>Versioned Record</span>
+            </div>
+
+            <div class="pain-card" id="p15" data-solution="C" tabindex="0">
+              <h3>Access isn't built into the workflow</h3>
+              <p>Market access data shows up in only one system and nowhere else. A new access flag is in progress, but only for one brand so far.</p>
+              <span class="tag"><span class="dot" style="background:var(--c)"></span>Access-Weighted</span>
+            </div>
+
+            <div class="pain-card" id="p6" data-solution="C" tabindex="0">
+              <h3>Effort doesn't correlate to access</h3>
+              <p>Reps call more on doctors with worse insurance coverage than on the ones with the best. Pay structures make this worse, not better.</p>
+              <span class="tag"><span class="dot" style="background:var(--c)"></span>Access-Weighted</span>
+            </div>
+
+            <div class="pain-card" id="p17" data-solution="C" tabindex="0">
+              <h3>An access win has no route into field action</h3>
+              <p>RADs win formulary access, but there's no set way for that win to reach the reps who could act on it.</p>
+              <span class="tag"><span class="dot" style="background:var(--c)"></span>Access-Weighted</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="station-col" data-station="04">
+          <div class="station-label">04 · Roles &amp; Sizing</div>
+          <div class="mini-grid">
+            <div class="pain-card" id="p7" data-solution="D" tabindex="0">
+              <h3>Sizing is too sales-rep-centric</h3>
+              <p>Market access, RADs, MSLs, reimbursement, nurse educators, and contracting all sit outside today's sizing methods, which are based only on call activity.</p>
+              <span class="tag"><span class="dot" style="background:var(--d)"></span>Real Sizing Method</span>
+            </div>
+
+            <div class="pain-card" id="p8" data-solution="E" tabindex="0">
+              <h3>No shared sizing standards across brands</h3>
+              <p>A ZIP belongs to one territory per brand, but that's never written down. Valuation weights differ by brand, and some brands skip the calculation entirely. Resizing cycles range from yearly to once every few years, with no shared standard for any of it.</p>
+              <span class="tag"><span class="dot" style="background:var(--e)"></span>Data Foundation</span>
+            </div>
+
+            <div class="pain-card" id="p9" data-solution="C" tabindex="0">
+              <h3>Unresolved prior authorizations cap real demand</h3>
+              <p>About half of escalated prior authorizations never get resolved. An unsubmitted authorization behind a written script is the single biggest missed opportunity.</p>
+              <span class="tag"><span class="dot" style="background:var(--c)"></span>Access-Weighted</span>
+            </div>
+
+            <div class="pain-card" id="p10" data-solution="B" tabindex="0">
+              <h3>New roles bypass sizing</h3>
+              <p>Area leaders propose new field roles. They own the P&amp;L but aren't sizing experts. A role can get approved with almost no data behind it, and the sizing team finds out after the fact.</p>
+              <span class="tag"><span class="dot" style="background:var(--b)"></span>Knowledge Captured</span>
+            </div>
+
+            <div class="pain-card" id="p11" data-solution="D" tabindex="0">
+              <h3>No clear payoff</h3>
+              <p>There's no way to see how much value comes from one more call, and no cost view at the territory level.</p>
+              <span class="tag"><span class="dot" style="background:var(--d)"></span>Real Sizing Method</span>
+            </div>
+
+            <div class="pain-card" id="p16" data-solution="D" tabindex="0">
+              <h3>Field reimbursement sizing has no method</h3>
+              <p>Staffing follows prior-authorization volume, not a real sizing method, and the work is fully outsourced. Since the role is non-promotional, it can't be tied to prescription volume either, so there's no lever to manage it by.</p>
+              <span class="tag"><span class="dot" style="background:var(--d)"></span>Real Sizing Method</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="station-col" data-station="05">
+          <div class="station-label">05 · Field Structure</div>
+
+          <div class="pain-card" id="p12" data-solution="B" tabindex="0">
+            <h3>Every territory is assessed by hand</h3>
+            <p>Two people manually review every territory using local, institutional knowledge that doesn't get recorded or tracked.</p>
+            <span class="tag"><span class="dot" style="background:var(--b)"></span>Knowledge Captured</span>
+          </div>
+
+          <div class="pain-card" id="p20" data-solution="E,H,B" tabindex="0">
+            <h3>Institution concentration is invisible</h3>
+            <p>Territory value is built from doctor-level data alone. It ignores hospital systems, so two similar-looking territories can have very different value, and nobody sees that until it's too late. Worst in oncology and cardiovascular.</p>
+            <span class="tag"><span class="dot" style="background:var(--e)"></span>Data Foundation</span>
+            <span class="tag"><span class="dot" style="background:var(--h)"></span>Governed Thresholds</span>
+            <span class="tag"><span class="dot" style="background:var(--b)"></span>Knowledge Captured</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="engine-spacer" style="display:flex;align-items:center;"><div style="width:100%;border-top:1.5px dashed #C7CCDC;"></div></div>
+
+      <div class="section-head engine">GTM Engine<span class="sub">Seven capabilities that close the gaps</span></div>
+
+      <div class="engine-row" id="engineRow">
+
+        <div class="solution-card" id="sol-A" data-solution="A" tabindex="0">
+          <h3>A Versioned, Traceable Record</h3>
+          <p>Definitions, methods, and history are saved with version tracking. A rerun after a change reads as an update, not a defect. A brand's own approach stays visible to the whole team, and anything can be looked up on demand instead of searched for.</p>
+          <div class="count">Resolves 6 pain points</div>
+          <div class="agents">1 agent</div>
+        </div>
+
+        <div class="solution-card" id="sol-B" data-solution="B" tabindex="0">
+          <h3>Field Knowledge, Captured Instead of Lost</h3>
+          <p>The knowledge that today only lives in people's heads gets written down and made searchable, instead of disappearing.</p>
+          <div class="count">Resolves 5 pain points</div>
+          <div class="agents">1 agent</div>
+        </div>
+
+        <div class="solution-card" id="sol-C" data-solution="C" tabindex="0">
+          <h3>Access Built Into Prioritization From the Start</h3>
+          <p>Payer access and reimbursement data feed directly into targeting, reaching every brand and every part of the workflow. Access wins get a clear path into field action.</p>
+          <div class="count">Resolves 4 pain points</div>
+          <div class="agents">0 agents</div>
+        </div>
+
+        <div class="solution-card" id="sol-D" data-solution="D" tabindex="0">
+          <h3>A Real Method Sizes Every Role</h3>
+          <p>Every role, sales and non-sales, gets sized with a real method. Response curves and workload logic replace guesswork.</p>
+          <div class="count">Resolves 3 pain points</div>
+          <div class="agents">1 agent</div>
+        </div>
+
+        <div class="solution-card" id="sol-G" data-solution="G" tabindex="0">
+          <h3>Scenario Simulation Before Commitment</h3>
+          <p>Every proposed change runs as a simulation first, showing impact and disruption across brands before anything gets executed.</p>
+          <div class="count">Resolves 2 pain points</div>
+          <div class="agents">1 agent</div>
+        </div>
+
+      </div>
+
+      <div class="foundation-tier" id="foundationTier">
+        <div class="solution-card foundation-band" id="sol-E" data-solution="E" tabindex="0">
+          <h3>A Shared, Consistent Data Foundation</h3>
+          <p>One shared set of definitions replaces five naming systems and brand-by-brand rules. One valuation method, one refresh schedule, and cross-brand data access replace answers that used to differ by brand. Every input, including feeds like PA data, arrives on a defined, automated schedule instead of a manual file with no set cadence. MDM and HCP affiliation are mastered upstream.</p>
+          <div class="count">Resolves 8 pain points</div>
+          <div class="agents">1 agent</div>
+        </div>
+
+        <div class="solution-card foundation-band" id="sol-H" data-solution="H" tabindex="0">
+          <h3>Governed Metrics and Decision Thresholds</h3>
+          <p>Changes get checked against clear thresholds. Routine changes pass automatically. Critical or flagged changes go to a named approver, and named owners are responsible for committing each recommendation to execution.</p>
+          <div class="count">Resolves 7 pain points</div>
+          <div class="agents">0 agents</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="intro-overlay" id="introOverlay" style="display:none;"></div>
+<div class="intro-caption" id="introCaption" style="display:none;">
+  <div class="intro-caption-text" id="introCaptionText"></div>
+  <div class="intro-caption-nav">
+    <button type="button" class="intro-nav-btn" id="introBackBtn" aria-label="Back">←</button>
+    <button type="button" class="intro-nav-btn" id="introForwardBtn" aria-label="Forward">→</button>
+  </div>
+  <div class="intro-caption-actions">
+    <span class="intro-hint">Click anywhere to continue</span>
+    <button type="button" class="intro-restart-btn" id="introRestartBtn">Restart</button>
+  </div>
+</div>
+<div class="spotlight-overlay" id="spotlightOverlay">
+  <div class="spotlight-panel" id="spotlightPanel">
+    <button class="spotlight-close" id="spotlightClose" aria-label="Close">×</button>
+    <div id="spotlightContent"></div>
+  </div>
+</div>
+</div>
+
+<script>
+function initIgnitePainMap(scope) {
+  var RESOLVED = { A:'#3B5BDB', B:'#9B5DE5', C:'#0F9E8E', D:'#E08A1E', E:'#52606D', G:'#0EA5C7', H:'#9C5B3C' };
+
+  var q = function(sel){ return scope.querySelector(sel); };
+  var qa = function(sel){ return Array.prototype.slice.call(scope.querySelectorAll(sel)); };
+
+  var pageEl = q('.page');
+  var board = q('#board');
+  var scaleWrapper = q('#scaleWrapper');
+  var stationsRow = q('.stations-row');
+  var engineRow = q('#engineRow');
+  var svg = q('#lines');
+  var painCards = qa('.pain-card');
+  var solCards = qa('.solution-card');
+  var FOUNDATION_KEYS = ['E','H'];
+  var diagramSolCards = solCards.filter(function(c){ return FOUNDATION_KEYS.indexOf(c.getAttribute('data-solution')) === -1; });
+  var stationCols = qa('.station-col');
+  var tabButtons = qa('.tab-btn');
+  var currentSub = q('.section-head.current .sub');
+  var engineSub = q('.section-head.engine .sub');
+
+  var currentMode = 'overview';
+
+  function isDiagramMode(){
+    return window.innerWidth > 980;
+  }
+
+  function visiblePainCards(){
+    return painCards.filter(function(c){ return c.offsetParent !== null; });
+  }
+  function visibleSolCards(){
+    return diagramSolCards.filter(function(c){ return c.offsetParent !== null; });
+  }
+  function getSolutionKeys(el){
+    return el.getAttribute('data-solution').split(',').map(function(s){ return s.trim(); });
+  }
+
+  function groupPainCardsBySolution(){
+    var map = {};
+    visiblePainCards().forEach(function(c){
+      getSolutionKeys(c).forEach(function(s){
+        if(!map[s]) map[s] = [];
+        map[s].push(c);
+      });
+    });
+    return map;
+  }
+
+  function layout(){
+    svg.innerHTML = '';
+    var vSol = visibleSolCards();
+    var vPain = visiblePainCards();
+
+    if(!isDiagramMode()){
+      engineRow.classList.remove('diagram-mode');
+      vSol.forEach(function(sc){
+        sc.style.position = '';
+        sc.style.left = '';
+        sc.style.top = '';
+      });
+      return;
+    }
+    engineRow.classList.add('diagram-mode');
+
+    var boardRect = board.getBoundingClientRect();
+    var byGroup = groupPainCardsBySolution();
+
+    var target = {};
+    vSol.forEach(function(sc){
+      var key = sc.getAttribute('data-solution');
+      var members = byGroup[key] || [];
+      var avg = 0;
+      members.forEach(function(m){
+        var r = m.getBoundingClientRect();
+        avg += (r.left + r.width/2) - boardRect.left;
+      });
+      avg = members.length ? avg / members.length : 0;
+      target[key] = avg;
+    });
+
+    var order = vSol.slice().sort(function(a,b){
+      return target[a.getAttribute('data-solution')] - target[b.getAttribute('data-solution')];
+    });
+
+    var totalCardWidth = 0;
+    order.forEach(function(sc){ totalCardWidth += sc.offsetWidth; });
+    var boardWidthNow = boardRect.width;
+    var midGap = 48;
+    var neededMid = totalCardWidth + midGap * (order.length - 1);
+    var sideMargin = (boardWidthNow - neededMid) / 2;
+
+    var cursor = 0;
+    var lefts = {};
+    if(sideMargin >= 12){
+      cursor = sideMargin;
+      order.forEach(function(sc){
+        var key = sc.getAttribute('data-solution');
+        lefts[key] = cursor;
+        cursor += sc.offsetWidth + midGap;
+      });
+    } else {
+      var gap = 12;
+      order.forEach(function(sc){
+        var key = sc.getAttribute('data-solution');
+        var w = sc.offsetWidth;
+        var t = target[key] - w/2;
+        var left = Math.max(t, cursor);
+        lefts[key] = left;
+        cursor = left + w + gap;
+      });
+
+      var minLeft = Math.min.apply(null, Object.keys(lefts).map(function(k){ return lefts[k]; }));
+      if(minLeft > 0){
+        Object.keys(lefts).forEach(function(k){ lefts[k] -= minLeft; });
+        cursor -= minLeft;
+      }
+    }
+
+    order.forEach(function(sc){
+      var key = sc.getAttribute('data-solution');
+      sc.style.position = 'absolute';
+      sc.style.left = lefts[key] + 'px';
+      sc.style.top = '0px';
+    });
+
+    var tallest = 0;
+    vSol.forEach(function(sc){ tallest = Math.max(tallest, sc.offsetHeight); });
+    engineRow.style.minHeight = tallest + 'px';
+    engineRow._neededWidth = cursor;
+
+    var boardRect2 = board.getBoundingClientRect();
+    vPain.forEach(function(pc){
+      getSolutionKeys(pc).forEach(function(key){
+        var sc = scope.querySelector('#sol-' + key);
+        if(!sc || sc.offsetParent === null) return;
+        var pr = pc.getBoundingClientRect();
+        var sr = sc.getBoundingClientRect();
+
+        var x1 = pr.left + pr.width/2 - boardRect2.left;
+        var y1 = pr.bottom - boardRect2.top;
+        var x2 = sr.left + sr.width/2 - boardRect2.left;
+        var y2 = sr.top - boardRect2.top;
+        var my = (y1 + y2) / 2;
+
+        var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+        var d = 'M ' + x1 + ' ' + y1 + ' C ' + x1 + ' ' + my + ', ' + x2 + ' ' + my + ', ' + x2 + ' ' + y2;
+        path.setAttribute('d', d);
+        path.setAttribute('stroke', RESOLVED[key]);
+        path.setAttribute('opacity', getComputedStyle(document.documentElement).getPropertyValue('--line-idle').trim());
+        path.setAttribute('data-solution', key);
+        path.setAttribute('data-pain', pc.id);
+        svg.appendChild(path);
+      });
+    });
+  }
+
+  function setActive(solutionKeys, painId){
+    var allPaths = svg.querySelectorAll('path');
+    svg.classList.toggle('lines-on-top', !!(solutionKeys && solutionKeys.length));
+
+    if(!solutionKeys || !solutionKeys.length){
+      allPaths.forEach(function(p){ p.classList.remove('active'); p.style.opacity = getComputedStyle(document.documentElement).getPropertyValue('--line-idle').trim(); });
+      painCards.forEach(function(c){ c.classList.remove('active','dimmed'); });
+      solCards.forEach(function(c){ c.classList.remove('active','dimmed'); });
+      return;
+    }
+
+    allPaths.forEach(function(p){
+      var match = solutionKeys.indexOf(p.getAttribute('data-solution')) !== -1 && (!painId || p.getAttribute('data-pain') === painId);
+      p.classList.toggle('active', match);
+      p.style.opacity = match
+        ? getComputedStyle(document.documentElement).getPropertyValue('--line-active').trim()
+        : getComputedStyle(document.documentElement).getPropertyValue('--line-dim').trim();
+    });
+    painCards.forEach(function(c){
+      if(c.offsetParent === null) return;
+      var shares = getSolutionKeys(c).some(function(k){ return solutionKeys.indexOf(k) !== -1; });
+      var match = shares && (!painId || c.id === painId);
+      c.classList.toggle('active', match);
+      c.classList.toggle('dimmed', !match);
+    });
+    solCards.forEach(function(c){
+      if(c.offsetParent === null) return;
+      var match = solutionKeys.indexOf(c.getAttribute('data-solution')) !== -1;
+      c.classList.toggle('active', match);
+      c.classList.toggle('dimmed', !match);
+    });
+  }
+
+  painCards.forEach(function(c){
+    c.addEventListener('mouseenter', function(){ if(isDiagramMode()) setActive(getSolutionKeys(c), c.id); });
+    c.addEventListener('mouseleave', function(){ if(isDiagramMode()) setActive(null); });
+    c.addEventListener('focus', function(){ setActive(getSolutionKeys(c), c.id); });
+    c.addEventListener('blur', function(){ setActive(null); });
+    c.addEventListener('click', function(){ toggleSpotlight(c); });
+  });
+
+  solCards.forEach(function(c){
+    var key = c.getAttribute('data-solution');
+    c.addEventListener('mouseenter', function(){ if(isDiagramMode()) setActive([key], null); });
+    c.addEventListener('mouseleave', function(){ if(isDiagramMode()) setActive(null); });
+    c.addEventListener('focus', function(){ setActive([key], null); });
+    c.addEventListener('blur', function(){ setActive(null); });
+    c.addEventListener('click', function(){ toggleSpotlight(c); });
+  });
+
+  var spotlightOverlay = q('#spotlightOverlay');
+  var spotlightContent = q('#spotlightContent');
+  var spotlightClose = q('#spotlightClose');
+  var spotlightOpenId = null;
+  var spotlightMemberCount = 0;
+  var spotlightSolutionCount = 0;
+  var spotlightHomeAnchor = null;
+  var bodyOverflowBeforeSpotlight = '';
+
+  function buildCardClone(el){
+    var clone = el.cloneNode(true);
+    clone.removeAttribute('style');
+    clone.removeAttribute('tabindex');
+    clone.classList.remove('active','dimmed');
+    return clone;
+  }
+
+  var STATION_TAG_OVERRIDES = { '00': '00 \u00b7 Data & Process' };
+
+  function getStationLabelFor(el){
+    var col = el.closest('.station-col');
+    if(!col) return '';
+    var stationKey = col.getAttribute('data-station');
+    if(stationKey && STATION_TAG_OVERRIDES[stationKey]) return STATION_TAG_OVERRIDES[stationKey];
+    var labelEl = col.querySelector('.station-label');
+    if(!labelEl) return '';
+    return (labelEl.childNodes.length ? labelEl.childNodes[0].textContent : '').trim();
+  }
+
+  function positionPanelNear(rect, panelWidthPx, instant){
+    if(instant === undefined) instant = true;
+    var panelMaxW = panelWidthPx || Math.min(860, window.innerWidth - 64);
+    var panelMaxH = window.innerHeight * 0.94;
+    var halfW = panelMaxW / 2;
+    var halfH = panelMaxH / 2;
+
+    var anchorX = rect.left + rect.width / 2;
+    var anchorY = rect.top + rect.height / 2;
+
+    var minX = halfW + 16;
+    var maxX = window.innerWidth - halfW - 16;
+    var minY = halfH + 16;
+    var maxY = window.innerHeight - halfH - 16;
+
+    anchorX = (minX <= maxX) ? Math.min(Math.max(anchorX, minX), maxX) : window.innerWidth / 2;
+    anchorY = (minY <= maxY) ? Math.min(Math.max(anchorY, minY), maxY) : window.innerHeight / 2;
+
+    var spotlightPanel = q('#spotlightPanel');
+    if(instant){
+      spotlightPanel.style.transition = 'none';
+      spotlightPanel.style.left = anchorX + 'px';
+      spotlightPanel.style.top = anchorY + 'px';
+      spotlightPanel.offsetHeight;
+      spotlightPanel.style.transition = '';
+    } else {
+      spotlightPanel.style.left = anchorX + 'px';
+      spotlightPanel.style.top = anchorY + 'px';
+    }
+  }
+
+  function computePanelWidth(memberCount, solutionCount){
+    var cardW = 230, solW = 420, gap = 14, pad = 64;
+    var neededForCards = pad + memberCount * cardW + Math.max(0, memberCount - 1) * gap;
+    var neededForSolutions = solutionCount > 1
+      ? pad + solutionCount * solW + Math.max(0, solutionCount - 1) * gap
+      : 0;
+    var minWidth = 520;
+    var maxWidth = window.innerWidth * 0.94;
+    var needed = Math.max(neededForCards, neededForSolutions, minWidth);
+    return Math.min(needed, maxWidth);
+  }
+
+  function drawSpotlightLines(){
+    var existing = spotlightContent.querySelector('.spotlight-lines');
+    if(existing) existing.remove();
+
+    var svgNS = 'http://www.w3.org/2000/svg';
+    var svgEl = document.createElementNS(svgNS, 'svg');
+    svgEl.setAttribute('class', 'spotlight-lines');
+    spotlightContent.insertBefore(svgEl, spotlightContent.firstChild);
+
+    var contentRect = spotlightContent.getBoundingClientRect();
+    var painEls = Array.prototype.slice.call(spotlightContent.querySelectorAll('.pain-card'));
+    var solEls = Array.prototype.slice.call(spotlightContent.querySelectorAll('.solution-card'));
+
+    painEls.forEach(function(pc){
+      var pcKeys = pc.getAttribute('data-solution').split(',').map(function(s){ return s.trim(); });
+      solEls.forEach(function(sc){
+        var scKey = sc.getAttribute('data-solution');
+        if(pcKeys.indexOf(scKey) === -1) return;
+
+        var pr = pc.getBoundingClientRect();
+        var sr = sc.getBoundingClientRect();
+        var x1 = pr.left + pr.width/2 - contentRect.left;
+        var y1 = pr.bottom - contentRect.top;
+        var x2 = sr.left + sr.width/2 - contentRect.left;
+        var y2 = sr.top - contentRect.top;
+        var my = (y1 + y2) / 2;
+
+        var path = document.createElementNS(svgNS, 'path');
+        var d = 'M ' + x1 + ' ' + y1 + ' C ' + x1 + ' ' + my + ', ' + x2 + ' ' + my + ', ' + x2 + ' ' + y2;
+        path.setAttribute('d', d);
+        path.setAttribute('stroke', RESOLVED[scKey] || '#999');
+        path.setAttribute('opacity', '0.55');
+        svgEl.appendChild(path);
+      });
+    });
+  }
+
+  function openSpotlight(sourceEl){
+    var isSolution = sourceEl.classList.contains('solution-card');
+    spotlightOpenId = sourceEl.id;
+    spotlightContent.innerHTML = '';
+
+    var members, solutionKeys;
+    if(isSolution){
+      var key = sourceEl.getAttribute('data-solution');
+      solutionKeys = [key];
+      members = painCards.filter(function(c){
+        return getSolutionKeys(c).indexOf(key) !== -1 && c.offsetParent !== null;
+      });
+    } else {
+      members = [sourceEl];
+      solutionKeys = getSolutionKeys(sourceEl);
+    }
+
+    spotlightMemberCount = members.length;
+    spotlightSolutionCount = solutionKeys.length;
+
+    if(members.length){
+      var grid = document.createElement('div');
+      grid.className = 'spotlight-pain-grid';
+      members.forEach(function(m){
+        var clone = buildCardClone(m);
+        var stationLabel = getStationLabelFor(m);
+        if(stationLabel){
+          var tag = document.createElement('div');
+          tag.className = 'spotlight-station-tag';
+          tag.textContent = stationLabel;
+          clone.insertBefore(tag, clone.firstChild);
+        }
+        grid.appendChild(clone);
+      });
+      spotlightContent.appendChild(grid);
+      grid.addEventListener('scroll', function(){ requestAnimationFrame(drawSpotlightLines); });
+    }
+
+    var orderedKeys = solutionKeys.slice().sort(function(a, b){
+      var aF = FOUNDATION_KEYS.indexOf(a) !== -1;
+      var bF = FOUNDATION_KEYS.indexOf(b) !== -1;
+      if(aF === bF) return 0;
+      return aF ? 1 : -1;
+    });
+
+    var solutionContainer;
+    if(orderedKeys.length > 1){
+      solutionContainer = document.createElement('div');
+      solutionContainer.className = 'spotlight-solution-row';
+      spotlightContent.appendChild(solutionContainer);
+    } else {
+      solutionContainer = spotlightContent;
+    }
+
+    orderedKeys.forEach(function(k){
+      var sol = scope.querySelector('#sol-' + k);
+      if(sol){
+        var solWrap = document.createElement('div');
+        solWrap.className = 'spotlight-solution-wrap';
+        solWrap.setAttribute('data-solution-key', k);
+        var solClone = buildCardClone(sol);
+        solWrap.appendChild(solClone);
+        solutionContainer.appendChild(solWrap);
+
+        solClone.addEventListener('click', function(e){
+          e.stopPropagation();
+          openSolutionDetail(k);
+        });
+      }
+    });
+
+    var panelWidth = computePanelWidth(members.length, solutionKeys.length);
+    var panelEl = q('#spotlightPanel');
+    panelEl.style.width = panelWidth + 'px';
+    panelEl.onscroll = function(){ requestAnimationFrame(drawSpotlightLines); };
+    positionPanelNear(sourceEl.getBoundingClientRect(), panelWidth);
+    spotlightHomeAnchor = { left: parseFloat(panelEl.style.left), top: parseFloat(panelEl.style.top) };
+
+    bodyOverflowBeforeSpotlight = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    spotlightOverlay.classList.add('open');
+
+    requestAnimationFrame(function(){ requestAnimationFrame(drawSpotlightLines); });
+  }
+
+  var DETAIL_SECTIONS = ['Ownership', 'Inputs', 'Mechanism'];
+
+  var SOLUTION_DEPENDENCIES = {
+    A: {
+      'Ownership': [
+        'Field force design lead: owns the segmentation method and its documented decisions',
+        'A&I / secondary data analytics: owns market definition versioning'
+      ],
+      'Inputs': [
+        'Market/patient definition versions (one brand\u2019s revision is the concrete case in progress)',
+        'HCP affiliation history with effective dating',
+        'Segmentation method and decision log'
+      ],
+      'Mechanism': [
+        "Every market definition, segmentation method, or affiliation change gets a version tag, timestamp, and stated rationale before it's used downstream, enforced as a standing rule rather than manual discipline",
+        'Every scored record carries provenance (run date, inputs, weights), captured automatically as the record is generated',
+        'Publication halts automatically if the traceability chain is incomplete, a fixed check, not a judgment call',
+        '<strong>Librarian Agent:</strong> A centralized knowledge agent that preserves GTM history while enabling users to find, understand and reuse prior work'
+      ]
+    },
+    B: {
+      'Ownership': [
+        'Field force design lead: owns the capture system and ensures logged input actually feeds back into segmentation and role decisions',
+        'Area leadership: owns attaching a rationale to any new role request before it proceeds'
+      ],
+      'Inputs': [
+        'Rep-logged field corrections and local knowledge (flagging a hospital-routed prescriber, a regional exception, a tiering override)',
+        "Business-planning exercise feedback text that's already collected today but doesn't feed the model",
+        'MSL tiering override reasons'
+      ],
+      'Mechanism': [
+        "A correction logged by a rep is written into segmentation at the moment it's made, a standing capture step rather than a separate task",
+        'A new role request is blocked from proceeding until a rationale is attached, a fixed gate, not a judgment call',
+        '<strong>A capture agent</strong> takes a rep\'s free-text correction and translates it into a structured, usable input, since this requires interpreting unstructured language, not just applying a rule'
+      ]
+    },
+    C: {
+      'Ownership': [
+        'Market access / RAD lead: owns defining what counts as favorable access and the route from an access win to field action',
+        'Field force design lead: owns embedding access into targeting and call-planning workflows'
+      ],
+      'Inputs': [
+        'Payer access data (formulary position, prior-authorization burden, expected approval), today limited to one field system for one brand',
+        'RAD-secured access wins, which no system currently captures',
+        'Covered-lives percentage per HCP'
+      ],
+      'Mechanism': [
+        'Access data feeds directly into targeting and value calculations across every brand and every workflow surface, a standing rule extending existing plumbing rather than a bolt-on',
+        'An access win logged by a RAD routes automatically to the reps who could act on it, a fixed handoff rather than word of mouth',
+        'Expected-approval score and expected-share (given payer mix) are computed per HCP as standing calculated fields once payer mix data exists'
+      ]
+    },
+    D: {
+      'Ownership': [
+        'Field force design lead: owns the sizing parameters as a versioned set, mROI threshold, working days, calls per day, frequency ceiling, loaded rep cost, gross margin, discount rate',
+        'Finance: owns confirming cost and value-realization inputs as finance-grade figures'
+      ],
+      'Inputs': [
+        'Response curve, value captured per incremental call, named as the single most important missing input',
+        'Loaded rep cost, calls per day, selling days, frequency ceiling',
+        'Role-specific customer universe and tiers (KOLs for MSLs, health systems for KAMs, payer/access stakeholders for FRMs)',
+        'mROI threshold, gross margin, discount rate'
+      ],
+      'Mechanism': [
+        'Every role, sales and non-sales, is triangulated across multiple sizing methods (share of voice, target coverage, affordable coverage, promo-response, portfolio sizing), a fixed methodological process rather than a one-off judgment call',
+        'Non-sales, non-promotional roles are sized on workload/target-coverage logic, deliberately not tied to revenue, a compliance rule enforced structurally',
+        '<strong>A sizing-recommendation agent</strong> runs all five methods against the same universe and flags where they diverge beyond a set tolerance, since reconciling five different outputs requires interpretation, not a fixed rule'
+      ]
+    },
+    E: {
+      'Ownership': [
+        'A&I / data function: owns the shared definitions, valuation methodology, and refresh-cadence standard',
+        'Enterprise architecture: owns cross-brand read access',
+        'Market access analytics: owns the prior-authorization feed reaching the warehouse at usable grain'
+      ],
+      'Inputs': [
+        "A full source inventory: what's available, at what grain, on what refresh (the named provider chain includes Galaxy on Snowflake, IQVIA, IQVIA LAD, MMIT, Precision, Optum, Symphony, Veeva Compass, CareSet, Tesselon, Precision AQ)",
+        'One naming standard reconciling the five parallel tiering vocabularies in use today',
+        'MDM golden-record identifiers and HCP affiliation history'
+      ],
+      'Mechanism': [
+        'Identifiers are resolved upstream through master data, a structural rule so the engine never performs its own entity resolution',
+        'Each required input carries a defined grain, refresh cadence, history depth, and behavior when absent or stale, enforced as a standing input contract',
+        'Cross-brand read access is implemented as a stated dependency rather than granted case by case',
+        '<strong>A data-quality agent</strong> flags when a dataset is missing critical fields or has gone stale, since judging whether a dataset is still good enough to use requires more than a fixed rule'
+      ]
+    },
+    G: {
+      'Ownership': [
+        'Field force design lead with the IC owner: owns setting the change-impact thresholds and what counts as disruption',
+        'A named cross-brand decision owner: owns approving or declining a scenario that costs another brand coverage'
+      ],
+      'Inputs': [
+        'Current committed alignment, territory, and role structure for every brand (the shared human-capital pool)',
+        'Named-HCP valuation, never averages, for every affected brand',
+        'Structural constraints (for example, a ceiling on how many brands one HCP may carry)'
+      ],
+      'Mechanism': [
+        'Any proposed change runs as a simulation first, returning impact and disruption together, at area and national level, before anything executes, a fixed sequencing rule',
+        'A change that benefits one brand while costing others is reported as a net negative automatically and cannot be unilaterally taken, it routes to the named cross-brand owner',
+        '<strong>A simulation agent</strong> runs the proposed change against the shared human-capital model and produces the trade-off for a human to decide on, since weighing a genuinely novel scenario requires synthesis, not a fixed formula'
+      ]
+    },
+    H: {
+      'Ownership': [
+        'Field force design lead with the IC owner: owns setting change classes (additive vs. requiring approval) and the approval thresholds (volume, HCP count, IC impact)',
+        'A named approver per change class: owns the actual approve/decline decision'
+      ],
+      'Inputs': [
+        'Declared locked decisions, the constraints the engine operates inside',
+        'Volume, HCP-count, and IC-impact thresholds, versioned like any other parameter',
+        'One shared valuation and refresh-cadence standard, fed from the Data Foundation solution'
+      ],
+      'Mechanism': [
+        'Every change request is classified against the agreed thresholds automatically, a fixed rule rather than a judgment call',
+        'Changes below threshold pass automatically; changes above hold for the named approver, enforced structurally',
+        'Partial adoption invalidates a scenario automatically. A re-run is required rather than assuming already-approved changes still hold'
+      ]
+    }
+  };
+
+  function reclampPanelWidth(newWidthPx){
+    var panelEl = q('#spotlightPanel');
+    var curLeft = parseFloat(panelEl.style.left);
+    var curTop = parseFloat(panelEl.style.top);
+    if(isNaN(curLeft)) curLeft = window.innerWidth / 2;
+    if(isNaN(curTop)) curTop = window.innerHeight / 2;
+    panelEl.style.width = newWidthPx + 'px';
+    positionPanelNear({ left: curLeft, top: curTop, width: 0, height: 0 }, newWidthPx, false);
+  }
+
+  function buildDetailInto(activeWrap, key){
+    var back = document.createElement('button');
+    back.className = 'spotlight-back';
+    back.type = 'button';
+    back.textContent = '\u2190 Back to pain points';
+    back.addEventListener('click', function(e){
+      e.stopPropagation();
+      closeSolutionDetail();
+    });
+    activeWrap.insertBefore(back, activeWrap.firstChild);
+
+    var detail = document.createElement('div');
+    detail.className = 'spotlight-detail';
+
+    var title = document.createElement('div');
+    title.className = 'spotlight-detail-title';
+    title.textContent = 'Solution Dependencies';
+    detail.appendChild(title);
+
+    var detailGrid = document.createElement('div');
+    detailGrid.className = 'spotlight-detail-grid';
+    var content = SOLUTION_DEPENDENCIES[key];
+    DETAIL_SECTIONS.forEach(function(name){
+      var section = document.createElement('div');
+      section.className = 'spotlight-detail-section';
+      var h4 = document.createElement('h4');
+      h4.textContent = name;
+      section.appendChild(h4);
+
+      var items = content && content[name];
+      if(items && items.length){
+        var ul = document.createElement('ul');
+        ul.className = 'detail-list';
+        items.forEach(function(text){
+          var li = document.createElement('li');
+          li.innerHTML = text;
+          ul.appendChild(li);
+        });
+        section.appendChild(ul);
+      } else {
+        var placeholder = document.createElement('div');
+        placeholder.className = 'placeholder';
+        placeholder.textContent = 'To be added';
+        section.appendChild(placeholder);
+      }
+      detailGrid.appendChild(section);
+    });
+    detail.appendChild(detailGrid);
+    activeWrap.appendChild(detail);
+
+    detail.offsetHeight;
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ detail.classList.add('open'); }); });
+  }
+
+  function openSolutionDetail(key){
+    var grid = spotlightContent.querySelector('.spotlight-pain-grid');
+    var existingLines = spotlightContent.querySelector('.spotlight-lines');
+    var wraps = spotlightContent.querySelectorAll('.spotlight-solution-wrap');
+    wraps.forEach(function(w){
+      w.style.display = (w.getAttribute('data-solution-key') === key) ? '' : 'none';
+    });
+
+    var wideWidth = Math.min(window.innerWidth * 0.94, 1200);
+    reclampPanelWidth(wideWidth);
+
+    var activeWrap = spotlightContent.querySelector('.spotlight-solution-wrap[data-solution-key="' + key + '"]');
+    var alreadyBuilt = activeWrap && activeWrap.querySelector('.spotlight-detail');
+
+    if(grid){
+      grid.classList.add('leaving');
+      setTimeout(function(){
+        grid.style.display = 'none';
+        if(existingLines) existingLines.style.display = 'none';
+        if(activeWrap && !alreadyBuilt) buildDetailInto(activeWrap, key);
+      }, 260);
+    } else {
+      if(existingLines) existingLines.style.display = 'none';
+      if(activeWrap && !alreadyBuilt) buildDetailInto(activeWrap, key);
+    }
+  }
+
+  function closeSolutionDetail(){
+    var detailEl = spotlightContent.querySelector('.spotlight-detail');
+    var backBtn = spotlightContent.querySelector('.spotlight-back');
+
+    var panelWidth = computePanelWidth(spotlightMemberCount, spotlightSolutionCount);
+    if(spotlightHomeAnchor){
+      var panelEl = q('#spotlightPanel');
+      panelEl.style.width = panelWidth + 'px';
+      positionPanelNear({ left: spotlightHomeAnchor.left, top: spotlightHomeAnchor.top, width: 0, height: 0 }, panelWidth, false);
+    } else {
+      reclampPanelWidth(panelWidth);
+    }
+
+    if(detailEl) detailEl.classList.remove('open');
+
+    setTimeout(function(){
+      if(backBtn) backBtn.remove();
+      if(detailEl) detailEl.remove();
+
+      var wraps = spotlightContent.querySelectorAll('.spotlight-solution-wrap');
+      wraps.forEach(function(w){ w.style.display = ''; });
+
+      var lines = spotlightContent.querySelector('.spotlight-lines');
+      if(lines) lines.style.display = '';
+
+      var grid = spotlightContent.querySelector('.spotlight-pain-grid');
+      if(grid){
+        grid.style.display = '';
+        grid.offsetHeight;
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            grid.classList.remove('leaving');
+            requestAnimationFrame(drawSpotlightLines);
+          });
+        });
+      } else {
+        requestAnimationFrame(drawSpotlightLines);
+      }
+    }, 260);
+  }
+
+  function closeSpotlight(){
+    spotlightOverlay.classList.remove('open');
+    spotlightOpenId = null;
+    document.body.style.overflow = bodyOverflowBeforeSpotlight;
+  }
+
+  function toggleSpotlight(sourceEl){
+    if(spotlightOverlay.classList.contains('open') && spotlightOpenId === sourceEl.id){
+      closeSpotlight();
+    } else {
+      openSpotlight(sourceEl);
+    }
+  }
+
+  spotlightOverlay.addEventListener('click', function(e){
+    if(e.target === spotlightOverlay){ closeSpotlight(); }
+  });
+  spotlightClose.addEventListener('click', closeSpotlight);
+  var onKeydown = function(e){
+    if(e.key === 'Escape' && spotlightOverlay.classList.contains('open')){ closeSpotlight(); }
+  };
+  document.addEventListener('keydown', onKeydown);
+
+  var OVERVIEW_MIN = 0.5;
+  var OVERVIEW_MAX = 2.0;
+  var STATION_MIN = 1.0;
+  var STATION_MAX = 2.75;
+  var fitToken = 0;
+
+  function applyOverviewFit(myToken, doneCb){
+    pageEl.style.height = '';
+    board.style.visibility = 'hidden';
+    var scale = 1.0;
+    scaleWrapper.style.fontSize = (16 * scale) + 'px';
+    var pass = 0;
+    function step(){
+      requestAnimationFrame(function(){
+        layout();
+        requestAnimationFrame(function(){
+          var needed = board.getBoundingClientRect().height + pageEl.getBoundingClientRect().top + 40;
+          var available = window.innerHeight;
+          var ratio = (available / needed) * scale * 0.94;
+
+          var boardWidth = board.getBoundingClientRect().width;
+          var neededWidth = engineRow._neededWidth || 0;
+          var widthRatio = neededWidth > boardWidth
+            ? (boardWidth / neededWidth) * scale * 0.94
+            : OVERVIEW_MAX;
+
+          var next = Math.min(OVERVIEW_MAX, ratio, widthRatio);
+          next = Math.max(OVERVIEW_MIN, next);
+          var nextPx = Math.round(16 * next);
+          next = nextPx / 16;
+          scaleWrapper.style.fontSize = nextPx + 'px';
+          pass++;
+          if(Math.abs(next - scale) > 0.01 && pass < 10){
+            scale = next;
+            step();
+          } else {
+            requestAnimationFrame(function(){
+              layout();
+              if(myToken === fitToken){
+                board.style.visibility = '';
+                if(doneCb) doneCb();
+              }
+            });
+          }
+        });
+      });
+    }
+    step();
+  }
+
+  function applyStationFit(myToken){
+    pageEl.style.height = '';
+    board.style.visibility = 'hidden';
+    var scale = 1.2;
+    scaleWrapper.style.fontSize = (16 * scale) + 'px';
+    var pass = 0;
+    function step(){
+      requestAnimationFrame(function(){
+        layout();
+        requestAnimationFrame(function(){
+          var needed = board.getBoundingClientRect().height + pageEl.getBoundingClientRect().top + 40;
+          var available = window.innerHeight;
+          var ratio = (available / needed) * scale * 0.96;
+
+          var boardWidth = board.getBoundingClientRect().width;
+          var neededWidth = engineRow._neededWidth || 0;
+          var widthRatio = neededWidth > boardWidth
+            ? (boardWidth / neededWidth) * scale * 0.96
+            : STATION_MAX;
+
+          var next = Math.min(STATION_MAX, ratio, widthRatio);
+          next = Math.max(STATION_MIN, next);
+          var nextPx = Math.round(16 * next);
+          next = nextPx / 16;
+          scaleWrapper.style.fontSize = nextPx + 'px';
+          pass++;
+          if(Math.abs(next - scale) > 0.01 && pass < 10){
+            scale = next;
+            step();
+          } else {
+            requestAnimationFrame(function(){
+              layout();
+              if(myToken === fitToken) board.style.visibility = '';
+            });
+          }
+        });
+      });
+    }
+    step();
+  }
+
+  function applyFit(){
+    fitToken++;
+    var myToken = fitToken;
+    if(window.innerWidth <= 980){
+      board.style.visibility = '';
+      scaleWrapper.style.fontSize = '16px';
+      requestAnimationFrame(layout);
+      return;
+    }
+    if(currentMode === 'overview'){ applyOverviewFit(myToken); }
+    else if(currentMode === 'intro'){ applyOverviewFit(myToken, function(){ requestAnimationFrame(layout); }); }
+    else { applyStationFit(myToken); }
+  }
+
+  function updateCounts(){
+    var vp = visiblePainCards().length;
+    var vs = visibleSolCards().length;
+    if(currentMode === 'overview' || currentMode === 'intro'){
+      currentSub.textContent = 'Overarching data & process + five stations, ' + vp + ' stated pain points';
+      engineSub.textContent = 'capabilities that close the gaps';
+    } else {
+      currentSub.textContent = vp + ' stated pain point' + (vp === 1 ? '' : 's') + ' in this station';
+      engineSub.textContent = '';
+    }
+  }
+
+  var introOverlay = q('#introOverlay');
+  var introCaption = q('#introCaption');
+  var introCaptionText = q('#introCaptionText');
+  var introRestartBtn = q('#introRestartBtn');
+  var introBackBtn = q('#introBackBtn');
+  var introForwardBtn = q('#introForwardBtn');
+  var introHintEl = q('.intro-hint');
+  var engineHeadEl = q('.section-head.engine');
+  var engineSpacerEl = q('.engine-spacer');
+  var introHeadCurrentEl = q('.section-head.current');
+  var introStep = -1;
+  var INTRO_STATIONS = ['00','01','02','03','04','05'];
+  var INTRO_SOLUTIONS = ['H','E','A','B','C','D','G'];
+  var INTRO_CAPTIONS = [
+    'This board maps where the current model breaks, and how the Engine fixes it.',
+    'First, we start with the Current Model pain points across the overarching data & process and five stations.',
+    "00 \u00b7 Overarching Data & Process \u2014 issues here ripple downstream into every station.",
+    "01 \u00b7 Patient Opportunity \u2014 sizing and defining who the opportunity actually is.",
+    "02 \u00b7 Who Treats Them \u2014 the HCPs treating those patients, and how well that's tracked.",
+    "03 \u00b7 Priority & Access \u2014 how targets get prioritized, and where payer access breaks down.",
+    "04 \u00b7 Roles & Sizing \u2014 how field roles get sized today, sales and non-sales alike.",
+    "05 \u00b7 Field Structure \u2014 how territories get assessed and structured.",
+    'The GTM Engine is designed to close these gaps.',
+    'Connecting lines indicate the solution(s) that address each pain point.',
+    'Governed Metrics and Decision Thresholds \u2014 every change is checked against clear rules before it executes.',
+    'A Shared, Consistent Data Foundation \u2014 the bedrock the other capabilities and all five stations run on.',
+    'A Versioned, Traceable Record \u2014 keeps definitions, methods, and history traceable over time.',
+    "Field Knowledge, Captured Instead of Lost \u2014 what today only lives in people's heads.",
+    'Access Built Into Prioritization From the Start \u2014 payer access feeds targeting directly.',
+    'A Real Method Sizes Every Role \u2014 sales and non-sales alike.',
+    'Scenario Simulation Before Commitment \u2014 every change is tested before it\u2019s executed. Click anywhere to explore the full board.'
+  ];
+
+  function applyIntroVisibility(){
+    introHeadCurrentEl.style.display = (introStep >= 1) ? '' : 'none';
+    stationCols.forEach(function(col){
+      var idx = INTRO_STATIONS.indexOf(col.getAttribute('data-station'));
+      col.style.display = (introStep >= idx + 2) ? '' : 'none';
+    });
+    var showEngine = introStep >= 8;
+    engineHeadEl.style.display = showEngine ? '' : 'none';
+    engineSpacerEl.style.display = showEngine ? '' : 'none';
+    INTRO_SOLUTIONS.forEach(function(key, i){
+      var el = q('#sol-' + key);
+      var threshold = (i === 0) ? 9 : 10 + i;
+      if(el) el.style.display = (introStep >= threshold) ? '' : 'none';
+    });
+    updateIntroFocus();
+    layout();
+  }
+
+  function getIntroFocusRect(){
+    if(introStep === 0) return null;
+    if(introStep === 1) return introHeadCurrentEl.getBoundingClientRect();
+    if(introStep >= 2 && introStep <= 7){
+      var col = board.querySelector('.station-col[data-station="' + INTRO_STATIONS[introStep - 2] + '"]');
+      return col ? col.getBoundingClientRect() : null;
+    }
+    if(introStep === 8) return engineHeadEl.getBoundingClientRect();
+    if(introStep === 9) return q('#sol-' + INTRO_SOLUTIONS[0]).getBoundingClientRect();
+    if(introStep >= 10){
+      var el = q('#sol-' + INTRO_SOLUTIONS[introStep - 10]);
+      return el ? el.getBoundingClientRect() : null;
+    }
+    return null;
+  }
+
+  function positionIntroCaption(){
+    var rect = getIntroFocusRect();
+    var capW = introCaption.offsetWidth || 420;
+    var capH = introCaption.offsetHeight || 90;
+    var margin = 16;
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var left, top;
+    if(!rect){
+      left = vw / 2 - capW / 2;
+      top = vh / 2 - capH / 2;
+    } else {
+      left = rect.left + rect.width / 2 - capW / 2;
+      left = Math.max(margin, Math.min(left, vw - capW - margin));
+      var spaceBelow = vh - rect.bottom;
+      var spaceAbove = rect.top;
+      if(spaceBelow >= capH + margin * 2){
+        top = rect.bottom + margin;
+      } else if(spaceAbove >= capH + margin * 2){
+        top = rect.top - capH - margin;
+      } else if(spaceBelow >= spaceAbove){
+        top = Math.max(margin, vh - capH - margin);
+      } else {
+        top = margin;
+      }
+    }
+    introCaption.style.left = left + 'px';
+    introCaption.style.top = top + 'px';
+    introCaption.style.bottom = 'auto';
+    introCaption.style.transform = 'none';
+  }
+
+  function updateIntroFocus(){
+    var focusStationIdx = (introStep >= 2 && introStep <= 7) ? introStep - 2 : -1;
+    stationCols.forEach(function(col){
+      var idx = INTRO_STATIONS.indexOf(col.getAttribute('data-station'));
+      var visible = col.style.display !== 'none';
+      col.classList.toggle('intro-dim', introStep >= 2 && visible && idx !== focusStationIdx);
+    });
+    var focusSolIdx = (introStep >= 10) ? introStep - 10 : -1;
+    INTRO_SOLUTIONS.forEach(function(key, i){
+      var el = q('#sol-' + key);
+      if(!el) return;
+      var visible = el.style.display !== 'none';
+      el.classList.toggle('intro-dim', introStep >= 10 && visible && i !== focusSolIdx);
+    });
+  }
+
+  function clearIntroFocus(){
+    stationCols.forEach(function(col){ col.classList.remove('intro-dim'); });
+    solCards.forEach(function(sc){ sc.classList.remove('intro-dim'); });
+  }
+
+  function showIntroCaption(){
+    introCaptionText.textContent = INTRO_CAPTIONS[introStep] || '';
+    introBackBtn.disabled = introStep <= 0;
+    var isLast = introStep >= INTRO_CAPTIONS.length - 1;
+    introForwardBtn.disabled = isLast;
+    introHintEl.style.display = isLast ? 'none' : '';
+  }
+
+  function goIntroStep(delta){
+    var next = introStep + delta;
+    if(next < 0 || next > INTRO_CAPTIONS.length - 1) return;
+    introStep = next;
+    applyIntroVisibility();
+    showIntroCaption();
+  }
+
+  function finishIntro(){
+    introOverlay.style.display = 'none';
+    introCaption.style.display = 'none';
+    clearIntroFocus();
+  }
+
+  function advanceIntro(){
+    if(introStep < INTRO_CAPTIONS.length - 1){
+      introStep++;
+      applyIntroVisibility();
+      showIntroCaption();
+    }
+  }
+
+  function startIntro(){
+    introCaption.removeAttribute('style');
+    introCaption.style.display = 'none';
+    stationsRow.classList.remove('single-mode');
+    board.classList.remove('station-mode');
+    stationCols.forEach(function(col){ col.style.display = ''; });
+    solCards.forEach(function(sc){ sc.style.display = ''; });
+    engineHeadEl.style.display = '';
+    engineSpacerEl.style.display = '';
+    updateCounts();
+
+    fitToken++;
+    var myToken = fitToken;
+    applyOverviewFit(myToken, function(){
+      introStep = 0;
+      applyIntroVisibility();
+      showIntroCaption();
+      introOverlay.style.display = '';
+      introCaption.style.display = '';
+    });
+  }
+
+  introOverlay.addEventListener('click', advanceIntro);
+  introRestartBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    startIntro();
+  });
+  introBackBtn.addEventListener('click', function(e){ e.stopPropagation(); goIntroStep(-1); });
+  introForwardBtn.addEventListener('click', function(e){ e.stopPropagation(); goIntroStep(1); });
+
+  function setMode(target){
+    var leavingIntro = currentMode === 'intro' && target !== 'intro';
+    currentMode = target;
+
+    tabButtons.forEach(function(btn){
+      var isActive = btn.getAttribute('data-target') === target;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    if(leavingIntro){
+      finishIntro();
+      engineHeadEl.style.display = '';
+      engineSpacerEl.style.display = '';
+    }
+
+    if(target === 'intro'){
+      startIntro();
+      return;
+    }
+
+    if(target === 'overview'){
+      stationsRow.classList.remove('single-mode');
+      board.classList.remove('station-mode');
+      stationCols.forEach(function(col){ col.style.display = ''; });
+      solCards.forEach(function(sc){ sc.style.display = ''; });
+    } else {
+      stationsRow.classList.add('single-mode');
+      board.classList.add('station-mode');
+      stationCols.forEach(function(col){
+        col.style.display = (col.getAttribute('data-station') === target) ? '' : 'none';
+      });
+      requestAnimationFrame(function(){
+        var used = {};
+        visiblePainCards().forEach(function(p){
+          getSolutionKeys(p).forEach(function(k){ used[k] = true; });
+        });
+        diagramSolCards.forEach(function(sc){
+          var key = sc.getAttribute('data-solution');
+          sc.style.display = used[key] ? '' : 'none';
+        });
+        requestAnimationFrame(function(){
+          updateCounts();
+          applyFit();
+        });
+      });
+      return;
+    }
+
+    requestAnimationFrame(function(){
+      updateCounts();
+      applyFit();
+    });
+  }
+
+  tabButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){ setMode(btn.getAttribute('data-target')); });
+  });
+
+  var resizeTimer;
+  var onResize = function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(applyFit, 120);
+  };
+  window.addEventListener('resize', onResize);
+
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){ requestAnimationFrame(function(){ setMode('overview'); }); });
+  }
+  requestAnimationFrame(function(){ setMode('overview'); });
+
+  return function cleanup(){
+    window.removeEventListener('resize', onResize);
+    document.removeEventListener('keydown', onKeydown);
+  };
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  initIgnitePainMap(document);
+});
+</script>
+</body>
+</html>

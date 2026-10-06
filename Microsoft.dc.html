@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Microsoft | Jojo Yee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,300..700;1,300..700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16151a;--ink-soft:#4a4852;--paper:#ffffff;--cream:#f7f0e4;--line:#e8e5df;--accent:#5a3ff0;--accent-2:#8f6bff;--accent-deep:#2f1f8f;--tag-bg:#efeafd;--tag-line:#ded4fb;--tier:#2f1f8f;--mark:#e3d9ff;--shell:1100px;--serif:'Petrona',Georgia,serif;--serif-alt:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+body[data-theme="dark"]{--ink:#f1eff5;--ink-soft:#a8a4b6;--paper:#0f0e13;--cream:#1a1822;--line:#2b2836;--accent:#ab99ff;--accent-2:#8f6bff;--accent-deep:#d2c6ff;--tag-bg:#221d3a;--tag-line:#332a56;--tier:#2a1f66;--mark:#3a2f6b;}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease;}
+img{max-width:100%;display:block;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{opacity:.72;}
+h1,h2,h3,h4,p{text-wrap:pretty;}
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);}
+[data-reveal].in{opacity:1;transform:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
+[data-section]>p,[data-section]>h2,[data-section]>h3{max-width:820px;margin-left:auto!important;margin-right:auto!important;}
+p,figcaption,strong{text-wrap:pretty;}
+/* block rhythm */
+[data-section]>figure,[data-section]>div{margin-bottom:44px!important;}
+[data-section]>figure:last-child,[data-section]>div:last-child{margin-bottom:0!important;}
+h1,h2,h3{text-wrap:balance;}
+a:hover [data-next-arrow]{transform:translateX(6px);}
+a:hover [data-prev-arrow]{transform:translateX(-6px);}
+@media (max-width:1229px){#secnav{display:none!important;}}
+[data-section]{position:relative;border-top:none!important;}
+[data-section] + [data-section]::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:820px;border-top:1px solid var(--line);}
+[style*="var(--serif-alt)"]{font-variation-settings:"WONK" 0,"SOFT" 0;font-optical-sizing:auto;}
+</style>
+</helmet>
+
+<nav id="secnav" style="opacity:0;pointer-events:none;position:fixed;top:50%;left:26px;transform:translateY(-50%);z-index:700;display:flex;flex-direction:column;gap:9px;align-items:flex-start">
+  <a href="#overview" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Overview</a>
+  <a href="#audit" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">The audit</a>
+  <a href="#role" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Role of content</a>
+  <a href="#audiences" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Audiences</a>
+  <a href="#ecosystem" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Ecosystem</a>
+  <a href="#prototypes" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Prototypes</a>
+  <a href="#results" data-secnav style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);opacity:.5;transition:opacity .25s ease,color .25s ease">Outcome</a>
+</nav>
+
+<dc-import name="SiteNav" hint-size="100%,96px"></dc-import>
+
+<div style="max-width:1100px;margin:0 auto;padding:20px 32px 8px">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Content Strategy</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Ecosystem Definition</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Editorial Strategy</span>
+    <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Org &amp; Implementation</span>
+  </div>
+  <h1 style="font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,42px);line-height:1.25;margin:0 0 26px">Consolidating 17 content sites into one connected ecosystem</h1>
+</div>
+
+<div style="max-width:1100px;margin:0 auto 64px;padding:0 32px">
+  <figure style="margin:0">
+    <img src="assets/msft-site-audit.png" alt="Audit collage of Microsoft's existing content properties: Stories, Transform, In Culture, Innovation Stories, On the Issues, Life, and the AI Blog" style="width:100%">
+  </figure>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 32px 48px">
+  <div style="display:flex;gap:40px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);max-width:820px;margin:0 auto">
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Role</span><strong style="font-weight:500;font-size:14px">Content and Editorial Strategist</strong></div>
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Timeframe</span><strong style="font-weight:500;font-size:14px">2020 – 2021 · 7 months</strong></div>
+    <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Client</span><strong style="font-weight:500;font-size:14px">Microsoft</strong></div>
+  </div>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 32px 40px">
+
+  <section id="overview" data-section style="padding:0 0 48px">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Overview</h2>
+    <p style="font-family:var(--serif);font-size:20px;font-weight:500;line-height:1.55;margin:0 0 16px"><span style="background:linear-gradient(transparent 62%,var(--mark) 0)">Microsoft had 17 content sites serving more than 50 B2B and B2C audience subsets.</span> They had grown organically over years, so the same stories were told in several places by teams who could not see each other's work.</p>
+    <p style="font-size:16px;margin:0">Over seven months I worked with Microsoft's brand marketing, communications, and platform teams to define what content is for at Microsoft, then designed a single ecosystem to replace the sprawl: two primary outlets, a shared editorial approach, and the organizational structure and implementation plan to run them.</p>
+  </section>
+
+  <section id="audit" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Where we started</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:8px;max-width:820px;margin-left:auto;margin-right:auto">
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">Seventeen sites, one company.</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">Stories, Transform, In Culture, On the Issues, Innovation Stories, Life, and the product blogs all published against overlapping remits.</p>
+      </div>
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">Fifty-plus audience subsets.</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">Consumers, creators, developers, IT decision makers, policy makers, and candidates were all being addressed, often by the same article.</p>
+      </div>
+      <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream)">
+        <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">No shared definition of content.</strong>
+        <p style="margin:0;font-size:14px;color:var(--ink-soft)">Without a stated role for content, every team set its own objectives, which is what produced the duplication in the first place.</p>
+      </div>
+    </div>
+    <p style="font-size:16px;margin:24px 0 0">We began with a full assessment of the existing properties, mapping what each one published, who it spoke to, and where it overlapped with the others. That white-space analysis became the case for consolidation.</p>
+  </section>
+
+  <section id="role" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Defining the role of content</h2>
+    <p style="font-size:16px;margin:0 0 16px">Strategy development started with a question nobody had answered in writing: what is content at Microsoft for? We tied it to three business objectives the whole company already shared, then wrote the editorial mission that follows from them.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/msft-objectives.png" alt="Three business objectives content supports: deliver on the Microsoft mission and values, acquire and retain the best talent, and increase shareholder value" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in;border-radius:10px;border:1px solid var(--line)">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The business objectives content was made accountable to.</figcaption>
+    </figure>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/msft-role-of-content.png" alt="Statement of the role of content at Microsoft, annotated with how each phrase ties back to the brand" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in;border-radius:10px;border:1px solid var(--line)">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The role of content, written down and annotated line by line.</figcaption>
+    </figure>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/msft-editorial-mission.png" alt="Editorial mission statement for Microsoft: ideas, stories, and conversations on technology, innovation, and people creating a better world" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in;border-radius:10px;border:1px solid var(--line)">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The editorial mission every outlet would write against.</figcaption>
+    </figure>
+  </section>
+
+  <section id="audiences" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Audiences, topics, and verticals</h2>
+    <p style="font-size:16px;margin:0 0 16px">Fifty audience subsets cannot each have a site. In workshops with brand marketing, communications, and the platform owners, we grouped them into a workable set and built a profile for each one: what they care about, the jobs they are trying to do, the topics that serve them, and where they should be reached.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:1100px;margin-left:auto;margin-right:auto">
+      <img src="assets/msft-audience-matrix.png" alt="Audience profile matrix for the creators segment: objectives, interests, jobs to be done, platform insights, topics, verticals, formats, and distribution channels" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in;border-radius:10px;border:1px solid var(--line)">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">One audience profile from the set, run down to formats and distribution.</figcaption>
+    </figure>
+    <p style="font-size:16px;margin:28px 0 0">Those profiles fed the content funnel, the CRM content strategy, and the partnerships strategy, so that what got published had a stated audience and a next step rather than a slot on a calendar.</p>
+  </section>
+
+  <section id="ecosystem" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Two hubs instead of seventeen</h2>
+    <p style="font-size:16px;margin:0 0 16px">We set positioning and creation criteria for each existing property, then ran them through a brand driver lens. Everything resolved into two outlets: a storytelling hub for narrative and culture, and an informational hub for news, announcements, and press material.</p>
+    <figure data-reveal style="margin:28px 0 4px;max-width:820px;margin-left:auto;margin-right:auto">
+      <img src="assets/msft-hub-criteria.png" alt="Diagram sorting seventeen existing Microsoft content properties through positioning and creation criteria into a storytelling hub and an informational hub" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in;border-radius:10px;border:1px solid var(--line)">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">Every property sorted against the criteria, resolving into two hubs.</figcaption>
+    </figure>
+    <figure data-reveal style="margin:28px 0 4px;max-width:1100px;margin-left:auto;margin-right:auto">
+      <img src="assets/msft-sitemap.png" alt="Sitemap for the storytelling hub showing homepage, category, and article levels with cross-links between verticals" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in;border-radius:10px;border:1px solid var(--line)">
+      <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">UX definition for the storytelling hub: categories, verticals, and how readers move between them.</figcaption>
+    </figure>
+    <p style="font-size:16px;margin:28px 0 0">Alongside the structure we wrote naming criteria, a content migration recommendation, a social transition strategy, and a steering committee roadmap, so the consolidation had a sequence rather than a switch-flip date.</p>
+  </section>
+
+  <section id="prototypes" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Visioning the hubs</h2>
+    <p style="font-size:16px;margin:0 0 20px">Strategy documents do not move a company this size. We prototyped the hubs under working names so leadership could see the editorial approach, the verticals, and the search story as a real product.</p>
+    <div data-reveal data-carousel style="position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--cream);max-width:820px;margin-left:auto;margin-right:auto">
+      <div data-track style="display:flex;transition:transform .5s cubic-bezier(.22,1,.36,1)">
+        <figure style="flex:0 0 100%;margin:0">
+          <img src="assets/msft-proto-source.png" alt="Prototype of the informational hub, working name The Source, with company news, press tools, and featured stories" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+          <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The informational hub prototype: newsroom, press tools, and company news in one place. Live today as <a href="https://news.microsoft.com/source/" target="_blank" rel="noopener">Microsoft Source</a>.</figcaption>
+        </figure>
+        <figure style="flex:0 0 100%;margin:0">
+          <img src="assets/msft-proto-unlocked.png" alt="Prototype of the storytelling hub, working name Unlocked, with big ideas, impactful conversations, and in-depth stories" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+          <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">The storytelling hub prototype, organized around big ideas, conversations, and in-depth stories. Live today as <a href="https://unlocked.microsoft.com/" target="_blank" rel="noopener">Unlocked</a>.</figcaption>
+        </figure>
+        <figure style="flex:0 0 100%;margin:0">
+          <img src="assets/msft-search.png" alt="Search results mockup showing a single Microsoft content destination ranking for a technology trends query" onClick="{{ enlarge }}" style="width:100%;cursor:zoom-in">
+          <figcaption style="font-size:12px;color:var(--ink-soft);padding:12px 4px 0">What consolidation buys in search: one destination instead of seventeen competing with each other.</figcaption>
+        </figure>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-top:1px solid var(--line)">
+        <button data-prev aria-label="Previous" style="background:none;border:1px solid var(--line);border-radius:50%;width:30px;height:30px;cursor:pointer;color:var(--ink);font-size:14px;line-height:1">←</button>
+        <div style="display:flex;gap:7px">
+          <span data-dot style="width:7px;height:7px;border-radius:50%;background:var(--accent);cursor:pointer"></span>
+          <span data-dot style="width:7px;height:7px;border-radius:50%;background:var(--line);cursor:pointer"></span>
+          <span data-dot style="width:7px;height:7px;border-radius:50%;background:var(--line);cursor:pointer"></span>
+        </div>
+        <button data-next aria-label="Next" style="background:none;border:1px solid var(--line);border-radius:50%;width:30px;height:30px;cursor:pointer;color:var(--ink);font-size:14px;line-height:1">→</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="results" data-section style="padding:48px 0;border-top:1px solid var(--line)">
+    <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Outcome</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px;max-width:820px;margin-left:auto;margin-right:auto">
+      <div data-reveal style="padding:18px 0 0"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">17 → 2</span><span style="font-size:12.5px;color:var(--ink-soft)">content sites consolidated into two primary outlets</span></div>
+      <div data-reveal style="padding:18px 0 0"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">50+</span><span style="font-size:12.5px;color:var(--ink-soft)">consumer and business audience subsets served by the new model</span></div>
+      <div data-reveal style="padding:18px 0 0"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">7</span><span style="font-size:12.5px;color:var(--ink-soft)">months from discovery to implementation plan</span></div>
+    </div>
+    <div data-reveal style="padding:20px 22px;border-radius:14px;background:var(--cream);margin:28px auto 0;max-width:820px">
+      <strong style="display:block;font-family:var(--serif);font-size:16px;font-weight:500;margin-bottom:6px;color:var(--accent-deep)">The handoff was the deliverable.</strong>
+      <p style="margin:0;font-size:14px;color:var(--ink-soft)">We handed Microsoft an implementation strategy built with their core team: the ecosystem, the editorial approach, the organizational structure, the migration sequence, and the roadmap to execute it.</p>
+    </div>
+    <p style="font-size:16px;margin:28px 0 12px">Both hubs are live today, built on the two-outlet model:</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="https://news.microsoft.com/source/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;border:1px solid var(--tag-line);background:var(--tag-bg);color:var(--accent-deep);border-radius:24px;padding:10px 18px">Microsoft Source <span>↗</span></a>
+      <a href="https://unlocked.microsoft.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;border:1px solid var(--tag-line);background:var(--tag-bg);color:var(--accent-deep);border-radius:24px;padding:10px 18px">Unlocked <span>↗</span></a>
+    </div>
+  </section>
+
+</div>
+
+<div style="max-width:1100px;margin:40px auto 0;padding:40px 32px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+  <a href="Albertsons.dc.html" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;color:inherit" style-hover="opacity:1">
+    <span style="font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Previous project</span>
+    <span style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:8px"><span data-prev-arrow style="display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)">←</span> Albertsons</span>
+  </a>
+  <a href="Ally.dc.html" style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;color:inherit;text-align:right" style-hover="opacity:1">
+    <span style="font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em">Next project</span>
+    <span style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:8px">Ally Bank <span data-next-arrow style="display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)">→</span></span>
+  </a>
+</div>
+
+<dc-import name="SiteFooter" hint-size="100%,110px"></dc-import>
+
+<sc-if value="{{ lightboxSrc }}">
+  <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;background:rgba(12,10,16,.93);display:grid;place-items:center;padding:40px;z-index:950">
+    <img src="{{ lightboxImgSrc }}" alt="" style="max-width:90vw;max-height:85vh;border-radius:4px;cursor:zoom-out">
+    <button aria-label="Close" style="position:absolute;top:24px;right:32px;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer">×</button>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lightboxSrc: null };
+
+  componentDidMount() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    const scan = () => document.querySelectorAll('[data-reveal]:not(.in)').forEach((el) => io.observe(el));
+    scan();
+    setTimeout(scan, 900);
+    this.setupCarousels();
+    this.setupProgress();
+    this.onKey = (e) => { if (e.key === 'Escape') this.setState({ lightboxSrc: null }); };
+    document.addEventListener('keydown', this.onKey);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  setupCarousels() {
+    document.querySelectorAll('[data-carousel]').forEach((car) => {
+      if (car.dataset.wired) return;
+      car.dataset.wired = '1';
+      const track = car.querySelector('[data-track]');
+      const dots = car.querySelectorAll('[data-dot]');
+      const count = track.children.length;
+      let i = 0;
+      const update = () => {
+        track.style.transform = 'translateX(-' + i * 100 + '%)';
+        dots.forEach((d, n) => { d.style.background = n === i ? 'var(--accent)' : 'var(--line)'; });
+      };
+      car.querySelector('[data-prev]').addEventListener('click', () => { i = (i - 1 + count) % count; update(); });
+      car.querySelector('[data-next]').addEventListener('click', () => { i = (i + 1) % count; update(); });
+      dots.forEach((d, n) => d.addEventListener('click', () => { i = n; update(); }));
+      update();
+    });
+  }
+
+  setupProgress() {
+    const sn = document.getElementById('secnav');
+    if (sn) {
+      sn.style.transition = 'opacity .3s ease';
+      let risky = [];
+      const measure = () => {
+        const nr = sn.getBoundingClientRect().right + 16;
+        risky = Array.from(document.querySelectorAll('img, iframe, video, h1, h2, h3, p, li, figcaption, [data-carousel], [data-reveal]'))
+          .filter((el) => !sn.contains(el) && el.getBoundingClientRect().left < nr && el.offsetWidth > 0);
+      };
+      const check = () => {
+        const r = sn.getBoundingClientRect();
+        const first = document.querySelector('[data-section]');
+        const past = !first || first.getBoundingClientRect().top < window.innerHeight * 0.5;
+        const hit = !past || risky.some((el) => { const b = el.getBoundingClientRect(); return b.bottom > r.top - 8 && b.top < r.bottom + 8; });
+        sn.style.opacity = hit ? '0' : '1';
+        sn.style.pointerEvents = hit ? 'none' : 'auto';
+      };
+      let raf = 0;
+      const onS = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; check(); }); };
+      const onR = () => { measure(); check(); };
+      measure(); check();
+      setTimeout(onR, 600);
+      window.addEventListener('scroll', onS, { passive: true });
+      window.addEventListener('resize', onR);
+    }
+    const bar = { style: {} };
+    const links = Array.from(document.querySelectorAll('[data-secnav]'));
+    const sections = Array.from(document.querySelectorAll('[data-section]'));
+    this.onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      if (bar) bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+      let active = 0;
+      sections.forEach((s, n) => { if (s.getBoundingClientRect().top < h.clientHeight * 0.35) active = n; });
+      links.forEach((l, n) => {
+        const on = n === active;
+        l.style.opacity = on ? '1' : '.45';
+        l.style.color = on ? 'var(--accent)' : 'var(--ink-soft)';
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  renderVals() {
+    return {
+      lightboxSrc: this.state.lightboxSrc,
+      lightboxImgSrc: this.state.lightboxSrc || 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+      enlarge: (e) => this.setState({ lightboxSrc: e.currentTarget.src }),
+      closeLightbox: () => this.setState({ lightboxSrc: null })
+    };
+  }
+}
+</script>
+</body>
+</html>
