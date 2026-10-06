@@ -60,13 +60,13 @@ a:hover [data-prev-arrow]{transform:translateX(-6px);}
       <span style="position:absolute;inset:0;display:grid;place-items:center;font-size:30px">🔒</span>
     </div>
     <h1 style="font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.25;margin:0 0 12px">This case study is protected</h1>
-    <p style="font-size:15px;color:var(--ink-soft);margin:0 0 28px">This project covers a pharma client's internal go-to-market model. Enter the password to read it, or <a href="mailto:yeejohanna@gmail.com" style="color:var(--accent);font-weight:500">email me</a> for access.</p>
+    <p style="font-size:15px;color:var(--ink-soft);margin:0 0 28px">This project covers a pharma client's internal go-to-market model. Enter the password to read it, or reach out to me at my email below for access.</p>
     <form onSubmit="{{ submit }}" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
       <input ref="{{ inputRef }}" type="password" placeholder="Password" aria-label="Password" style="flex:1;min-width:200px;max-width:260px;font-family:var(--sans);font-size:14px;padding:12px 16px;border-radius:24px;border:1px solid var(--line);background:var(--cream);color:var(--ink)">
       <button type="submit" style="background:var(--accent);color:var(--paper);border:none;font-family:var(--sans);font-size:13px;font-weight:600;padding:12px 22px;border-radius:24px;cursor:pointer;transition:transform .3s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-2px) rotate(-.6deg)">Unlock</button>
     </form>
     <sc-if value="{{ error }}">
-      <p style="font-size:13px;color:var(--accent);margin:16px 0 0">That's not it. Try again, or email me for the password.</p>
+      <p style="font-size:13px;color:var(--accent);margin:16px 0 0">That's not it. Try again.</p>
     </sc-if>
     <p style="font-size:13px;margin:34px 0 0"><a href="/#work" style="color:var(--accent);font-weight:500">← Back to work</a></p>
   </div>
