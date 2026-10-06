@@ -34,6 +34,7 @@ h1,h2,h3{text-wrap:balance;}
 a:hover [data-next-arrow]{transform:translateX(6px);}
 a:hover [data-prev-arrow]{transform:translateX(-6px);}
 @media (max-width:1229px){#secnav{display:none!important;}}
+@media (max-width:640px){[data-stack-mobile]{grid-template-columns:1fr!important;}}
 [data-section]{position:relative;border-top:none!important;}
 [data-section] + [data-section]::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:820px;border-top:1px solid var(--line);}
 [style*="var(--serif-alt)"]{font-variation-settings:"WONK" 0,"SOFT" 0;font-optical-sizing:auto;}
@@ -106,7 +107,7 @@ a:hover [data-prev-arrow]{transform:translateX(-6px);}
   <section id="currentstate" data-section style="padding:48px 0;border-top:1px solid var(--line)">
     <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Current state</h2>
     <p style="font-size:16px;margin:0 0 16px"><strong style="font-weight:600">Albertsons for U is the free membership millions of shoppers already belong to, and almost nothing in the experience tells them so.</strong> I audited sign-up, onboarding, the app, and the wider brand system. Four problems showed up everywhere.</p>
-    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 28px;margin:28px auto 0;max-width:820px;align-items:stretch">
+    <div data-stack-mobile style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 28px;margin:28px auto 0;max-width:820px;align-items:stretch">
       <div data-reveal style="display:flex;flex-direction:column;gap:14px">
         <div style="background:var(--cream);border-radius:14px;padding:20px;display:flex;align-items:center;justify-content:center;height:230px;overflow:hidden">
           <img src="assets/aci-cs-onboarding.png" alt="App onboarding screens highlighting one-app shopping, the wallet, and digital coupons" style="max-width:100%;max-height:190px;width:auto;height:auto;display:block;object-fit:contain">
@@ -201,12 +202,12 @@ a:hover [data-prev-arrow]{transform:translateX(-6px);}
 
   <section id="results" data-section style="padding:48px 0;border-top:1px solid var(--line)">
     <h2 style="font-family:var(--serif-alt);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 20px">Results</h2>
-    <div style="display:grid;grid-template-columns:repeat(2,200px);gap:24px 28px;justify-content:center;max-width:820px;margin-left:auto;margin-right:auto">
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,200px));gap:24px 28px;justify-content:center;max-width:820px;margin-left:auto;margin-right:auto">
       <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">+4pp</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">increase in NPS</span></div>
       <div data-reveal style="padding:18px 0 0;text-align:center"><span style="font-family:var(--serif-alt);font-size:30px;color:var(--accent);display:block;margin-bottom:4px">67%</span><span style="font-size:12.5px;color:var(--ink-soft);text-wrap:balance">consumer value perception of loyalty</span></div>
     </div>
     <p style="font-size:16px;margin:0">I also delivered a roadmap of near-term and longer-term growth opportunities for ACI's team to execute as they rolled the strategy out.</p>
-    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:28px auto 0;max-width:820px">
+    <div data-stack-mobile style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:28px auto 0;max-width:820px">
       <div data-reveal style="border:1px solid var(--line);border-radius:12px;padding:18px 20px">
         <h4 style="font-family:var(--serif);font-weight:500;font-size:15px;margin:0 0 6px;color:var(--accent-deep)">One membership, not many programs</h4>
         <p style="font-size:12.5px;margin:0;color:var(--ink-soft);text-wrap:pretty">Separately branded rewards, games, and convenience perks now sit under a single program.</p>

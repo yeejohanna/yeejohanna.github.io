@@ -53,6 +53,21 @@ body[data-theme="dark"] [data-logo-dark]{display:block;}
 [data-peek]:hover [data-peek-card],[data-peek]:focus-visible [data-peek-card]{opacity:1;transform:translate(-50%,0) rotate(var(--r)) scale(1);}
 [data-peek]:hover [data-peek-icon]{transform:rotate(-8deg) scale(1.12);}
 @media (prefers-reduced-motion:reduce){[data-w],[data-streak]{animation:none!important;opacity:1;stroke-dashoffset:0}[data-streak]{animation:none!important}}
+@media (max-width:640px){
+  header{padding:28px 20px 24px!important;}
+  header h1{margin-bottom:32px!important;}
+  [data-hero-stats]{display:grid!important;justify-content:center;gap:16px!important;margin-bottom:32px!important;}
+  #work{padding:8px 20px 56px!important;}
+  [data-case]{flex-direction:column;gap:20px!important;padding:40px 0!important;}
+  [data-case] [data-medallion]{width:200px!important;height:200px!important;}
+  [data-case-text]{flex:none!important;text-align:center!important;}
+  [data-case-text] h3{font-size:23px!important;text-wrap:balance;}
+  #clients{padding:0 20px!important;margin-bottom:64px!important;}
+  #clients > div{display:grid!important;grid-template-columns:repeat(6,1fr);gap:4px 12px!important;padding-bottom:0!important;}
+  #clients > div > div{grid-column:span 2;min-width:0!important;transform:none!important;}
+  #clients > div > div:nth-child(5n+4){grid-column:2 / span 2;}
+  #clients > div > div > div{height:72px!important;padding:0 8px!important;}
+}
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
@@ -62,7 +77,7 @@ body[data-theme="dark"] [data-logo-dark]{display:block;}
 <header style="position:relative;padding:48px 32px 28px;max-width:1100px;margin:0 auto;text-align:center;overflow-x:clip">
   <h1 style="position:relative;z-index:1;font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,45px);line-height:1.3;letter-spacing:-.015em;margin:0 auto 47px;max-width:900px;text-wrap:balance"><span data-w style="--i:0">I'm</span> <span data-w style="--i:1">Jojo,</span> <span data-w style="--i:2">a</span> <em style="font-style:italic;color:var(--accent);font-weight:500;position:relative;white-space:nowrap"><span data-w style="--i:3">product</span> <span data-w style="--i:4">strategist</span></em> <span data-w style="--i:5">who</span> <span data-w style="--i:6">transforms</span> <em style="font-style:italic;color:var(--accent);font-weight:500;position:relative;white-space:nowrap"><span data-w style="--i:7">complex</span> <span data-w style="--i:8">problems</span></em> <span data-w style="--i:9">into</span> <em style="font-style:italic;color:var(--accent);font-weight:500;position:relative;white-space:nowrap"><span data-w style="--i:10">elegant</span> <span data-w style="--i:11">solutions</span></em> <span data-w style="--i:12">through</span> <span data-w style="--i:13">user-centered</span> <span data-w style="--i:14">design</span> <span data-w style="--i:15">and</span> <span data-w style="--i:16">strategic</span> <span data-w style="--i:17">thinking.</span></h1>
 
-  <div style="position:relative;z-index:1;display:flex;gap:47px;flex-wrap:wrap;justify-content:center;margin-bottom:50px;text-align:left">
+  <div data-hero-stats style="position:relative;z-index:1;display:flex;gap:47px;flex-wrap:wrap;justify-content:center;margin-bottom:50px;text-align:left">
     <div data-peek data-streak tabindex="0" style="--d:0.90s;display:flex;align-items:center;gap:13px;max-width:245px;cursor:default">
       <span data-peek-icon style="width:38px;height:38px;flex-shrink:0;border-radius:50%;background:var(--tag-bg);color:var(--accent);display:grid;place-items:center;transition:transform .35s cubic-bezier(.22,1,.36,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"></path></svg></span>
       <p style="margin:0;font-size:14px;color:var(--ink-soft);line-height:1.45">Senior Experience Consultant at Beghou</p>
@@ -88,36 +103,36 @@ body[data-theme="dark"] [data-logo-dark]{display:block;}
 
 <section id="work" style="max-width:1100px;margin:0 auto;padding:20px 32px 96px">
 
-  <a href="obie" data-reveal style="display:flex;align-items:center;justify-content:center;gap:48px;padding:56px 4px;border-top:1px solid var(--line);color:inherit;transition:transform .4s cubic-bezier(.22,1,.36,1)">
+  <a href="obie" data-case data-reveal style="display:flex;align-items:center;justify-content:center;gap:48px;padding:56px 4px;border-top:1px solid var(--line);color:inherit;transition:transform .4s cubic-bezier(.22,1,.36,1)">
     <div data-medallion style="width:240px;height:240px;flex-shrink:0;position:relative;transition:transform .45s cubic-bezier(.22,1,.36,1)">
       <div style="position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--accent-2),var(--accent-deep));z-index:0"></div>
       <img src="assets/obie-devices.png" alt="Obie app screens: cycle tracking, partner sharing, and daily insights" style="position:absolute;top:50%;left:50%;width:106%;max-width:none;transform:translate(-50%,-50%);z-index:1;filter:drop-shadow(0 18px 30px rgba(20,10,60,.28));transition:transform .5s cubic-bezier(.22,1,.36,1)">
     </div>
-    <div style="min-width:0;flex:0 1 520px;text-align:left">
+    <div data-case-text style="min-width:0;flex:0 1 520px;text-align:left">
       <em style="font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent);font-size:16px;display:block;margin-bottom:6px">Obie Health</em>
       <h3 style="font-family:var(--serif);font-weight:500;font-size:27px;margin:0 0 14px;line-height:1.3;color:var(--ink)">Launching the future of accessible fertility care</h3>
       <span style="font-size:13px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:6px">View case study <span>→</span></span>
     </div>
   </a>
 
-  <a href="albertsons" data-reveal style="display:flex;align-items:center;justify-content:center;gap:48px;padding:56px 4px;border-top:1px solid var(--line);color:inherit;transition:transform .4s cubic-bezier(.22,1,.36,1)">
+  <a href="albertsons" data-case data-reveal style="display:flex;align-items:center;justify-content:center;gap:48px;padding:56px 4px;border-top:1px solid var(--line);color:inherit;transition:transform .4s cubic-bezier(.22,1,.36,1)">
     <div data-medallion style="width:240px;height:240px;flex-shrink:0;position:relative;transition:transform .45s cubic-bezier(.22,1,.36,1)">
       <img src="assets/albertsons-circle.png" alt="Albertsons app screens: home, deals, and recipes" style="position:absolute;inset:6%;width:88%;height:88%;border-radius:50%;z-index:0">
       <img src="assets/albertsons-breakout.png" alt="Albertsons app pickup and rewards screen" style="position:absolute;width:40%;top:-2%;left:calc(5% + 3px);transform:scale(.958);transform-origin:bottom right;z-index:2;filter:drop-shadow(0 10px 18px rgba(20,10,60,.28));transition:transform .5s cubic-bezier(.22,1,.36,1)">
     </div>
-    <div style="min-width:0;flex:0 1 520px;text-align:left">
+    <div data-case-text style="min-width:0;flex:0 1 520px;text-align:left">
       <em style="font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent);font-size:16px;display:block;margin-bottom:6px">Albertsons</em>
       <h3 style="font-family:var(--serif);font-weight:500;font-size:27px;margin:0 0 14px;line-height:1.3;color:var(--ink)">Evolving transactional rewards to experiential loyalty</h3>
       <span style="font-size:13px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:6px">View case study <span>→</span></span>
     </div>
   </a>
 
-  <a href="ally" data-reveal style="display:flex;align-items:center;justify-content:center;gap:48px;padding:56px 4px;border-top:1px solid var(--line);color:inherit;transition:transform .4s cubic-bezier(.22,1,.36,1)">
+  <a href="ally" data-case data-reveal style="display:flex;align-items:center;justify-content:center;gap:48px;padding:56px 4px;border-top:1px solid var(--line);color:inherit;transition:transform .4s cubic-bezier(.22,1,.36,1)">
     <div data-medallion style="width:240px;height:240px;flex-shrink:0;position:relative;transition:transform .45s cubic-bezier(.22,1,.36,1)">
       <div style="position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--accent-2),var(--accent-deep));z-index:0"></div>
       <img src="assets/ally-devices.png" alt="Ally content site on desktop and mobile" style="position:absolute;top:60%;left:58%;width:112.5%;max-width:none;transform:translate(-50%,-50%);z-index:1;filter:drop-shadow(0 18px 30px rgba(20,10,60,.28));transition:transform .5s cubic-bezier(.22,1,.36,1)">
     </div>
-    <div style="min-width:0;flex:0 1 520px;text-align:left">
+    <div data-case-text style="min-width:0;flex:0 1 520px;text-align:left">
       <em style="font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent);font-size:16px;display:block;margin-bottom:6px">Ally Bank</em>
       <h3 style="font-family:var(--serif);font-weight:500;font-size:27px;margin:0 0 14px;line-height:1.3;color:var(--ink)">Content innovation as a business accelerator</h3>
       <span style="font-size:13px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:6px">View case study <span>→</span></span>
@@ -125,7 +140,7 @@ body[data-theme="dark"] [data-logo-dark]{display:block;}
   </a>
 
   <sc-if value="{{ showMicrosoft }}" hint-placeholder-val="{{ false }}">
-  <a href="microsoft" data-reveal style="display:flex;align-items:center;justify-content:center;gap:48px;padding:56px 4px;border-top:1px solid var(--line);color:inherit;transition:transform .4s cubic-bezier(.22,1,.36,1)">
+  <a href="microsoft" data-case data-reveal style="display:flex;align-items:center;justify-content:center;gap:48px;padding:56px 4px;border-top:1px solid var(--line);color:inherit;transition:transform .4s cubic-bezier(.22,1,.36,1)">
     <div data-medallion style="width:240px;height:240px;flex-shrink:0;position:relative;transition:transform .45s cubic-bezier(.22,1,.36,1)">
       <div style="position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--accent-2),var(--accent-deep));z-index:0"></div>
       <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:196px;z-index:1;filter:drop-shadow(0 14px 22px rgba(20,10,60,.3))">
@@ -136,7 +151,7 @@ body[data-theme="dark"] [data-logo-dark]{display:block;}
       </div>
       <img src="assets/msft-phone.png" alt="Microsoft homepage on mobile" style="position:absolute;width:26%;bottom:-4%;right:0;z-index:2;filter:drop-shadow(0 10px 18px rgba(20,10,60,.3));transition:transform .5s cubic-bezier(.22,1,.36,1)">
     </div>
-    <div style="min-width:0;flex:0 1 520px;text-align:left">
+    <div data-case-text style="min-width:0;flex:0 1 520px;text-align:left">
       <em style="font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent);font-size:16px;display:block;margin-bottom:6px">Microsoft</em>
       <h3 style="font-family:var(--serif);font-weight:500;font-size:27px;margin:0 0 14px;line-height:1.3;color:var(--ink)">Streamlining disparate content into one connected ecosystem</h3>
       <span style="font-size:13px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:6px">View case study <span>→</span></span>
@@ -144,7 +159,7 @@ body[data-theme="dark"] [data-logo-dark]{display:block;}
   </a>
   </sc-if>
 
-  <a href="pharma" data-reveal style="display:flex;align-items:center;justify-content:center;gap:48px;padding:56px 4px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:inherit;transition:transform .4s cubic-bezier(.22,1,.36,1)">
+  <a href="pharma" data-case data-reveal style="display:flex;align-items:center;justify-content:center;gap:48px;padding:56px 4px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:inherit;transition:transform .4s cubic-bezier(.22,1,.36,1)">
     <div data-medallion style="width:240px;height:240px;flex-shrink:0;position:relative;transition:transform .45s cubic-bezier(.22,1,.36,1)">
       <div style="position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--accent-2),var(--accent-deep));z-index:0"></div>
       <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:215px;z-index:1;filter:drop-shadow(0 14px 22px rgba(20,10,60,.3))">
@@ -155,7 +170,7 @@ body[data-theme="dark"] [data-logo-dark]{display:block;}
       </div>
       <div style="position:absolute;bottom:2px;right:-2px;z-index:3;display:flex;flex-direction:column;align-items:flex-end;gap:6px"><span style="border:1px solid var(--line);border-radius:20px;padding:5px 11px;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-deep);background:var(--tag-bg);border-color:var(--tag-line)">Current project</span><span style="background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:5px 11px;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)">🔒 Protected</span></div>
     </div>
-    <div style="min-width:0;flex:0 1 520px;text-align:left">
+    <div data-case-text style="min-width:0;flex:0 1 520px;text-align:left">
       <em style="font-family:var(--serif);font-style:italic;font-weight:500;color:var(--accent);font-size:16px;display:block;margin-bottom:6px">Global pharma company</em>
       <h3 style="font-family:var(--serif);font-weight:500;font-size:27px;margin:0 0 14px;line-height:1.3;color:var(--ink)">Designing an AI-enabled go-to-market engine</h3>
       <span style="font-size:13px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:6px">View case study <span>→</span></span>
