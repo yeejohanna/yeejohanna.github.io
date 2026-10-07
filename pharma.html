@@ -36,6 +36,7 @@ a:hover [data-prev-arrow]{transform:translateX(-6px);}
 [data-section]{position:relative;border-top:none!important;}
 [data-section] + [data-section]::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:820px;border-top:1px solid var(--line);}
 [style*="var(--serif-alt)"]{font-variation-settings:"WONK" 0,"SOFT" 0;font-optical-sizing:auto;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 [data-flow-tap],[data-flow-hint]{display:none;}
 @media (max-width:640px){
   [data-flow-arrow]{display:none!important;}
@@ -215,22 +216,36 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
+    // Scale the 1760px-wide GTM flow with transform (CSS zoom renders unevenly on iOS Safari)
+    const FLOW_W = 1760;
+    const scaleFlow = (el, s, fixWidth) => {
+      el.style.zoom = '';
+      el.style.transformOrigin = '0 0';
+      el.style.transform = 'scale(' + s + ')';
+      const h = el.offsetHeight, box = el.parentElement;
+      box.style.overflow = 'hidden';
+      box.style.height = h ? Math.ceil(h * s) + 'px' : '';
+      box.style.width = fixWidth ? Math.ceil(FLOW_W * s) + 'px' : '100%';
+    };
     this.fitMap = () => {
       const box = document.querySelector('[data-mapfit]');
-      document.querySelectorAll('[data-gtmfit]').forEach((el) => { const w = el.parentElement.clientWidth; if (w) el.style.zoom = Math.min(1, w / 1760); });
-      // phones: full-screen flow fits the screen height and pans sideways, so text stays readable
       const scroller = document.querySelector('[data-flow-scroll]');
-      const full = scroller && scroller.querySelector('[data-gtmfit]');
-      if (full && window.innerWidth <= 640) {
-        full.style.zoom = 1;
-        const h = full.offsetHeight, avail = scroller.clientHeight - 36;
-        if (h && avail > 0) full.style.zoom = Math.min(1, Math.max(0.5, avail / h));
-      }
+      document.querySelectorAll('[data-gtmfit]').forEach((el) => {
+        if (scroller && scroller.contains(el)) {
+          // full screen: phones fit the screen height and pan sideways so text stays readable; desktop fits the width
+          const padX = 48, avail = scroller.clientHeight - 36;
+          if (window.innerWidth <= 640 && el.offsetHeight && avail > 0) scaleFlow(el, Math.min(1, Math.max(0.5, avail / el.offsetHeight)), true);
+          else scaleFlow(el, Math.min(1, (scroller.clientWidth - padX) / FLOW_W), true);
+        } else {
+          const w = el.parentElement.clientWidth;
+          if (w) scaleFlow(el, Math.min(1, w / FLOW_W), false);
+        }
+        if (!el.flowObserved && window.ResizeObserver) { el.flowObserved = true; new ResizeObserver(() => this.fitMap()).observe(el); }
+      });
       if (!box) return;
       const f = box.querySelector('iframe'), W = 1640, H = 1000, s = box.clientWidth / W;
       f.style.transform = 'scale(' + s + ')';
       box.style.height = Math.round(H * s) + 'px';
-      document.querySelectorAll('[data-gtmfit]').forEach((el) => { if (el === full && window.innerWidth <= 640) return; const w = el.parentElement.clientWidth; if (w) el.style.zoom = Math.min(1, w / 1760); });
     };
     this.fitTimer = setInterval(() => { if (document.querySelector('[data-mapfit]')) { this.fitMap(); clearInterval(this.fitTimer); } }, 200);
     window.addEventListener('resize', this.fitMap);
