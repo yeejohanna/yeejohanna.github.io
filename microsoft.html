@@ -47,6 +47,8 @@ a:hover [data-prev-arrow]{transform:translateX(-6px);}
 [data-section]{position:relative;border-top:none!important;}
 [data-section] + [data-section]::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:820px;border-top:1px solid var(--line);}
 [style*="var(--serif-alt)"]{font-variation-settings:"WONK" 0,"SOFT" 0;font-optical-sizing:auto;}
+[data-meta-row]{justify-content:space-between;}
+@media (max-width:640px){[data-meta-row]{display:grid!important;grid-template-columns:1fr 1fr;gap:18px 24px!important;}[data-meta-row]>:first-child,[data-meta-row]>:nth-child(4):last-child{grid-column:1/-1;}}
 </style>
 </helmet>
 
@@ -63,13 +65,13 @@ a:hover [data-prev-arrow]{transform:translateX(-6px);}
 <dc-import name="SiteNav" hint-size="100%,96px"></dc-import>
 
 <div style="max-width:1100px;margin:0 auto;padding:20px 32px 8px">
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
+  <h1 style="font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,42px);line-height:1.25;margin:0 0 16px">Consolidating 17 content sites into one connected ecosystem</h1>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 30px">
     <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Content Audit</span>
     <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Audience Segmentation</span>
     <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Ecosystem Consolidation</span>
     <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Org Design</span>
   </div>
-  <h1 style="font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,42px);line-height:1.25;margin:0 0 26px">Consolidating 17 content sites into one connected ecosystem</h1>
 </div>
 
 <div style="max-width:1100px;margin:0 auto 64px;padding:0 32px">
@@ -79,7 +81,7 @@ a:hover [data-prev-arrow]{transform:translateX(-6px);}
 </div>
 
 <div style="max-width:1100px;margin:0 auto;padding:0 32px 48px">
-  <div style="display:flex;gap:40px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);max-width:820px;margin:0 auto">
+  <div data-meta-row style="display:flex;gap:20px 40px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);max-width:820px;margin:0 auto">
     <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Role</span><strong style="font-weight:500;font-size:14px">Content and Editorial Strategist</strong></div>
     <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Timeframe</span><strong style="font-weight:500;font-size:14px">2020 – 2021 · 7 months</strong></div>
     <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Client</span><strong style="font-weight:500;font-size:14px">Microsoft</strong></div>

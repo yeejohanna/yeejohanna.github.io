@@ -61,6 +61,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
   [data-flow-scroll]{padding:12px 20px 24px!important;}
 }
 @keyframes gtmPulse{0%,100%{box-shadow:0 0 10px 0 oklch(0.6 0.15 300 / .12)}50%{box-shadow:0 0 18px 3px oklch(0.6 0.15 300 / .28)}}
+[data-meta-row]{justify-content:space-between;}
+@media (max-width:640px){[data-meta-row]{display:grid!important;grid-template-columns:1fr 1fr;gap:18px 24px!important;}[data-meta-row]>:first-child,[data-meta-row]>:nth-child(4):last-child{grid-column:1/-1;}}
 </style>
 </helmet>
 
@@ -99,13 +101,13 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 <sc-if value="{{ unlocked }}" hint-placeholder-val="{{ true }}">
 <div>
   <div style="max-width:1100px;margin:0 auto;padding:20px 32px 8px">
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
+    <h1 style="font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,42px);line-height:1.25;margin:0 0 16px">Designing an AI-enabled go-to-market engine</h1>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 30px">
       <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">GTM Strategy</span>
       <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Agentic AI</span>
       <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Stakeholder Discovery</span>
       <span style="font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--accent-deep);background:var(--tag-bg);border:1px solid var(--tag-line);border-radius:20px;padding:5px 12px">Pain Point Mapping</span>
     </div>
-    <h1 style="font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,42px);line-height:1.25;margin:0 0 26px">Designing an AI-enabled go-to-market engine</h1>
   </div>
 
   <div style="max-width:1100px;margin:0 auto 64px;padding:0 32px">
@@ -115,7 +117,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
   </div>
 
   <div style="max-width:1100px;margin:0 auto;padding:0 32px 48px">
-    <div style="display:flex;gap:40px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);max-width:820px;margin:0 auto">
+    <div data-meta-row style="display:flex;gap:20px 40px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);max-width:820px;margin:0 auto">
       <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Role</span><strong style="font-weight:500;font-size:14px">Senior Consultant and Product Strategist</strong></div>
       <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Timeframe</span><strong style="font-weight:500;font-size:14px">2026 · Ongoing</strong></div>
       <div><span style="display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:4px">Client</span><strong style="font-weight:500;font-size:14px">Global pharma company</strong></div>
