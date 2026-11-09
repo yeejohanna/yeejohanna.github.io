@@ -230,10 +230,10 @@ body[data-theme="dark"] [data-logo-dark]{display:block;}
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   renderVals() {
-    // 978 days on Sept 30, 2026; +1 each local day
-    const base = new Date(2026, 8, 30), now = new Date();
+    // 1014 days on Nov 9, 2026; +1 each local day
+    const base = new Date(2026, 10, 9), now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const duoStreak = (978 + Math.max(0, Math.round((today - base) / 864e5))).toLocaleString('en-US');
+    const duoStreak = (1014 + Math.max(0, Math.round((today - base) / 864e5))).toLocaleString('en-US');
     return { showMicrosoft: false, duoStreak, bookTitle: this.state.bookTitle, bookAuthor: this.state.bookAuthor, bookCover: this.state.bookCover };
   }
   state = { bookTitle: 'Table for Two', bookAuthor: 'Amor Towles', bookCover: 'assets/book-cover.jpg' };
